@@ -1,5 +1,4 @@
 # OSMacrosExecutor v 2.1
-
 A tool for automating user activities
 
 
