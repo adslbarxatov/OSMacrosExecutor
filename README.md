@@ -11,7 +11,7 @@ Application may be used for imitation of user activities when:
 
  • some activities must be performed without your direct participation.
 
- Application can 'use' mouse, keyboard, command line and interrupts as well as user with the same potentialities.
+Application can 'use' mouse, keyboard, command line and interrupts as well as user with the same potentialities.
 
 
 Just create macro using OSMacrosEditor tool and run them using OSMacrosEx tool.
