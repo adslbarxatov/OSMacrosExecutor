@@ -3,4 +3,5 @@ Version 2.1
 
 Version 2.2
 - Some descriptions have been improved;
-- Added 'command execution with completion waiting' operation code.
+- Added 'command execution with waiting of completion' operation code;
+- .macro files from version 2.1 are compatible with current assembly.
