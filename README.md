@@ -13,9 +13,11 @@ Application may be used for imitation of user activities when:
 
 Application can 'use' mouse, keyboard, command line and interrupts as well as user with the same potentialities.
 
-#
-
 Just create macro using OSMacrosEditor tool and run them using OSMacrosEx tool.
 
 If something goes wrong, you can use sample file. If you find some bugs or need some help, please, write to
 my E-mail
+
+#
+
+Needs Windows XP and newer, Framework 4.0 and newer (for editor only). Interface language: en_us
