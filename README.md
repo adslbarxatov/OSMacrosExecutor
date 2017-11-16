@@ -1,5 +1,5 @@
 # OSMacrosExecutor v 2.2
-A tool for automating user activities
+A tool for automating user activities / Инструмент автоматизации действий пользователя
 #
 Application may be used for imitation of user activities when:
 
