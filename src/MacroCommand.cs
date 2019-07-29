@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace OSMacrosEditor
@@ -136,6 +136,9 @@ namespace OSMacrosEditor
 	/// </summary>
 	public class MacroCommand
 		{
+		// Переменные
+		private static char[] splitters = new char[] { ' ', '\t' };
+
 		/// <summary>
 		/// Тип макрокоманды
 		/// </summary>
@@ -363,34 +366,22 @@ namespace OSMacrosEditor
 			{
 			// Разбор команды
 			if (CommandPresentation == null)
-				{
 				return null;
-				}
 
-			char[] splitters = new char[] { ' ' };
 			string[] values = CommandPresentation.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
-			if (values.Length < 1)
-				{
+			if (values.Length < 1)	// Пропуск пустых строк
 				return null;
-				}
 
 			// Обработка типа команды
-			uint type = 0;
+			CommandTypes command;
 			try
 				{
-				type = uint.Parse (values[0]);
+				command = (CommandTypes)uint.Parse (values[0]);
 				}
 			catch
 				{
 				return null;
 				}
-
-			if (type > 8)
-				{
-				return null;
-				}
-
-			CommandTypes command = (CommandTypes)type;
 
 			// Обработка содержимого команды
 			switch (command)
@@ -442,9 +433,7 @@ namespace OSMacrosEditor
 						}
 
 					if ((m > 8) || (k > 255))
-						{
 						return null;
-						}
 
 					try
 						{
@@ -474,9 +463,9 @@ namespace OSMacrosEditor
 						}
 					return null;
 
-				// Случай отрезан на входе. Но мало ли что
+				// Команда неопознана
 				default:
-					throw new Exception ("It cannot be. But let it be point 3");
+					return null;
 				}
 			}
 		}
