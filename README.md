@@ -1,15 +1,15 @@
-# OSMacrosExecutor v 2.2
+# OSMacrosExecutor v 2.3
 A tool for automating user activities / Инструмент автоматизации действий пользователя
 #
 Application may be used for imitation of user activities when:
 
  • you need to perform many similar operations with files and/or programs;
 
- • you cannot automate these activities by standart tools;
+ • you cannot automate these activities using standard tools;
 
  • some activities must be performed without your direct participation.
 
-Application can 'use' mouse, keyboard, command line and interrupts as well as user with the same potentialities.
+Application can 'use' mouse, keyboard, command line and interrupts as same as user with the same potentialities.
 
 Just create macro using OSMacrosEditor tool and run them using OSMacrosEx tool. If something goes wrong, you can use sample file
 #
@@ -28,4 +28,4 @@ Just create macro using OSMacrosEditor tool and run them using OSMacrosEx tool. 
 
 Needs Windows XP and newer, Framework 4.0 and newer. Interface language: en_us
 
-Требуется ОС Windows XP и новее, Framework 4.0 и новее. Язык интерфейса: ru_ru
+Требуется ОС Windows XP и новее, Framework 4.0 и новее. Язык интерфейса: en_us
