@@ -4,7 +4,7 @@
 
 // Подключение заголовочных файлов
 #include <stdio.h>		// Базовая библиотека ввода / вывода
-#include <conio.h>		// Работа с консолью
+//#include <conio.h>		// Работа с консолью
 #include <windows.h>	// Команды управления
 #include <process.h>	// Библиотека запуска процессов
 
@@ -12,10 +12,19 @@
 #define DEFAULTSIZE	501
 
 /////////////////////////////////////////////////////////////////////////////////////
+// Ресурсы: данные о создаваемом приложении
+#define	ASSEMBLYCOMPANY	"RD AAOW"							// EXE Company name
+#define	ASSEMBLYNAME	"Operating system macros executor"	// EXE Product name
+#define	ASSEMBLYVERSION	1,3,0,0								// EXE File / Product version
+#define	ASSEMBLYCOPYRIGHT	"© Barhatov N."					// EXE Copyright
+#define	ASSEMBLYDESCRIPTION	ASSEMBLYNAME					// EXE Description
+#define	ASSEMBLYUPDATE	"30.07.2017; 21:14"					// EXE Last update
+
+/////////////////////////////////////////////////////////////////////////////////////
 // Макросы
 	// Управление
 #define _PAUSE(p)		Sleep (p);
-#define _EXITONERROR(c)	/*_getch ();*/ return c;
+#define _EXITONERROR(c)	/*_getch ();/**/ return c;
 char ExecutionCommand[DEFAULTSIZE];
 #define _EXEC			system (ExecutionCommand);
 
