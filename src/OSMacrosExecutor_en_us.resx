@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddDragBeginningText" xml:space="preserve">
+    <value>&amp;Begin dragging</value>
+  </data>
+  <data name="AddDragEndingText" xml:space="preserve">
+    <value>&amp;End dragging</value>
+  </data>
+  <data name="AddFileExecutionText" xml:space="preserve">
+    <value>E&amp;xecute</value>
+  </data>
+  <data name="AddKeyPressText" xml:space="preserve">
+    <value>Press &amp;keys combination</value>
+  </data>
+  <data name="AddLeftClickText" xml:space="preserve">
+    <value>&amp;Left mouse click</value>
+  </data>
+  <data name="AddMousePointerText" xml:space="preserve">
+    <value>Set mouse pointer &amp;position</value>
+  </data>
+  <data name="AddPauseText" xml:space="preserve">
+    <value>Pa&amp;use execution</value>
+  </data>
+  <data name="AddRightClickText" xml:space="preserve">
+    <value>&amp;Right mouse click</value>
+  </data>
+  <data name="BeginMacro" xml:space="preserve">
+    <value>During execution using of keyboard or mouse is not recommended.
+
+Begin macro?</value>
+  </data>
+  <data name="CannotCreateFile" xml:space="preserve">
+    <value>Cannot create file "{0:S}".
+
+Make sure that its placement is available and try again</value>
+  </data>
+  <data name="CommandsListLabelText" xml:space="preserve">
+    <value>Commands list:</value>
+  </data>
+  <data name="ExDialogTitle" xml:space="preserve">
+    <value>Select macro for execution</value>
+  </data>
+  <data name="ExecutionGroupText" xml:space="preserve">
+    <value>Execute file / command</value>
+  </data>
+  <data name="ExecutionIsUnavailable" xml:space="preserve">
+    <value> (execution module) is missing. Execution is unavailable</value>
+  </data>
+  <data name="FDialogFilter" xml:space="preserve">
+    <value>All files|*.*</value>
+  </data>
+  <data name="FDialogTitle" xml:space="preserve">
+    <value>Select file for execution</value>
+  </data>
+  <data name="FileIsUnavailable" xml:space="preserve">
+    <value>Cannot open file "{0:S}".
+
+Make sure that file is available and try again</value>
+  </data>
+  <data name="HelpText" xml:space="preserve">
+    <value>Application may be used for imitation of user activities when:
+• you need to perform many similar operations with files and/or programs;
+• you cannot automate these activities using standard tools;
+• some activities must be performed without your direct participation.
+Application can 'use' mouse, keyboard, command line and interrupts as same as user with the same potentialities</value>
+  </data>
+  <data name="KeyboardGroupText" xml:space="preserve">
+    <value>Keyboard</value>
+  </data>
+  <data name="KeyReceiverText" xml:space="preserve">
+    <value>Stay here and press combination</value>
+  </data>
+  <data name="MExecuteText" xml:space="preserve">
+    <value>&amp;Execute macro ↓ times...</value>
+  </data>
+  <data name="MFileText" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="MilliLabelText" xml:space="preserve">
+    <value>milliseconds</value>
+  </data>
+  <data name="MOpenText" xml:space="preserve">
+    <value>&amp;Open macro...</value>
+  </data>
+  <data name="MousePointerGroupText" xml:space="preserve">
+    <value>Mouse pointer</value>
+  </data>
+  <data name="MQuitText" xml:space="preserve">
+    <value>&amp;Quit</value>
+  </data>
+  <data name="MSaveText" xml:space="preserve">
+    <value>&amp;Save macro...</value>
+  </data>
+  <data name="NoModifiers" xml:space="preserve">
+    <value>(no modifiers)</value>
+  </data>
+  <data name="OFDialogFilter" xml:space="preserve">
+    <value>OS macro file (*.macro)|*.macro</value>
+  </data>
+  <data name="OFDialogTitle" xml:space="preserve">
+    <value>Select macro for editing</value>
+  </data>
+  <data name="OpenExistingFile" xml:space="preserve">
+    <value>Do you want to open existing file?
+
+All unsaved data will be lost!</value>
+  </data>
+  <data name="PauseGroupText" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="QuitApplication" xml:space="preserve">
+    <value>Do you want to quit application?
+
+All unsaved data will be lost!</value>
+  </data>
+  <data name="SetMousePointerText" xml:space="preserve">
+    <value>Select...</value>
+  </data>
+  <data name="SFDialogTitle" xml:space="preserve">
+    <value>Select new macro's placement</value>
+  </data>
+  <data name="ShowVideo" xml:space="preserve">
+    <value>Do you want to view user videoguide on our YouTube channel?</value>
+  </data>
+  <data name="WaitForFinishText" xml:space="preserve">
+    <value>Wait for completion</value>
+  </data>
+  <data name="WinKey" xml:space="preserve">
+    <value>Win key</value>
+  </data>
+</root>

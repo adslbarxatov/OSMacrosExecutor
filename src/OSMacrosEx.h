@@ -1,31 +1,30 @@
-﻿/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 // Снятие предупреждений о безопасности при отладке
 #define _CRT_SECURE_NO_WARNINGS
 
 // Подключение заголовочных файлов
-#include <stdio.h>		// Базовая библиотека ввода / вывода
-//#include <conio.h>		// Работа с консолью
-#include <windows.h>	// Команды управления
-#include <process.h>	// Библиотека запуска процессов
+#include <stdio.h>					// Базовая библиотека ввода / вывода
+#include <windows.h>				// Команды управления
+#include <process.h>				// Библиотека запуска процессов
+#include "..\Generics\CSTypes.h"	// Описание подстановочных типов данных
 
 // Константы
-#define DEFAULTSIZE	501
+#define DEFAULTSIZE		501
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Ресурсы: данные о создаваемом приложении
-#define	ASSEMBLYCOMPANY	"RD AAOW"							// EXE Company name
-#define	ASSEMBLYNAME	"Operating system macros executor"	// EXE Product name
-#define	ASSEMBLYVERSION	1,3,0,0								// EXE File / Product version
-#define	ASSEMBLYCOPYRIGHT	"© Barhatov N."					// EXE Copyright
-#define	ASSEMBLYDESCRIPTION	ASSEMBLYNAME					// EXE Description
-#define	ASSEMBLYUPDATE	"30.07.2017; 21:14"					// EXE Last update
+#define OSME_VERSION				1,4,0,0
+#define OSME_VERSION_S				"1.4.0.0"
+#define OSME_PRODUCT				"Operating system macros execution module v 1.4u"
+#define OSME_COMPANY				"RD AAOW"
+//#define	ASSEMBLYUPDATE	"30.07.2017; 21:14"
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Макросы
 	// Управление
 #define _PAUSE(p)		Sleep (p);
-#define _EXITONERROR(c)	/*_getch ();/**/ return c;
-char ExecutionCommand[DEFAULTSIZE];
+#define _EXITONERROR(c)	return c;
+schar ExecutionCommand[DEFAULTSIZE];
 #define _EXEC			system (ExecutionCommand);
 
 	// Мышь

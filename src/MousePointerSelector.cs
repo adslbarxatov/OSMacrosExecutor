@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace OSMacrosEditor
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает форму выбора позиции указателя мыши

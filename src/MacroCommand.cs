@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace OSMacrosEditor
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Доступные типы макрокоманд

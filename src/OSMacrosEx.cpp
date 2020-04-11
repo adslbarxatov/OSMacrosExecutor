@@ -1,4 +1,4 @@
-﻿/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 // Подключение заголовочных файлов
 #include "OSMacrosEx.h"
 
@@ -11,38 +11,35 @@ FILE *F1;
 int main (int argc, char *argv[])
 	{
 	// Переменные
-	char FileName[DEFAULTSIZE];	// Имя файла макроса
-	char str[DEFAULTSIZE];		// Считанная из файла строка команды
-	unsigned int repeats = 0;	// Количество повторов
+	schar FileName[DEFAULTSIZE];	// Имя файла макроса
+	schar str[DEFAULTSIZE];			// Считанная из файла строка команды
+	uint repeats = 0;				// Количество повторов
 
-	unsigned _int32 i, x, y;	// Буферные переменные
+	ulong i, x, y;					// Буферные переменные
 
 	// Заголовок
-	printf ("\n \x11\x11\x11 %s \x10\x10\x10\n By %s\n\n", ASSEMBLYDESCRIPTION, ASSEMBLYCOMPANY);
+	printf ("\n %s\n by %s\n\n", OSME_PRODUCT, OSME_COMPANY);
 
 	// Проверка корректности вызова программы
 	if (argc < 2)
 		{
-		printf (" \x13 Illegal program call. Must be: OSMacrosEx <FullPathToMacroFile> [CountOfRepeats]\n\n");
-		_EXITONERROR(-1)
+		printf (" \x13 Usage: OSMacrosEx <FullPathToMacroFile> [CountOfRepeats]\n\n");
+		_EXITONERROR (-1)
 		}
 	sprintf (FileName, argv[1]);
 
 	// Получение количества повторов
 	if (argc > 2)
-		{
 		sscanf (argv[2], "%u", &repeats);
-		}
+
 	if (repeats < 1)
-		{
 		repeats = 1;
-		}
 
 	// Открытие файла
 	if ((F1 = fopen (FileName, "r")) == NULL)
 		{
 		printf (" \x13 Specified file cannot be opened\n\n");
-		_EXITONERROR(-2)
+		_EXITONERROR (-2)
 		}
 
 	// Запуск на выполнение
@@ -138,18 +135,12 @@ int main (int argc, char *argv[])
 
 			// Составление и отображение ответа
 			if (str[strlen(str) - 1] == '\n')
-				{
 				str[strlen(str) - 1] = '\x0';
-				}
 
 			if ((str[0] >= '0') && (str[0] <= '8'))
-				{
 				printf (" \x10 Command [%s] executed\n", str);
-				}
 			else
-				{
 				printf (" \x13 Command [%s] ignored (unknown command code)\n", str);
-				}
 			}
 
 		// Возврат в начало файла
