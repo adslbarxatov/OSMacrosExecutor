@@ -1,5 +1,8 @@
 ﻿OS macros executor changes log
 
+To do:
+- Add cycles (begin, end, counter)
+
 Version 2.4u (executor version 1.4u)
 • Application namespace, icon and development environment have been unified;
 • Localization system has been unified; added Russian localization
