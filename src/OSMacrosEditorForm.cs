@@ -21,8 +21,8 @@ namespace RD_AAOW
 			{
 			// Инициализация
 			InitializeComponent ();
-			for (int i = 0; i < Localization.AvailableLanguages; i++)
-				LanguageCombo.Items.Add (((SupportedLanguages)i).ToString ());
+
+			LanguageCombo.Items.AddRange (Localization.LanguagesNames);
 			try
 				{
 				LanguageCombo.SelectedIndex = (int)al;
