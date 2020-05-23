@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -46,7 +48,7 @@ namespace RD_AAOW
 			}
 
 		// Локализация формы
-		private void LanguageCombo_SelectedIndexChanged (object sender, System.EventArgs e)
+		private void LanguageCombo_SelectedIndexChanged (object sender, EventArgs e)
 			{
 			// Сохранение
 			Localization.CurrentLanguage = al = (SupportedLanguages)LanguageCombo.SelectedIndex;
@@ -112,12 +114,12 @@ namespace RD_AAOW
 			}
 
 		// Выход из программы
-		private void MQuit_Click (object sender, System.EventArgs e)
+		private void MQuit_Click (object sender, EventArgs e)
 			{
 			this.Close ();
 			}
 
-		private void ExitButton_Click (object sender, System.EventArgs e)
+		private void ExitButton_Click (object sender, EventArgs e)
 			{
 			this.Close ();
 			}
@@ -130,14 +132,14 @@ namespace RD_AAOW
 			}
 
 		// Загрузка макроса
-		private void MOpen_Click (object sender, System.EventArgs e)
+		private void MOpen_Click (object sender, EventArgs e)
 			{
 			if (MessageBox.Show (Localization.GetText ("OpenExistingFile", al),
 				ProgramDescription.AssemblyDescription, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
 				OFDialog.ShowDialog ();
 			}
 
-		private void OFDialog_FileOk (object sender, System.ComponentModel.CancelEventArgs e)
+		private void OFDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Загрузка
 			FileStream FS = null;
@@ -173,12 +175,12 @@ namespace RD_AAOW
 			}
 
 		// Сохранение макроса
-		private void MSave_Click (object sender, System.EventArgs e)
+		private void MSave_Click (object sender, EventArgs e)
 			{
 			SFDialog.ShowDialog ();
 			}
 
-		private void SFDialog_FileOk (object sender, System.ComponentModel.CancelEventArgs e)
+		private void SFDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Инициализация
 			FileStream FS = null;
@@ -206,12 +208,12 @@ namespace RD_AAOW
 			}
 
 		// Выполнение макроса
-		private void MExecute_Click (object sender, System.EventArgs e)
+		private void MExecute_Click (object sender, EventArgs e)
 			{
 			ExDialog.ShowDialog ();
 			}
 
-		private void ExDialog_FileOk (object sender, System.ComponentModel.CancelEventArgs e)
+		private void ExDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			if (MessageBox.Show (Localization.GetText ("BeginMacro", al),
 				ProgramDescription.AssemblyDescription, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) != DialogResult.Yes)
@@ -249,7 +251,7 @@ namespace RD_AAOW
 			}
 
 		// Выбор позиции указателя мыши
-		private void SetMousePointer_Click (object sender, System.EventArgs e)
+		private void SetMousePointer_Click (object sender, EventArgs e)
 			{
 			MousePointerSelector mps = new MousePointerSelector ();
 			MouseX.Value = mps.MouseX;
@@ -264,12 +266,12 @@ namespace RD_AAOW
 			}
 
 		// Выбор файла для исполнения
-		private void SelectFile_Click (object sender, System.EventArgs e)
+		private void SelectFile_Click (object sender, EventArgs e)
 			{
 			FDialog.ShowDialog ();
 			}
 
-		private void FDialog_FileOk (object sender, System.ComponentModel.CancelEventArgs e)
+		private void FDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			CommandPath.Text = FDialog.FileName.Substring (0, ((FDialog.FileName.Length > 200) ? 200 : FDialog.FileName.Length));
 			}
@@ -293,25 +295,25 @@ namespace RD_AAOW
 			}
 
 		// Добавление команд
-		private void AddMousePointer_Click (object sender, System.EventArgs e)
+		private void AddMousePointer_Click (object sender, EventArgs e)
 			{
 			commands.Add (new MacroCommand ((uint)MouseX.Value, (uint)MouseY.Value));
 			UpdateCommandsList ();
 			}
 
-		private void AddKeyPress_Click (object sender, System.EventArgs e)
+		private void AddKeyPress_Click (object sender, EventArgs e)
 			{
 			commands.Add (new MacroCommand ((KeyModifiers)KeyModifiers.SelectedIndex, (Keys)KeyCode.SelectedIndex));
 			UpdateCommandsList ();
 			}
 
-		private void AddPause_Click (object sender, System.EventArgs e)
+		private void AddPause_Click (object sender, EventArgs e)
 			{
 			commands.Add (new MacroCommand ((uint)PauseLength.Value));
 			UpdateCommandsList ();
 			}
 
-		private void AddFileExecution_Click (object sender, System.EventArgs e)
+		private void AddFileExecution_Click (object sender, EventArgs e)
 			{
 			if (CommandPath.Text == "")
 				CommandPath.Text = "-";
@@ -320,32 +322,32 @@ namespace RD_AAOW
 			UpdateCommandsList ();
 			}
 
-		private void AddLeftClick_Click (object sender, System.EventArgs e)
+		private void AddLeftClick_Click (object sender, EventArgs e)
 			{
 			commands.Add (new MacroCommand (MouseCommands.LeftMouseClick));
 			UpdateCommandsList ();
 			}
 
-		private void AddRightClick_Click (object sender, System.EventArgs e)
+		private void AddRightClick_Click (object sender, EventArgs e)
 			{
 			commands.Add (new MacroCommand (MouseCommands.RightMouseClick));
 			UpdateCommandsList ();
 			}
 
-		private void AddDragBeginning_Click (object sender, System.EventArgs e)
+		private void AddDragBeginning_Click (object sender, EventArgs e)
 			{
 			commands.Add (new MacroCommand (MouseCommands.StartDragNDrop));
 			UpdateCommandsList ();
 			}
 
-		private void AddDragEnding_Click (object sender, System.EventArgs e)
+		private void AddDragEnding_Click (object sender, EventArgs e)
 			{
 			commands.Add (new MacroCommand (MouseCommands.FinishDragNDrop));
 			UpdateCommandsList ();
 			}
 
 		// Изменение списка
-		private void DeleteItem_Click (object sender, System.EventArgs e)
+		private void DeleteItem_Click (object sender, EventArgs e)
 			{
 			if (CommandsListBox.SelectedIndex >= 0)
 				{
@@ -354,7 +356,7 @@ namespace RD_AAOW
 				}
 			}
 
-		private void MoveUp_Click (object sender, System.EventArgs e)
+		private void MoveUp_Click (object sender, EventArgs e)
 			{
 			if (CommandsListBox.SelectedIndex <= 0)
 				return;
@@ -369,7 +371,7 @@ namespace RD_AAOW
 			CommandsListBox.SelectedIndex = i - 1;
 			}
 
-		private void MoveDown_Click (object sender, System.EventArgs e)
+		private void MoveDown_Click (object sender, EventArgs e)
 			{
 			// Выбрана не нижняя позиция
 			if ((CommandsListBox.SelectedIndex >= 0) && (CommandsListBox.SelectedIndex < CommandsListBox.Items.Count - 1))
@@ -385,26 +387,20 @@ namespace RD_AAOW
 			}
 
 		// Отображение краткой справочной информации
-		private void MainForm_HelpButtonClicked (object sender, System.ComponentModel.CancelEventArgs e)
+		private void MainForm_HelpButtonClicked (object sender, CancelEventArgs e)
 			{
 			// Отмена обработки события вызова справки
 			e.Cancel = true;
 
 			// О программе
-			ProgramDescription.ShowAbout ();
-
-			// Общая справка
-			MessageBox.Show (Localization.GetText ("HelpText", al),
-				ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-			// Видеоинструкция
-			if (MessageBox.Show (Localization.GetText ("ShowVideo", al),
-				ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-				ProgramDescription.ShowVideoManual ();
+			AboutForm af = new AboutForm (al, "https://github.com/adslbarxatov/OSMacrosExecutor",
+				"https://github.com/adslbarxatov/OSMacrosExecutor/releases",
+				"https://www.youtube.com/watch?v=uPRrKlYW_eg&list=PLe7qKwHNkZTvIOPvUtnt_D3RZd6gOTzNu&index=5",
+				Localization.GetText ("HelpText", al));
 			}
 
 		// Установка количества запусков макроса
-		private void ExecutionRepeats_TextChanged (object sender, System.EventArgs e)
+		private void ExecutionRepeats_TextChanged (object sender, EventArgs e)
 			{
 			if (ExecutionRepeats.Text != "")
 				{
