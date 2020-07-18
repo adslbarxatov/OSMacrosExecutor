@@ -3,25 +3,31 @@
 To do:
 - Add cycles (begin, end, counter)
 
-Version 2.5h (executor version 1.4u)
+Version 2.5.1p (executor version 1.4u):
+• Some minor bugs fixed;
+• Updated application info interface (more convenient font is used for now);
+• Added a button to access the Application development policy and EULA in the application info interface (due to ADP update);
+• Added automatic check for updates to the application info interface
+
+Version 2.5h (executor version 1.4u):
 • New application info interface implemented
 
-Version 2.4.2L (executor version 1.4u)
+Version 2.4.2L (executor version 1.4u):
 • Applied correct representation of supported languages list
 
-Version 2.4u (executor version 1.4u)
+Version 2.4u (executor version 1.4u):
 • Application namespace, icon and development environment have been unified;
 • Localization system has been unified; added Russian localization
 
-Version 2.3 (executor version 1.3)
+Version 2.3 (executor version 1.3):
 • Keys combination input field improved;
 • Main interface improved;
 • .macro files from version 2.1 are compatible with current assembly
 
-Version 2.2 (executor version 1.3)
+Version 2.2 (executor version 1.3):
 • Some descriptions have been improved;
 • Added 'command execution with waiting of completion' operation code;
 • .macro files from version 2.1 are compatible with current assembly
 
-Version 2.1 (executor version 1.2)
+Version 2.1 (executor version 1.2):
 • Publication on GitHub
