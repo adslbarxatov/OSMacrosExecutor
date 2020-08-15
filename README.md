@@ -1,4 +1,4 @@
-# OSMacrosExecutor v 2.5.1p
+# OSMacrosExecutor v 2.5.2p
 
 A tool for automating user activities
 

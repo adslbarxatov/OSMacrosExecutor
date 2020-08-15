@@ -3,6 +3,9 @@
 To do:
 - Add cycles (begin, end, counter)
 
+Version 2.5.2p (executor version 1.4u):
+• Added ability to accept/decline ADP at first start to the application info interface;
+
 Version 2.5.1p (executor version 1.4u):
 • Updated application info interface (more convenient font is used for now);
 • Added a button to access the Application development policy and EULA in the application info interface (due to ADP update);

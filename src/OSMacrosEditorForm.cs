@@ -393,10 +393,7 @@ namespace RD_AAOW
 			e.Cancel = true;
 
 			// О программе
-			AboutForm af = new AboutForm (al, "https://github.com/adslbarxatov/OSMacrosExecutor",
-				"https://github.com/adslbarxatov/OSMacrosExecutor/releases",
-				"https://www.youtube.com/watch?v=uPRrKlYW_eg&list=PLe7qKwHNkZTvIOPvUtnt_D3RZd6gOTzNu&index=5",
-				Localization.GetText ("HelpText", al));
+			ProgramDescription.ShowAbout (false);
 			}
 
 		// Установка количества запусков макроса
