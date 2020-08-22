@@ -3,6 +3,11 @@
 To do:
 - Add cycles (begin, end, counter)
 
+Version 2.5.3i:
+• Application info interface now able to get last release's changes log;
+• Found and fixed hidden bug that caused an error when starting the application from local network;
+• Fixed bug that caused the web page request method to fail if server disconnected
+
 Version 2.5.2p (executor version 1.4u):
 • Added ability to accept/decline ADP at first start to the application info interface;
 
