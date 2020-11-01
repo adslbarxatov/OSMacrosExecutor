@@ -1,5 +1,5 @@
-# OSMacrosExecutor v 2.6
-> PCC: 0004853C78192DE5
+# OSMacrosExecutor v 2.6.2
+> PCC: 0002E33EFE61F618
 
 
 A tool for automating user activities

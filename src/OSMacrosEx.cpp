@@ -5,16 +5,22 @@
 /////////////////////////////////////////////////////////////////////////////////////
 // Переменные
 FILE *F1;
+schar commands[DEFAULTSIZE][DEFAULTSIZE];
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Главная функция
-int main (int argc, char *argv[])
+int main (int argc, char* argv[])
 	{
 	// Переменные
 	schar FileName[DEFAULTSIZE];	// Имя файла макроса
 	schar str[DEFAULTSIZE];			// Считанная из файла строка команды
 	uint repeats = 0;				// Количество повторов
-
+	uchar cycleFinisher = 0;		// Финализатор цикла
+	uint currentCycle = 0,			// Текущая итерация цикла
+		cycles = 0;					// Количество итераций цикла
+	uint currentCycleLine = 0,		// Текущая строка блока цикла
+		cycleLines = 0;				// Количество строк блока цикла
+	uchar cyclePhase = 0;			// Фаза выполнения цикла
 	ulong i, x, y;					// Буферные переменные
 
 	// Заголовок
@@ -45,13 +51,22 @@ int main (int argc, char *argv[])
 	// Запуск на выполнение
 	for (i = 0; i < repeats; i++)
 		{
-		while (fgets (str, DEFAULTSIZE, F1))
+		cycleFinisher = 0;
+
+		// Второе условие вместе с инкрементом сработает только в конце файла
+		while (fgets (str, DEFAULTSIZE, F1) || !cycleFinisher++)
 			{
+			// Предохранители
+			if (cycleFinisher)
+				sprintf (str, "-");
+			if (str[strlen (str) - 1] == '\n')
+				str[strlen (str) - 1] = '\x0';
+
+cycle:
 			switch (str[0])
 				{
-				// Выполнение команды
+				// Запуск программы / файла без ожидания завершения
 				case '0':
-					// Запуск программы / файла без ожидания завершения
 					sprintf (ExecutionCommand, "start \"\" %s", str + 2);
 					_EXEC
 					break;
@@ -111,36 +126,99 @@ int main (int argc, char *argv[])
 				case '5':
 					sscanf (str + 2, "%u", &x);
 					_PAUSE (x)
-					break;
+						break;
 
 				// Begin dragging
 				case '6':
 					_LDOWN
-					break;
+						break;
 
 				// End dragging
 				case '7':
 					_LUP
-					break;
+						break;
 
 				// Выполнение команды с ожиданием завершения
 				case '8':
 					sprintf (ExecutionCommand, "%s", str + 2);
 					_EXEC
+						break;
+
+				// Запуск и остановка цикла
+				case '+':
+					// Защита от вложенности
+					if (cyclePhase == 1)
+						continue;
+
+					// Одна или менее итерация уже выполнены
+					sscanf (str + 2, "%u", &cycles);
+					if (cycles < 2)
+						continue;
+
+					// Начало наполнения цикла
+					cyclePhase = 1;
+					printf (" \x10 Cycle started\n");
+					continue;
+
+				case '-':
+					// Защита от неправильного порядка
+					if (cyclePhase == 0)
+						continue;
+
+					// Запуск цикла
+					currentCycleLine = 0;
+					currentCycle = 1;	// Одна итерация уже выполнена
+					cyclePhase = 2;
+
+					printf (" \x10 Round %u\n", currentCycle + 1);
 					break;
+
+				// Неизвестная команда
+				default:
+					printf (" \x13 Command [%s] ignored (unknown command code)\n", str);
+					continue;
 				}
 
 			// Обязательная пауза между командами
-			_PAUSE (1)	
+			_PAUSE (1)
 
-			// Составление и отображение ответа
-			if (str[strlen(str) - 1] == '\n')
-				str[strlen(str) - 1] = '\x0';
+			// Наполнение цикла
+			if (cyclePhase == 1)
+				{
+				sprintf (commands[cycleLines], "%s", str);
+				cycleLines++;
+				}
 
-			if ((str[0] >= '0') && (str[0] <= '8'))
-				printf (" \x10 Command [%s] executed\n", str);
-			else
-				printf (" \x13 Command [%s] ignored (unknown command code)\n", str);
+			// Выполнение цикла
+			if (cyclePhase == 2)
+				{
+				// Переход к следующей итерации
+				if (currentCycleLine >= cycleLines)
+					{
+					currentCycleLine = 0;
+					currentCycle++;
+
+					// Завершение цикла
+					if (currentCycle >= cycles)
+						{
+						cyclePhase = 0;
+						cycleLines = currentCycle = cycles = 0;
+						printf (" \x10 Cycle finished\n");
+						continue;
+						}
+					else
+						{
+						printf (" \x10 Round %u\n", currentCycle + 1);
+						}
+					}
+
+				// Переход к команде
+				sprintf (str, "%s", commands[currentCycleLine++]);
+				goto cycle;
+				}
+
+			// Отображение ответа
+			printf (" \x10 Command [%s] executed\n", str);
 			}
 
 		// Возврат в начало файла

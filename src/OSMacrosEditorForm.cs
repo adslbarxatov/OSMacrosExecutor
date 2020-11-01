@@ -10,7 +10,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает главную форму программы
 	/// </summary>
-	public partial class OSMacrosEditorForm:Form
+	public partial class OSMacrosEditorForm: Form
 		{
 		// Переменные
 		private List<MacroCommand> commands = new List<MacroCommand> ();
@@ -111,6 +111,10 @@ namespace RD_AAOW
 
 			CommandsListLabel.Text = Localization.GetText ("CommandsListLabelText", al);
 			ExitButton.Text = Localization.GetText ("MQuitText", al);
+
+			BeginCycle.Text = Localization.GetText ("BeginCycleText", al);
+			EndCycle.Text = Localization.GetText ("EndCycleText", al);
+			CycleLabel.Text = Localization.GetText ("CycleLabelText", al);
 			}
 
 		// Выход из программы
@@ -410,6 +414,19 @@ namespace RD_AAOW
 					ExecutionRepeats.Text = "1";
 					}
 				}
+			}
+
+		// Управление циклами
+		private void BeginCycle_Click (object sender, EventArgs e)
+			{
+			commands.Add (new MacroCommand (true, (uint)CycleRounds.Value));
+			UpdateCommandsList ();
+			}
+
+		private void EndCycle_Click (object sender, EventArgs e)
+			{
+			commands.Add (new MacroCommand (false, 0));
+			UpdateCommandsList ();
 			}
 		}
 	}

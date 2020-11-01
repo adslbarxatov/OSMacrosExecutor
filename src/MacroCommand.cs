@@ -51,7 +51,17 @@ namespace RD_AAOW
 		/// <summary>
 		/// Выполнить приложение или файл и ждать завершения
 		/// </summary>
-		ExecuteCommandAndWait = 8
+		ExecuteCommandAndWait = 8,
+
+		/// <summary>
+		/// Начать цикл
+		/// </summary>
+		BeginCycle = 10,
+
+		/// <summary>
+		/// Завершить цикл
+		/// </summary>
+		EndCycle = 11,
 		}
 
 	/// <summary>
@@ -200,6 +210,18 @@ namespace RD_AAOW
 		private uint pauseLength = 0;
 
 		/// <summary>
+		/// Количество повторов цикла
+		/// </summary>
+		public uint CycleRounds
+			{
+			get
+				{
+				return cycleRounds;
+				}
+			}
+		private uint cycleRounds = 0;
+
+		/// <summary>
 		/// Конструктор. Создаёт команду управления мышью
 		/// </summary>
 		/// <param name="Command">Команда мыши</param>
@@ -227,6 +249,19 @@ namespace RD_AAOW
 			{
 			commandType = (WaitForCompletion ? CommandTypes.ExecuteCommandAndWait : CommandTypes.ExecuteCommand);
 			commandPath = ExecutionPath;
+			}
+
+		/// <summary>
+		/// Конструктор. Создаёт команду начала или окончания цикла
+		/// </summary>
+		/// <param name="CycleBeginning">Тип команды</param>
+		/// <param name="CycleRounds">Количество повторов</param>
+		public MacroCommand (bool CycleBeginning, uint CycleRounds)
+			{
+			commandType = (CycleBeginning ? CommandTypes.BeginCycle : CommandTypes.EndCycle);
+			cycleRounds = CycleRounds;
+			if (cycleRounds < 2)
+				cycleRounds = 2;
 			}
 
 		/// <summary>
@@ -284,7 +319,21 @@ namespace RD_AAOW
 			{
 			get
 				{
-				string res = ((int)commandType).ToString () + " ";
+				string res;
+				switch (commandType)
+					{
+					case CommandTypes.BeginCycle:
+						res = "+ ";
+						break;
+
+					case CommandTypes.EndCycle:
+						res = "-";
+						break;
+
+					default:
+						res = ((int)commandType).ToString () + " ";
+						break;
+					}
 
 				switch (commandType)
 					{
@@ -299,6 +348,7 @@ namespace RD_AAOW
 					case CommandTypes.LeftMouseClick:
 					case CommandTypes.RightMouseClick:
 					case CommandTypes.StartDragNDrop:
+					case CommandTypes.EndCycle:
 						return res;
 
 					case CommandTypes.PressKeys:
@@ -308,6 +358,9 @@ namespace RD_AAOW
 						double x = ((double)mouseX / (double)(Screen.PrimaryScreen.Bounds.Width - 1)) * (double)0xFFFF;
 						double y = ((double)mouseY / (double)(Screen.PrimaryScreen.Bounds.Height - 1)) * (double)0xFFFF;
 						return (res + ((uint)Math.Ceiling (x)).ToString () + " " + ((uint)Math.Ceiling (y)).ToString ());
+
+					case CommandTypes.BeginCycle:
+						return (res + cycleRounds.ToString ());
 
 					default:
 						throw new Exception ("Parameters exchange failure at point 1. Debug needed");
@@ -351,6 +404,12 @@ namespace RD_AAOW
 					case CommandTypes.StartDragNDrop:
 						return "Begin dragging";
 
+					case CommandTypes.BeginCycle:
+						return " BEGIN CYCLE (" + cycleRounds.ToString () + " t.)";
+
+					case CommandTypes.EndCycle:
+						return " END CYCLE";
+
 					default:
 						throw new Exception ("Parameters exchange failure at point 2. Debug needed");
 					}
@@ -369,14 +428,19 @@ namespace RD_AAOW
 				return null;
 
 			string[] values = CommandPresentation.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
-			if (values.Length < 1)	// Пропуск пустых строк
+			if (values.Length < 1)  // Пропуск пустых строк
 				return null;
 
 			// Обработка типа команды
 			CommandTypes command;
 			try
 				{
-				command = (CommandTypes)uint.Parse (values[0]);
+				if (values[0] == "+")
+					command = CommandTypes.BeginCycle;
+				else if (values[0] == "-")
+					command = CommandTypes.EndCycle;
+				else
+					command = (CommandTypes)uint.Parse (values[0]);
 				}
 			catch
 				{
@@ -403,17 +467,17 @@ namespace RD_AAOW
 					uint pause = 0;
 					try
 						{
-						pause = uint.Parse (values[1]);	// Вызовет исключение и при отсутствии параметра
+						pause = uint.Parse (values[1]); // Вызовет исключение и при отсутствии параметра
 						}
 					catch
 						{
 						}
 
-					if (pause != 0)	// Заведомо считанное значение, не равное нулю
+					if (pause != 0) // Заведомо считанное значение, не равное нулю
 						{
 						return new MacroCommand (pause);
 						}
-					return null;	// Все ошибки
+					return null;    // Все ошибки
 
 				case CommandTypes.FinishDragNDrop:
 				case CommandTypes.LeftMouseClick:
@@ -425,7 +489,7 @@ namespace RD_AAOW
 					uint m = 0, k = 256;
 					try
 						{
-						m = uint.Parse (values[1]);	// Вызовут исключение и при отсутствии параметра
+						m = uint.Parse (values[1]); // Вызовут исключение и при отсутствии параметра
 						k = uint.Parse (values[2]);
 						}
 					catch
@@ -437,7 +501,7 @@ namespace RD_AAOW
 
 					try
 						{
-						return new MacroCommand ((KeyModifiers)m, (Keys)k);		// Может вызвать сбой на этапе преобразования кода клавиши
+						return new MacroCommand ((KeyModifiers)m, (Keys)k);     // Может вызвать сбой на этапе преобразования кода клавиши
 						}
 					catch
 						{
@@ -448,7 +512,7 @@ namespace RD_AAOW
 					uint x = 0, y = 0x10000;
 					try
 						{
-						x = uint.Parse (values[1]);	// Вызовут исключение и при отсутствии параметра
+						x = uint.Parse (values[1]); // Вызовут исключение и при отсутствии параметра
 						y = uint.Parse (values[2]);
 						}
 					catch
@@ -462,6 +526,25 @@ namespace RD_AAOW
 						return new MacroCommand (x, y);
 						}
 					return null;
+
+				case CommandTypes.BeginCycle:
+					uint cycleRounds = 0;
+					try
+						{
+						cycleRounds = uint.Parse (values[1]);
+						}
+					catch
+						{
+						}
+
+					if (cycleRounds > 1)
+						{
+						return new MacroCommand (true, cycleRounds);
+						}
+					return null;    // Все ошибки
+
+				case CommandTypes.EndCycle:
+					return new MacroCommand (false, 0);
 
 				// Команда неопознана
 				default:

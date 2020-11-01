@@ -7,7 +7,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает форму выбора позиции указателя мыши
 	/// </summary>
-	public partial class MousePointerSelector:Form
+	public partial class MousePointerSelector: Form
 		{
 		/// <summary>
 		/// Конструктор. Инициализирует форму

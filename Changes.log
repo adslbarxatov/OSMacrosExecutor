@@ -1,12 +1,12 @@
 ﻿OS macros executor changes log
 
-To do:
-- Add cycles (begin, end, counter)
+Version 2.6.2 (executor version 1.5):
+• Added cycle commands (cycle begin and cycle end) that allow to repeat segments of macros
 
-Version 2.6:
+Version 2.6 (executor version 1.4u):
 • Cumulative updates applied
 
-Version 2.5.3i:
+Version 2.5.3i (executor version 1.4u):
 • Application info interface now able to get last release's changes log;
 • Found and fixed hidden bug that caused an error when starting the application from local network;
 • Fixed bug that caused the web page request method to fail if server disconnected

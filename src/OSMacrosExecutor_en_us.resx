@@ -141,6 +141,9 @@
   <data name="AddRightClickText" xml:space="preserve">
     <value>&amp;Right mouse click</value>
   </data>
+  <data name="BeginCycleText" xml:space="preserve">
+    <value>&amp;Cycle</value>
+  </data>
   <data name="BeginMacro" xml:space="preserve">
     <value>During execution using of keyboard or mouse is not recommended.
 
@@ -153,6 +156,12 @@ Make sure that its placement is available and try again</value>
   </data>
   <data name="CommandsListLabelText" xml:space="preserve">
     <value>Commands list:</value>
+  </data>
+  <data name="CycleLabelText" xml:space="preserve">
+    <value>times</value>
+  </data>
+  <data name="EndCycleText" xml:space="preserve">
+    <value>E&amp;nd cycle</value>
   </data>
   <data name="ExDialogTitle" xml:space="preserve">
     <value>Select macro for execution</value>

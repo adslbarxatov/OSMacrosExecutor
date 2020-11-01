@@ -141,6 +141,9 @@
   <data name="AddRightClickText" xml:space="preserve">
     <value>&amp;Правый щелчок мыши</value>
   </data>
+  <data name="BeginCycleText" xml:space="preserve">
+    <value>&amp;Цикл</value>
+  </data>
   <data name="BeginMacro" xml:space="preserve">
     <value>Во время выполнения использование клавиатуры и мыши не рекомендуется.
 
@@ -153,6 +156,12 @@
   </data>
   <data name="CommandsListLabelText" xml:space="preserve">
     <value>Список команд:</value>
+  </data>
+  <data name="CycleLabelText" xml:space="preserve">
+    <value>раз</value>
+  </data>
+  <data name="EndCycleText" xml:space="preserve">
+    <value>Завер&amp;шить цикл</value>
   </data>
   <data name="ExDialogTitle" xml:space="preserve">
     <value>Выберите макрос для выполнения</value>
