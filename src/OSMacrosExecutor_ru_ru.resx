@@ -141,6 +141,9 @@
   <data name="AddRightClickText" xml:space="preserve">
     <value>&amp;Правый щелчок мыши</value>
   </data>
+  <data name="AlreadyStarted" xml:space="preserve">
+    <value>Программа {0:S} уже запущена</value>
+  </data>
   <data name="BeginCycleText" xml:space="preserve">
     <value>&amp;Цикл</value>
   </data>
@@ -196,8 +199,11 @@
   <data name="KeyReceiverText" xml:space="preserve">
     <value>Кликните и нажмите комбинацию</value>
   </data>
+  <data name="macrofile" xml:space="preserve">
+    <value>Файл макроса операционной системы</value>
+  </data>
   <data name="MExecuteText" xml:space="preserve">
-    <value>&amp;Выполнить макрос ↓ раз...</value>
+    <value>&amp;Выполнить макрос; повторов:</value>
   </data>
   <data name="MFileText" xml:space="preserve">
     <value>&amp;Файл</value>
@@ -213,6 +219,9 @@
   </data>
   <data name="MQuitText" xml:space="preserve">
     <value>В&amp;ыход</value>
+  </data>
+  <data name="MRegisterText" xml:space="preserve">
+    <value>За&amp;регистрировать сопоставление файлов</value>
   </data>
   <data name="MSaveText" xml:space="preserve">
     <value>&amp;Сохранить макрос...</value>

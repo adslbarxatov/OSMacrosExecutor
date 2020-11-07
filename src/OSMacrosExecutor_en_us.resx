@@ -141,6 +141,9 @@
   <data name="AddRightClickText" xml:space="preserve">
     <value>&amp;Right mouse click</value>
   </data>
+  <data name="AlreadyStarted" xml:space="preserve">
+    <value>{0:S} is already running</value>
+  </data>
   <data name="BeginCycleText" xml:space="preserve">
     <value>&amp;Cycle</value>
   </data>
@@ -196,8 +199,11 @@ Application can 'use' mouse, keyboard, command line and interrupts as same as us
   <data name="KeyReceiverText" xml:space="preserve">
     <value>Stay here and press combination</value>
   </data>
+  <data name="macrofile" xml:space="preserve">
+    <value>Operating system macro file</value>
+  </data>
   <data name="MExecuteText" xml:space="preserve">
-    <value>&amp;Execute macro ↓ times...</value>
+    <value>&amp;Execute macro; repeats:</value>
   </data>
   <data name="MFileText" xml:space="preserve">
     <value>&amp;File</value>
@@ -213,6 +219,9 @@ Application can 'use' mouse, keyboard, command line and interrupts as same as us
   </data>
   <data name="MQuitText" xml:space="preserve">
     <value>&amp;Quit</value>
+  </data>
+  <data name="MRegisterText" xml:space="preserve">
+    <value>&amp;Register file association</value>
   </data>
   <data name="MSaveText" xml:space="preserve">
     <value>&amp;Save macro...</value>

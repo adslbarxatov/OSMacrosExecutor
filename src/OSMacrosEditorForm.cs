@@ -19,7 +19,8 @@ namespace RD_AAOW
 		/// <summary>
 		/// Конструктор главной формы программы
 		/// </summary>
-		public OSMacrosEditorForm ()
+		/// <param name="MacroFile">Имя файла для загрузки при старте программы</param>
+		public OSMacrosEditorForm (string MacroFile)
 			{
 			// Инициализация
 			InitializeComponent ();
@@ -45,6 +46,13 @@ namespace RD_AAOW
 				KeyCode.Items.Add (((Keys)i).ToString () + " (" + i.ToString () + ")");
 				}
 			KeyCode.SelectedIndex = 0;
+
+			// Загрузка файла, если требуется
+			if (MacroFile != "")
+				{
+				OFDialog.FileName = MacroFile;
+				OFDialog_FileOk (null, null);
+				}
 			}
 
 		// Локализация формы
@@ -85,6 +93,7 @@ namespace RD_AAOW
 			MOpen.Text = Localization.GetText ("MOpenText", al);
 			MSave.Text = Localization.GetText ("MSaveText", al);
 			MExecute.Text = Localization.GetText ("MExecuteText", al);
+			MRegister.Text = Localization.GetText ("MRegisterText", al);
 			MQuit.Text = Localization.GetText ("MQuitText", al);
 
 			MousePointerGroup.Text = Localization.GetText ("MousePointerGroupText", al);
@@ -427,6 +436,12 @@ namespace RD_AAOW
 			{
 			commands.Add (new MacroCommand (false, 0));
 			UpdateCommandsList ();
+			}
+
+		// Метод регистрирует сопоставление для файлов
+		private void MRegister_Click (object sender, EventArgs e)
+			{
+			ProgramDescription.RegisterAppExtensions ();
 			}
 		}
 	}

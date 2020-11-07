@@ -1,5 +1,10 @@
 ﻿OS macros executor changes log
 
+Version 2.6.3 (executor version 1.5):
+• Added ability to register file associations;
+• Added protection against multiple launch for macros editor;
+• Added ability to open .macro files for editing from command line / by file association
+
 Version 2.6.2 (executor version 1.5):
 • Added cycle commands (cycle begin and cycle end) that allow to repeat segments of macros
 
