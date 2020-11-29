@@ -1,5 +1,8 @@
 ﻿OS macros executor changes log
 
+Version 2.6.4 (executor version 1.5):
+• Fixed bug in Policy acception interface that disallowed to accept it in offline mode at first start
+
 Version 2.6.3 (executor version 1.5):
 • Added ability to register file associations;
 • Added protection against multiple launch for macros editor;

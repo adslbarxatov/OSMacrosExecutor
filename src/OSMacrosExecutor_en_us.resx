@@ -153,7 +153,7 @@
 Begin macro?</value>
   </data>
   <data name="CannotCreateFile" xml:space="preserve">
-    <value>Cannot create file "{0:S}".
+    <value>Cannot create file “{0:S}”.
 
 Make sure that its placement is available and try again</value>
   </data>
@@ -182,7 +182,7 @@ Make sure that its placement is available and try again</value>
     <value>Select file for execution</value>
   </data>
   <data name="FileIsUnavailable" xml:space="preserve">
-    <value>Cannot open file "{0:S}".
+    <value>Cannot open file “{0:S}”.
 
 Make sure that file is available and try again</value>
   </data>
@@ -230,7 +230,7 @@ Application can 'use' mouse, keyboard, command line and interrupts as same as us
     <value>(no modifiers)</value>
   </data>
   <data name="OFDialogFilter" xml:space="preserve">
-    <value>OS macro file (*.macro)|*.macro</value>
+    <value>OS macro file (*.{0:S})|*.{0:S}</value>
   </data>
   <data name="OFDialogTitle" xml:space="preserve">
     <value>Select macro for editing</value>

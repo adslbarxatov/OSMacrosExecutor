@@ -182,7 +182,7 @@
     <value>Выберите файл для выполнения</value>
   </data>
   <data name="FileIsUnavailable" xml:space="preserve">
-    <value>Не удалось открыть файл "{0:S}".
+    <value>Не удалось открыть файл «{0:S}».
 
 Убедитесь, что файл доступен, и повторите попытку</value>
   </data>
@@ -230,7 +230,7 @@
     <value>(без модификаторов)</value>
   </data>
   <data name="OFDialogFilter" xml:space="preserve">
-    <value>Файл макроса операционной системы (*.macro)|*.macro</value>
+    <value>Файл макроса операционной системы (*.{0:S})|*.{0:S}</value>
   </data>
   <data name="OFDialogTitle" xml:space="preserve">
     <value>Выберите макрос для редактирования</value>

@@ -66,7 +66,8 @@ namespace RD_AAOW
 			SFDialog.Title = Localization.GetText ("SFDialogTitle", al);
 			ExDialog.Title = Localization.GetText ("ExDialogTitle", al);
 			FDialog.Title = Localization.GetText ("FDialogTitle", al);
-			OFDialog.Filter = SFDialog.Filter = ExDialog.Filter = Localization.GetText ("OFDialogFilter", al);
+			OFDialog.Filter = SFDialog.Filter = ExDialog.Filter = string.Format (Localization.GetText ("OFDialogFilter", al),
+				ProgramDescription.AppExtension);
 			FDialog.Filter = Localization.GetText ("FDialogFilter", al);
 
 			if (KeyModifiers.Items.Count == 0)
