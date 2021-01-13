@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -234,7 +235,7 @@ namespace RD_AAOW
 				return;
 
 			// Проверка существования файла
-			if (!System.IO.File.Exists (Application.StartupPath + "\\" + ProgramDescription.AssemblyExecutionModule))
+			if (!File.Exists (AboutForm.AppStartupPath + ProgramDescription.AssemblyExecutionModule))
 				{
 				MessageBox.Show (ProgramDescription.AssemblyExecutionModule + Localization.GetText ("ExecutionIsUnavailable", al),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -259,7 +260,7 @@ namespace RD_AAOW
 
 			// Запуск
 			this.WindowState = FormWindowState.Minimized;
-			System.Diagnostics.Process.Start (Application.StartupPath + "\\" + ProgramDescription.AssemblyExecutionModule,
+			Process.Start (AboutForm.AppStartupPath + ProgramDescription.AssemblyExecutionModule,
 				"\"" + ExDialog.FileName + "\" " + repeats.ToString ());
 			this.WindowState = FormWindowState.Normal;
 			}
