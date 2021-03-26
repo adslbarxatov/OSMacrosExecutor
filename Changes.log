@@ -1,5 +1,10 @@
 ﻿OS macros executor changes log
 
+Version 2.7 (executor version 1.6):
+• New identity applied;
+• New links to RD AAOW FDL added;
+• Added direct lab link
+
 Version 2.6.5 (executor version 1.5):
 • Added ability to 'ask developer' via E-mail for help, or send wish, advice or bug report;
 • Applied new paths processor
