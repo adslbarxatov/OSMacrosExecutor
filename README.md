@@ -1,5 +1,5 @@
-# OSMacrosExecutor v 2.7
-> PCC: 000424502A792242
+# OSMacrosExecutor v 2.7.1
+> PCC: 000424520D15E2C2
 
 
 Operation system macros creator and executor, the tool for automating user activities
@@ -17,7 +17,7 @@ Application may be used for imitation of user activities when:
 - you cannot automate these activities using standard tools;
 - some activities must be performed without your direct participation.
 
-Application can 'use' mouse, keyboard, command line and interrupts as same as user with the same potentialities.
+Application can “use” mouse, keyboard, command line and interrupts as same as user with the same potentialities.
 
 Just create macro using OSMacrosEditor tool and run them using OSMacrosEx tool. If something wents wrong, you can use sample file
 
@@ -33,7 +33,7 @@ Just create macro using OSMacrosEditor tool and run them using OSMacrosEx tool. 
 - вы не можете автоматизировать эти действия привычными инструментами;
 - эти действия могут быть выполнены без вашего участия.
 
-Программа может 'использовать' мышь, клавиатуру, командную строку и паузы выполнения так же, как пользователь с тем же успехом.
+Программа может «использовать» мышь, клавиатуру, командную строку и паузы выполнения так же, как пользователь с тем же успехом.
 
 Создайте макрос в OSMacrosEditor и выполняйте его в OSMacrosEx. Ознакомьтесь с образцом макроса для лучшего понимания работы программы
 
@@ -51,18 +51,17 @@ Needs Windows XP and newer, Framework 4.0 and newer. Interface languages: ru_ru,
 
 
 
-## Development policy and EULA / Политика разработки и EULA
+## [Development policy and EULA / Политика разработки и EULA](https://github.com/adslbarxatov/adp)
 
-This [Policy (ADP)](https://vk.com/@rd_aaow_fdl-adp), its positions, conclusion, EULA and application methods
-describes general rules that we follow in all of our development processes, released applications and implemented
-ideas.
-**It must be acquainted by participants and users before using any of laboratory's products.
-By downloading them, you agree to this Policy**
+This Policy (ADP), its positions, conclusion, EULA and application methods
+describes general rules that we follow in all of our development processes, released applications and implemented ideas.
+**It must be acquainted by participants and users before using any of laboratory’s products.
+By downloading them, you agree and accept this Policy!**
 
-#
+&nbsp;
 
-Данная [Политика (ADP)](https://vk.com/@rd_aaow_fdl-adp), её положения, заключение, EULA и способы применения
+Данная Политика (ADP), её положения, заключение, EULA и способы применения
 описывают общие правила, которым мы следуем во всех наших процессах разработки, вышедших в релиз приложениях
 и реализованных идеях.
-**Обязательна к ознакомлению всем участникам и пользователям перед использованием любого из продуктов лаборатории.
-Загружая их, вы соглашаетесь с этой Политикой**
+**Обязательна к ознакомлению для всех участников и пользователей перед использованием любого из продуктов лаборатории.
+Загружая их, вы соглашаетесь и принимаете эту Политику!**
