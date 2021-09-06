@@ -29,6 +29,8 @@ namespace RD_AAOW
 			{
 			mouseX = (uint)e.X;
 			mouseY = (uint)e.Y;
+			pixelColor = ((Bitmap)this.BackgroundImage).GetPixel (e.X, e.Y);
+
 			this.BackgroundImage.Dispose ();
 			this.Close ();
 			}
@@ -57,11 +59,24 @@ namespace RD_AAOW
 			}
 		private uint mouseY = 0;
 
+		/// <summary>
+		/// Возвращает цвет пикселя в месте установки указателя
+		/// </summary>
+		public Color PixelColor
+			{
+			get
+				{
+				return pixelColor;
+				}
+			}
+		private Color pixelColor = Color.FromArgb (0, 0, 0);
+
 		// Получение снимка экрана
 		private void MousePointerSelector_Load (object sender, EventArgs e)
 			{
 			Bitmap b = new Bitmap (Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
 			Graphics g = Graphics.FromImage (b);
+
 			g.CopyFromScreen (0, 0, 0, 0, b.Size);
 			g.Dispose ();
 			this.BackgroundImage = b;

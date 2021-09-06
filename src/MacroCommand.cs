@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -62,6 +63,11 @@ namespace RD_AAOW
 		/// Завершить цикл
 		/// </summary>
 		EndCycle = 11,
+
+		/// <summary>
+		/// Ждать, пока пиксель не изменит цвет
+		/// </summary>
+		WaitForPixelChange = 12
 		}
 
 	/// <summary>
@@ -222,6 +228,18 @@ namespace RD_AAOW
 		private uint cycleRounds = 0;
 
 		/// <summary>
+		/// Количество повторов цикла
+		/// </summary>
+		public Color PixelColor
+			{
+			get
+				{
+				return pixelColor;
+				}
+			}
+		private Color pixelColor = Color.FromArgb (0, 0, 0);
+
+		/// <summary>
 		/// Конструктор. Создаёт команду управления мышью
 		/// </summary>
 		/// <param name="Command">Команда мыши</param>
@@ -313,6 +331,20 @@ namespace RD_AAOW
 			}
 
 		/// <summary>
+		/// Конструктор. Создаёт команду ожидания изменения цвета указанного пикселя
+		/// </summary>
+		/// <param name="X">Координата X пикселя экрана</param>
+		/// <param name="Y">Координата Y пикселя экрана</param>
+		/// <param name="TrueColor">Цвет пикселя, являющийся условием для продолжения ожидания</param>
+		public MacroCommand (uint X, uint Y, Color TrueColor)
+			{
+			commandType = CommandTypes.WaitForPixelChange;
+			mouseX = X;
+			mouseY = Y;
+			pixelColor = Color.FromArgb (255, TrueColor);
+			}
+
+		/// <summary>
 		/// Возвращает представление команды, используемое для записи в файл
 		/// </summary>
 		public string MacroFileCommandPresentation
@@ -357,7 +389,13 @@ namespace RD_AAOW
 					case CommandTypes.SetCursorPosition:
 						double x = ((double)mouseX / (double)(Screen.PrimaryScreen.Bounds.Width - 1)) * (double)0xFFFF;
 						double y = ((double)mouseY / (double)(Screen.PrimaryScreen.Bounds.Height - 1)) * (double)0xFFFF;
-						return (res + ((uint)Math.Ceiling (x)).ToString () + " " + ((uint)Math.Ceiling (y)).ToString ());
+						return res + ((uint)Math.Ceiling (x)).ToString () + " " + ((uint)Math.Ceiling (y)).ToString ();
+
+					case CommandTypes.WaitForPixelChange:
+						return "C " + mouseX.ToString () + " " + mouseY.ToString () + " " +
+							pixelColor.R.ToString () + " " + pixelColor.G.ToString () + " " +
+							pixelColor.B.ToString () + " " + Screen.PrimaryScreen.Bounds.Width.ToString () + " " +
+							Screen.PrimaryScreen.Bounds.Height.ToString ();
 
 					case CommandTypes.BeginCycle:
 						return (res + cycleRounds.ToString ());
@@ -410,6 +448,11 @@ namespace RD_AAOW
 					case CommandTypes.EndCycle:
 						return " END CYCLE";
 
+					case CommandTypes.WaitForPixelChange:
+						return "Wait while Pos (" + mouseX.ToString () + "; " + mouseY.ToString () + ") != RGB (" +
+							pixelColor.R.ToString () + "; " + pixelColor.G.ToString () + "; " +
+							pixelColor.B.ToString () + ")";
+
 					default:
 						throw new Exception ("Parameters exchange failure at point 2. Debug needed");
 					}
@@ -439,6 +482,8 @@ namespace RD_AAOW
 					command = CommandTypes.BeginCycle;
 				else if (values[0] == "-")
 					command = CommandTypes.EndCycle;
+				else if (values[0] == "C")
+					command = CommandTypes.WaitForPixelChange;
 				else
 					command = (CommandTypes)uint.Parse (values[0]);
 				}
@@ -525,6 +570,24 @@ namespace RD_AAOW
 						y = (uint)(((double)y / (double)0xFFFF) * (double)(Screen.PrimaryScreen.Bounds.Height - 1));
 						return new MacroCommand (x, y);
 						}
+					return null;
+
+				case CommandTypes.WaitForPixelChange:
+					x = 0;
+					y = 0;
+					Color c = Color.FromArgb (0, 0, 0);
+					try
+						{
+						x = uint.Parse (values[1]); // Вызовут исключение и при отсутствии параметра
+						y = uint.Parse (values[2]);
+						c = Color.FromArgb (int.Parse (values[3]), int.Parse (values[4]), int.Parse (values[5]));
+
+						return new MacroCommand (x, y, c);
+						}
+					catch
+						{
+						}
+
 					return null;
 
 				case CommandTypes.BeginCycle:

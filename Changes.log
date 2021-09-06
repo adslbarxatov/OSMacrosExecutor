@@ -1,5 +1,10 @@
 ﻿OS macros executor changes log
 
+Version 2.8 (executor version 1.7):
+• Added “wait for change of pixel’s color” command. It allows to pause execution until noticeable 
+  changes appear on the screen (some application has finished loading, some process has ended, etc);
+• Fixed some interface bugs
+
 Version 2.7.1 (executor version 1.6):
 • Updated link and text presenter for ADP;
 • Applied fixed icons

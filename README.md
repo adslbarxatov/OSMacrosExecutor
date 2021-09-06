@@ -1,5 +1,5 @@
-# OSMacrosExecutor v 2.7.1
-> PCC: 000424520D15E2C2
+# OSMacrosExecutor v 2.8
+> PCC: 000432508908C883
 
 
 Operation system macros creator and executor, the tool for automating user activities
@@ -19,7 +19,7 @@ Application may be used for imitation of user activities when:
 
 Application can “use” mouse, keyboard, command line and interrupts as same as user with the same potentialities.
 
-Just create macro using OSMacrosEditor tool and run them using OSMacrosEx tool. If something wents wrong, you can use sample file
+Just create macro using OSMacrosEditor tool and run them using OSMacrosEx tool. If something wents wrong, you can use example file
 
 &nbsp;
 

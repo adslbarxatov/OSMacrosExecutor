@@ -21,7 +21,13 @@ int main (int argc, char* argv[])
 	uint currentCycleLine = 0,		// Текущая строка блока цикла
 		cycleLines = 0;				// Количество строк блока цикла
 	uchar cyclePhase = 0;			// Фаза выполнения цикла
-	ulong i, x, y;					// Буферные переменные
+	ulong i, x, y, x2, y2;			// Буферные переменные
+
+	ulong r, g, b;					// Дескрипторы для запроса цветов пикселей экрана
+	HDC screenDC = NULL;
+	HDC memDC = NULL;
+	HBITMAP memBitmap;
+	COLORREF color;
 
 	// Заголовок
 	printf ("\n %s\n by %s\n\n", OSME_PRODUCT, OSME_COMPANY);
@@ -45,7 +51,7 @@ int main (int argc, char* argv[])
 	if ((F1 = fopen (FileName, "r")) == NULL)
 		{
 		printf (" \x13 Specified file cannot be opened\n\n");
-		_EXITONERROR (-2)
+		_EXITONERROR (-2);
 		}
 
 	// Запуск на выполнение
@@ -68,23 +74,23 @@ cycle:
 				// Запуск программы / файла без ожидания завершения
 				case '0':
 					sprintf (ExecutionCommand, "start \"\" %s", str + 2);
-					_EXEC
+					_EXEC;
 					break;
 
 				// Установка курсора в позицию экрана
 				case '1':
 					sscanf (str + 2, "%u %u", &x, &y);
-					_MOVETO (x, y)
+					_MOVETO (x, y);
 					break;
 
 				// Одинарные щелчки мыши
 				case '2':
-					_LDOWN
-					_LUP
+					_LDOWN;
+					_LUP;
 					break;
 
 				case '3':
-					_RCLICK
+					_RCLICK;
 					break;
 
 				// Нажатие клавиш клавиатуры
@@ -93,31 +99,31 @@ cycle:
 					switch (x)
 						{
 						case 0:
-							_ONEKEY (y)
+							_ONEKEY (y);
 							break;
 						case 1:
-							_DBLKEY (VK_SHIFT, y)
+							_DBLKEY (VK_SHIFT, y);
 							break;
 						case 2:
-							_DBLKEY (VK_CONTROL, y)
+							_DBLKEY (VK_CONTROL, y);
 							break;
 						case 3:
-							_TRPLKEY (VK_CONTROL, VK_SHIFT, y)
+							_TRPLKEY (VK_CONTROL, VK_SHIFT, y);
 							break;
 						case 4:
-							_DBLKEY (VK_MENU, y)
+							_DBLKEY (VK_MENU, y);
 							break;
 						case 5:
-							_TRPLKEY (VK_SHIFT, VK_MENU, y)
+							_TRPLKEY (VK_SHIFT, VK_MENU, y);
 							break;
 						case 6:
-							_TRPLKEY (VK_CONTROL, VK_MENU, y)
+							_TRPLKEY (VK_CONTROL, VK_MENU, y);
 							break;
 						case 7:
-							_QDRKEY (VK_CONTROL, VK_SHIFT, VK_MENU, y)
+							_QDRKEY (VK_CONTROL, VK_SHIFT, VK_MENU, y);
 							break;
 						case 8:
-							_DBLKEY (VK_LWIN, y)
+							_DBLKEY (VK_LWIN, y);
 							break;
 						}
 					break;
@@ -125,23 +131,46 @@ cycle:
 				// Пауза
 				case '5':
 					sscanf (str + 2, "%u", &x);
-					_PAUSE (x)
-						break;
+					_PAUSE (x);
+					break;
 
 				// Begin dragging
 				case '6':
-					_LDOWN
-						break;
+					_LDOWN;
+					break;
 
 				// End dragging
 				case '7':
-					_LUP
-						break;
+					_LUP;
+					break;
 
 				// Выполнение команды с ожиданием завершения
 				case '8':
 					sprintf (ExecutionCommand, "%s", str + 2);
-					_EXEC
+					_EXEC;
+					break;
+
+				// Выполнение команды ожидания изменения цвета пикселя
+				case 'C':
+					sscanf (str + 2, "%u %u %u %u %u %u %u", &x, &y, &r, &g, &b, &x2, &y2);
+					if ((x2 * y2 == 0) || (x >= x2) || (y >= y2) ||
+						(r > 0xFF) || (g > 0xFF) || (b > 0xFF))
+						break;
+
+					if (!screenDC)
+						{
+						screenDC = GetDC (0);
+						memDC = CreateCompatibleDC (screenDC);
+						memBitmap = CreateCompatibleBitmap (screenDC, x2, y2);
+						SelectObject (memDC, memBitmap);
+						}
+
+					do {
+						BitBlt (memDC, 0, 0, x2, y2, screenDC, 0, 0, SRCCOPY);
+						color = GetPixel (memDC, x, y);
+						_PAUSE (500);
+						} while ((((color >> 16) & 0xFF) == b) && (((color >> 8) & 0xFF) == g) &&
+							((color & 0xFF) == r));
 						break;
 
 				// Запуск и остановка цикла
@@ -180,7 +209,7 @@ cycle:
 				}
 
 			// Обязательная пауза между командами
-			_PAUSE (1)
+			_PAUSE (1);
 
 			// Наполнение цикла
 			if (cyclePhase == 1)
@@ -227,4 +256,10 @@ cycle:
 
 	// Завершение
 	printf (" \x0F Execution completed\n\n");
+	if (screenDC)
+		{
+		DeleteObject (memBitmap);
+		DeleteDC (memDC);
+		ReleaseDC (0, screenDC);
+		}
 	}

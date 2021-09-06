@@ -101,6 +101,7 @@ namespace RD_AAOW
 			MousePointerGroup.Text = Localization.GetText ("MousePointerGroupText", al);
 			SetMousePointer.Text = Localization.GetText ("SetMousePointerText", al);
 			AddMousePointer.Text = Localization.GetText ("AddMousePointerText", al);
+			AddWaitForColor.Text = Localization.GetText ("AddWaitForColorText", al);
 
 			PauseGroup.Text = Localization.GetText ("PauseGroupText", al);
 			MilliLabel.Text = Localization.GetText ("MilliLabelText", al);
@@ -142,15 +143,16 @@ namespace RD_AAOW
 		// Контроль выхода
 		private void MainForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
-			e.Cancel = (MessageBox.Show (Localization.GetText ("QuitApplication", al),
+			e.Cancel = (CommandsListBox.Items.Count != 0) && (MessageBox.Show (Localization.GetText ("QuitApplication", al),
 				ProgramDescription.AssemblyDescription, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No);
 			}
 
 		// Загрузка макроса
 		private void MOpen_Click (object sender, EventArgs e)
 			{
-			if (MessageBox.Show (Localization.GetText ("OpenExistingFile", al),
-				ProgramDescription.AssemblyDescription, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+			if ((CommandsListBox.Items.Count == 0) || (MessageBox.Show (Localization.GetText ("OpenExistingFile", al),
+				ProgramDescription.AssemblyDescription, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) ==
+				DialogResult.Yes))
 				OFDialog.ShowDialog ();
 			}
 
@@ -269,8 +271,10 @@ namespace RD_AAOW
 		private void SetMousePointer_Click (object sender, EventArgs e)
 			{
 			MousePointerSelector mps = new MousePointerSelector ();
+
 			MouseX.Value = mps.MouseX;
 			MouseY.Value = mps.MouseY;
+			SetPixelColor.BackColor = mps.PixelColor;
 			}
 
 		// Выбор комбинации клавиш
@@ -444,6 +448,13 @@ namespace RD_AAOW
 		private void MRegister_Click (object sender, EventArgs e)
 			{
 			ProgramDescription.RegisterAppExtensions ();
+			}
+
+		// Добавление команды ожидания изменения пикселя
+		private void AddWaitForColor_Click (object sender, EventArgs e)
+			{
+			commands.Add (new MacroCommand ((uint)MouseX.Value, (uint)MouseY.Value, SetPixelColor.BackColor));
+			UpdateCommandsList ();
 			}
 		}
 	}

@@ -141,6 +141,9 @@
   <data name="AddRightClickText" xml:space="preserve">
     <value>&amp;Right mouse click</value>
   </data>
+  <data name="AddWaitForColorText" xml:space="preserve">
+    <value>&amp;Wait for pixel's color change</value>
+  </data>
   <data name="AlreadyStarted" xml:space="preserve">
     <value>{0:S} is already running</value>
   </data>

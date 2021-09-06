@@ -13,9 +13,9 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Ресурсы: данные о создаваемом приложении
-#define OSME_VERSION				1,6,0,0
-#define OSME_VERSION_S				"1.6.0.0"
-#define OSME_PRODUCT				"Operating system macros execution module v 1.6"
+#define OSME_VERSION				1,7,0,0
+#define OSME_VERSION_S				"1.7.0.0"
+#define OSME_PRODUCT				"Operating system macros execution module v 1.7"
 #define OSME_COMPANY				"RD AAOW FDL"
 //#define	ASSEMBLYUPDATE	"30.07.2017; 21:14"
 

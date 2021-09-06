@@ -141,6 +141,9 @@
   <data name="AddRightClickText" xml:space="preserve">
     <value>&amp;Правый щелчок мыши</value>
   </data>
+  <data name="AddWaitForColorText" xml:space="preserve">
+    <value>&amp;Ждать изменения цвета пикселя</value>
+  </data>
   <data name="AlreadyStarted" xml:space="preserve">
     <value>Программа {0:S} уже запущена</value>
   </data>
