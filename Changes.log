@@ -26,7 +26,7 @@ Version 2.7 (executor version 1.6):
 • Added direct lab link
 
 Version 2.6.5 (executor version 1.5):
-• Added ability to 'ask developer' via E-mail for help, or send wish, advice or bug report;
+• Added ability to “ask developer” via E-mail for help, or send wish, advice or bug report;
 • Applied new paths processor
 
 Version 2.6.4 (executor version 1.5):
@@ -44,7 +44,7 @@ Version 2.6 (executor version 1.4u):
 • Cumulative updates applied
 
 Version 2.5.3i (executor version 1.4u):
-• Application info interface now able to get last release's changes log;
+• Application info interface now able to get last release’s changes log;
 • Found and fixed hidden bug that caused an error when starting the application from local network;
 • Fixed bug that caused the web page request method to fail if server disconnected
 
@@ -73,7 +73,7 @@ Version 2.3 (executor version 1.3):
 
 Version 2.2 (executor version 1.3):
 • Some descriptions have been improved;
-• Added 'command execution with waiting of completion' operation code;
+• Added “command execution with waiting of completion” operation code;
 • .macro files from version 2.1 are compatible with current assembly
 
 Version 2.1 (executor version 1.2):
