@@ -1,8 +1,8 @@
-# OSMacrosExecutor v 2.8.15
-> PCC: 00043852E60D625B
+# OSMacrosExecutor v 2.8.17
+> PCC: 0004385294CABC4A
 
 
-Operation system macros creator and executor, the tool for automating user activities
+Operation system macros creator and executor, the tool for automation of user activities
 
 Утилита создания и исполнения макросов операционной системы, инструмент автоматизации действий пользователя
 
