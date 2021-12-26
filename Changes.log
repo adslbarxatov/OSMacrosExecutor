@@ -1,5 +1,9 @@
 ﻿OS macros executor changes log
 
+Version 2.9 (executor version 1.7.1):
+• App got the scalable icon and the digital signature (only self-signed for now);
+• Applied some updates for core assemblies
+
 Version 2.8.17 (executor version 1.7):
 • Updated internal mechanism of checking for updates (applied compatibility with new GitHub theme);
 • Updated link to videoguide
