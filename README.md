@@ -1,5 +1,5 @@
-# OSMacrosExecutor v 2.9
-> PCC: 0006D187CA026BF2
+# OSMacrosExecutor v 2.9.3
+> PCC: 0007D408E28AAAD2
 
 
 Operation system macros creator and executor, the tool for automation of user activities
@@ -43,9 +43,11 @@ Just create macro using OSMacrosEditor tool and run them using OSMacrosEx tool. 
 
 ## Requirements / Требования
 
-Needs Windows XP and newer, Framework 4.0 and newer. Interface languages: ru_ru, en_us.User manual languages: en_us, ru_ru (subs)
+- Windows XP or newer / или новее;
+- [Microsoft .NET Framework 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=17718);
+- [Microsoft VC++ 2010 redistributables](https://www.microsoft.com/en-us/download/details.aspx?id=26999).
 
-Требуется ОС Windows XP и новее, Framework 4.0 и новее. Языки интерфейса: ru_ru, en_us. Языки руководства пользователя: en_us, ru_ru (субтитры)
+Interface languages / языки интерфейса: ru_ru, en_us.
 
 &nbsp;
 

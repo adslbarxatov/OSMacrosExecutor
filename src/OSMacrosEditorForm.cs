@@ -11,7 +11,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает главную форму программы
 	/// </summary>
-	public partial class OSMacrosEditorForm: Form
+	public partial class OSMacrosEditorForm:Form
 		{
 		// Переменные
 		private List<MacroCommand> commands = new List<MacroCommand> ();
@@ -237,7 +237,7 @@ namespace RD_AAOW
 				return;
 
 			// Проверка существования файла
-			if (!File.Exists (AboutForm.AppStartupPath + ProgramDescription.AssemblyExecutionModule))
+			if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.AssemblyExecutionModule))
 				{
 				MessageBox.Show (ProgramDescription.AssemblyExecutionModule + Localization.GetText ("ExecutionIsUnavailable", al),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -250,9 +250,7 @@ namespace RD_AAOW
 				{
 				repeats = uint.Parse (ExecutionRepeats.Text);
 				}
-			catch
-				{
-				}
+			catch { }
 
 			if (repeats < 1)
 				{
@@ -262,7 +260,7 @@ namespace RD_AAOW
 
 			// Запуск
 			this.WindowState = FormWindowState.Minimized;
-			Process.Start (AboutForm.AppStartupPath + ProgramDescription.AssemblyExecutionModule,
+			Process.Start (RDGenerics.AppStartupPath + ProgramDescription.AssemblyExecutionModule,
 				"\"" + ExDialog.FileName + "\" " + repeats.ToString ());
 			this.WindowState = FormWindowState.Normal;
 			}

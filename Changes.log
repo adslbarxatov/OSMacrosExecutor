@@ -1,5 +1,9 @@
 ﻿OS macros executor changes log
 
+Version 2.9.3:
+• Current updates and improvements applied;
+• Versions of the editor and the executor have been unified (1.7.1 >> 2.9.3)
+
 Version 2.9 (executor version 1.7.1):
 • App got the scalable icon and the digital signature (only self-signed for now);
 • Applied some updates for core assemblies
