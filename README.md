@@ -1,5 +1,5 @@
-# OSMacrosExecutor v 2.9.37
-> PCC: 0006EE0553AFAC75
+# OSMacrosExecutor v 2.10
+> PCC: 000702638D1F8DF2
 
 
 Operation system macros creator and executor, the tool for automation of user activities
@@ -13,7 +13,7 @@ Operation system macros creator and executor, the tool for automation of user ac
 
 Application may be used for imitation of user activities when:
 
-- you need to perform many similar operations with files and/or programs;
+- you need to perform many similar operations with files and / or programs;
 - you cannot automate these activities using standard tools;
 - some activities must be performed without your direct participation.
 
@@ -29,7 +29,7 @@ Just create macro using OSMacrosEditor tool and run them using OSMacrosEx tool. 
 
 Утилиту следует использовать для имитации действий пользователя в случаях, когда:
 
-- требуется выполнить множество одинаковых операций над файлами или с программами;
+- требуется выполнить множество одинаковых операций над файлами и / или с программами;
 - вы не можете автоматизировать эти действия привычными инструментами;
 - эти действия могут быть выполнены без вашего участия.
 
@@ -44,8 +44,8 @@ Just create macro using OSMacrosEditor tool and run them using OSMacrosEx tool. 
 ## Requirements / Требования
 
 - Windows XP or newer / или новее;
-- [Microsoft .NET Framework 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=17718);
-- [Microsoft VC++ 2010 redistributables](https://www.microsoft.com/en-us/download/details.aspx?id=26999).
+- [Microsoft .NET Framework 4.0](https://microsoft.com/en-us/download/details.aspx?id=17718);
+- [Microsoft VC++ 2010 redistributables](https://microsoft.com/en-us/download/details.aspx?id=26999).
 
 Interface languages / языки интерфейса: ru_ru, en_us.
 
