@@ -1,5 +1,8 @@
 ﻿OS macros executor changes log
 
+Version 2.10.2:
+• Fixed the bug that affected the file association method
+
 Version 2.10:
 • Parsing methods for ADP and projects descriptions have been upgraded;
 • Current updates and improvements applied
