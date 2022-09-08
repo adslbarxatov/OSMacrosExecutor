@@ -1,4 +1,4 @@
-_Changes for v 2.10.2_:
-- Fixed the bug that affected the file association method;
-- Parsing methods for ADP and projects descriptions have been upgraded;
-- Current updates and improvements applied
+_Changes for v 2.10.142_:
+- Rebuilding the app for the MSVC RTL 142 (2015 – 2022);
+- Current improvements and updates applied;
+- Fixed the bug that affected the file association method

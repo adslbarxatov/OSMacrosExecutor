@@ -1,5 +1,9 @@
 ﻿OS macros executor changes log
 
+Version 2.10.142:
+• Rebuilding the app for the MSVC RTL 142 (2015 – 2022);
+• Current improvements and updates applied
+
 Version 2.10.2:
 • Fixed the bug that affected the file association method
 
