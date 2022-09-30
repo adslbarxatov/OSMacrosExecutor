@@ -1,4 +1,6 @@
-_Changes for v 2.10.142_:
-- Rebuilding the app for the MSVC RTL 142 (2015 – 2022);
-- Current improvements and updates applied;
-- Fixed the bug that affected the file association method
+_Changes for v 3.0_:
+- Rebuilding the app for the MSVC RTL 143 (2022);
+    - Fixed possible memory breach based on string values marshalling;
+- Implemented the ability to open localized ADP, SCP and Welcome pages;
+- Required framework version updated from 4.0 to 4.8;
+- Removed obsolete code
