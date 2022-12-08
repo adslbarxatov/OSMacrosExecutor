@@ -11,7 +11,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает главную форму программы
 	/// </summary>
-	public partial class OSMacrosEditorForm:Form
+	public partial class OSMacrosEditorForm: Form
 		{
 		// Переменные
 		private List<MacroCommand> commands = new List<MacroCommand> ();
@@ -143,17 +143,30 @@ namespace RD_AAOW
 		// Контроль выхода
 		private void MainForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
-			e.Cancel = (CommandsListBox.Items.Count != 0) && (MessageBox.Show (Localization.GetText ("QuitApplication", al),
-				ProgramDescription.AssemblyDescription, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No);
+			e.Cancel = (CommandsListBox.Items.Count != 0) &&
+				(RDGenerics.MessageBox (RDMessageTypes.Warning,
+				Localization.GetText ("QuitApplication", al),
+				Localization.GetDefaultButtonName (Localization.DefaultButtons.Yes),
+				Localization.GetDefaultButtonName (Localization.DefaultButtons.No)) == RDMessageButtons.ButtonTwo);
+
+			/*(MessageBox.Shw (Localization.GetText ("QuitApplication", al),
+			ProgramDescription.AssemblyDescription, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) ==
+			DialogResult.No);*/
 			}
 
 		// Загрузка макроса
 		private void MOpen_Click (object sender, EventArgs e)
 			{
-			if ((CommandsListBox.Items.Count == 0) || (MessageBox.Show (Localization.GetText ("OpenExistingFile", al),
-				ProgramDescription.AssemblyDescription, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) ==
-				DialogResult.Yes))
+			if ((CommandsListBox.Items.Count == 0) ||
+				(RDGenerics.MessageBox (RDMessageTypes.Warning,
+				Localization.GetText ("OpenExistingFile", al),
+				Localization.GetDefaultButtonName (Localization.DefaultButtons.Yes),
+				Localization.GetDefaultButtonName (Localization.DefaultButtons.No)) == RDMessageButtons.ButtonOne))
 				OFDialog.ShowDialog ();
+
+			/*(MessageBox.Shw (Localization.GetText ("OpenExistingFile", al),
+			ProgramDescription.AssemblyDescription, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) ==
+			DialogResult.Yes))*/
 			}
 
 		private void OFDialog_FileOk (object sender, CancelEventArgs e)
@@ -166,8 +179,10 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				MessageBox.Show (string.Format (Localization.GetText ("FileIsUnavailable", al), OFDialog.FileName),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				/*MessageBox.Shw (string.Format (Localization.GetText ("FileIsUnavailable", al), OFDialog.FileName),
+					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+				RDGenerics.MessageBox (RDMessageTypes.Warning,
+					string.Format (Localization.GetText ("FileIsUnavailable", al), OFDialog.FileName));
 				return;
 				}
 
@@ -207,8 +222,10 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				MessageBox.Show (string.Format (Localization.GetText ("CannotCreateFile", al), SFDialog.FileName),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				/*MessageBox.Shw (string.Format (Localization.GetText ("CannotCreateFile", al), SFDialog.FileName),
+					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+				RDGenerics.MessageBox (RDMessageTypes.Warning,
+					string.Format (Localization.GetText ("CannotCreateFile", al), SFDialog.FileName));
 				return;
 				}
 			StreamWriter SW = new StreamWriter (FS, Encoding.Default);
@@ -232,15 +249,24 @@ namespace RD_AAOW
 
 		private void ExDialog_FileOk (object sender, CancelEventArgs e)
 			{
-			if (MessageBox.Show (Localization.GetText ("BeginMacro", al),
-				ProgramDescription.AssemblyDescription, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) != DialogResult.Yes)
+			/*if (MessageBox.Shw (Localization.GetText ("BeginMacro", al),
+				ProgramDescription.AssemblyDescription, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) !=
+				DialogResult.Yes)
+				return;*/
+			if (RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("BeginMacro", al),
+				Localization.GetDefaultButtonName (Localization.DefaultButtons.Yes),
+				Localization.GetDefaultButtonName (Localization.DefaultButtons.No)) !=
+				RDMessageButtons.ButtonOne)
 				return;
 
 			// Проверка существования файла
 			if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.AssemblyExecutionModule))
 				{
-				MessageBox.Show (ProgramDescription.AssemblyExecutionModule + Localization.GetText ("ExecutionIsUnavailable", al),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				/*MessageBox.Shw (ProgramDescription.AssemblyExecutionModule + 
+					Localization.GetText ("ExecutionIsUnavailable", al),
+					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+				RDGenerics.MessageBox (RDMessageTypes.Warning,
+					ProgramDescription.AssemblyExecutionModule + Localization.GetText ("ExecutionIsUnavailable", al));
 				return;
 				}
 
@@ -410,7 +436,7 @@ namespace RD_AAOW
 			e.Cancel = true;
 
 			// О программе
-			ProgramDescription.ShowAbout (false);
+			RDGenerics.ShowAbout (false);
 			}
 
 		// Установка количества запусков макроса
