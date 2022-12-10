@@ -1,5 +1,9 @@
 ﻿OS macros executor: changes log
 
+Version 3.1.2:
+• The app now uses a new, secure method for setting the size and position of windows;
+• Implemented support for HypeHelp mechanics
+
 Version 3.1:
 • Implemented the new messages style;
 • Upgraded the app about interface

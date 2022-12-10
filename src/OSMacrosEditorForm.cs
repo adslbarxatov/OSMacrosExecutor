@@ -38,14 +38,13 @@ namespace RD_AAOW
 
 			// Настройка контролов
 			this.Text = ProgramDescription.AssemblyTitle;
+			RDGenerics.LoadWindowDimensions (this);
 
 			MouseX.Maximum = Screen.PrimaryScreen.Bounds.Width - 1;
 			MouseY.Maximum = Screen.PrimaryScreen.Bounds.Height - 1;
 
 			for (int i = 0; i < 256; i++)
-				{
 				KeyCode.Items.Add (((Keys)i).ToString () + " (" + i.ToString () + ")");
-				}
 			KeyCode.SelectedIndex = 0;
 
 			// Загрузка файла, если требуется
@@ -148,10 +147,7 @@ namespace RD_AAOW
 				Localization.GetText ("QuitApplication", al),
 				Localization.GetDefaultButtonName (Localization.DefaultButtons.Yes),
 				Localization.GetDefaultButtonName (Localization.DefaultButtons.No)) == RDMessageButtons.ButtonTwo);
-
-			/*(MessageBox.Shw (Localization.GetText ("QuitApplication", al),
-			ProgramDescription.AssemblyDescription, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) ==
-			DialogResult.No);*/
+			RDGenerics.SaveWindowDimensions (this);
 			}
 
 		// Загрузка макроса
@@ -162,11 +158,9 @@ namespace RD_AAOW
 				Localization.GetText ("OpenExistingFile", al),
 				Localization.GetDefaultButtonName (Localization.DefaultButtons.Yes),
 				Localization.GetDefaultButtonName (Localization.DefaultButtons.No)) == RDMessageButtons.ButtonOne))
+				{
 				OFDialog.ShowDialog ();
-
-			/*(MessageBox.Shw (Localization.GetText ("OpenExistingFile", al),
-			ProgramDescription.AssemblyDescription, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) ==
-			DialogResult.Yes))*/
+				}
 			}
 
 		private void OFDialog_FileOk (object sender, CancelEventArgs e)
@@ -179,8 +173,6 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				/*MessageBox.Shw (string.Format (Localization.GetText ("FileIsUnavailable", al), OFDialog.FileName),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.MessageBox (RDMessageTypes.Warning,
 					string.Format (Localization.GetText ("FileIsUnavailable", al), OFDialog.FileName));
 				return;
@@ -222,8 +214,6 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				/*MessageBox.Shw (string.Format (Localization.GetText ("CannotCreateFile", al), SFDialog.FileName),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.MessageBox (RDMessageTypes.Warning,
 					string.Format (Localization.GetText ("CannotCreateFile", al), SFDialog.FileName));
 				return;
@@ -232,9 +222,7 @@ namespace RD_AAOW
 
 			// Запись
 			for (int i = 0; i < commands.Count; i++)
-				{
 				SW.WriteLine (commands[i].MacroFileCommandPresentation);
-				}
 
 			// Завершение
 			SW.Close ();
@@ -249,10 +237,6 @@ namespace RD_AAOW
 
 		private void ExDialog_FileOk (object sender, CancelEventArgs e)
 			{
-			/*if (MessageBox.Shw (Localization.GetText ("BeginMacro", al),
-				ProgramDescription.AssemblyDescription, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) !=
-				DialogResult.Yes)
-				return;*/
 			if (RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("BeginMacro", al),
 				Localization.GetDefaultButtonName (Localization.DefaultButtons.Yes),
 				Localization.GetDefaultButtonName (Localization.DefaultButtons.No)) !=
@@ -262,9 +246,6 @@ namespace RD_AAOW
 			// Проверка существования файла
 			if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.AssemblyExecutionModule))
 				{
-				/*MessageBox.Shw (ProgramDescription.AssemblyExecutionModule + 
-					Localization.GetText ("ExecutionIsUnavailable", al),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.MessageBox (RDMessageTypes.Warning,
 					ProgramDescription.AssemblyExecutionModule + Localization.GetText ("ExecutionIsUnavailable", al));
 				return;
