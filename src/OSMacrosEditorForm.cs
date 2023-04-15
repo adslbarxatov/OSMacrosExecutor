@@ -15,7 +15,6 @@ namespace RD_AAOW
 		{
 		// Переменные
 		private List<MacroCommand> commands = new List<MacroCommand> ();
-		/*private SupportedLanguages al = Localization.CurrentLanguage;*/
 
 		/// <summary>
 		/// Конструктор главной формы программы
@@ -144,8 +143,8 @@ namespace RD_AAOW
 			{
 			e.Cancel = (CommandsListBox.Items.Count != 0) &&
 				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning,
-				"QuitApplication", Localization.DefaultButtons.Yes,
-				Localization.DefaultButtons.No) == RDMessageButtons.ButtonTwo);
+				"QuitApplication", LzDefaultTextValues.Button_Yes,
+				LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonTwo);
 			RDGenerics.SaveWindowDimensions (this);
 			}
 
@@ -154,8 +153,8 @@ namespace RD_AAOW
 			{
 			if ((CommandsListBox.Items.Count == 0) ||
 				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning,
-				"OpenExistingFile", Localization.DefaultButtons.Yes,
-				Localization.DefaultButtons.No) == RDMessageButtons.ButtonOne))
+				"OpenExistingFile", LzDefaultTextValues.Button_Yes,
+				LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonOne))
 				{
 				OFDialog.ShowDialog ();
 				}
@@ -236,7 +235,7 @@ namespace RD_AAOW
 		private void ExDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "BeginMacro",
-				Localization.DefaultButtons.Yes, Localization.DefaultButtons.No) !=
+				LzDefaultTextValues.Button_Yes, LzDefaultTextValues.Button_No) !=
 				RDMessageButtons.ButtonOne)
 				return;
 
