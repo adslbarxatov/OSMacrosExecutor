@@ -15,7 +15,7 @@ jobs:
     
 # Константы, используемые далее по тексту
     env:
-      PROJ: OSMacrosExecutor
+      PROJ: ${{ github.event.repository.name }}
       TAG: '3.2.2'
 
     steps:
