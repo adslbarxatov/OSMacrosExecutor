@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -175,7 +174,7 @@ namespace RD_AAOW
 				return;
 				}
 
-			StreamReader SR = new StreamReader (FS, Encoding.Default);
+			StreamReader SR = new StreamReader (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 			// Чтение
 			commands.Clear ();
@@ -215,7 +214,7 @@ namespace RD_AAOW
 					string.Format (Localization.GetText ("CannotCreateFile"), SFDialog.FileName));
 				return;
 				}
-			StreamWriter SW = new StreamWriter (FS, Encoding.Default);
+			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 			// Запись
 			for (int i = 0; i < commands.Count; i++)
