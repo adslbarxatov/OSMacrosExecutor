@@ -141,7 +141,7 @@ namespace RD_AAOW
 		private void MainForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
 			e.Cancel = (CommandsListBox.Items.Count != 0) &&
-				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning,
+				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center,
 				"QuitApplication", LzDefaultTextValues.Button_Yes,
 				LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonTwo);
 			RDGenerics.SaveWindowDimensions (this);
@@ -151,7 +151,7 @@ namespace RD_AAOW
 		private void MOpen_Click (object sender, EventArgs e)
 			{
 			if ((CommandsListBox.Items.Count == 0) ||
-				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning,
+				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center,
 				"OpenExistingFile", LzDefaultTextValues.Button_Yes,
 				LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonOne))
 				{
@@ -169,7 +169,7 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning,
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 					string.Format (Localization.GetText ("FileIsUnavailable"), OFDialog.FileName));
 				return;
 				}
@@ -210,7 +210,7 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning,
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 					string.Format (Localization.GetText ("CannotCreateFile"), SFDialog.FileName));
 				return;
 				}
@@ -233,7 +233,7 @@ namespace RD_AAOW
 
 		private void ExDialog_FileOk (object sender, CancelEventArgs e)
 			{
-			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "BeginMacro",
+			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "BeginMacro",
 				LzDefaultTextValues.Button_Yes, LzDefaultTextValues.Button_No) !=
 				RDMessageButtons.ButtonOne)
 				return;
@@ -241,7 +241,7 @@ namespace RD_AAOW
 			// Проверка существования файла
 			if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.AssemblyExecutionModule))
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning,
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 					ProgramDescription.AssemblyExecutionModule + Localization.GetText ("ExecutionIsUnavailable"));
 				return;
 				}

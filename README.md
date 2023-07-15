@@ -1,5 +1,5 @@
-# OSMacrosExecutor v 3.2.7
-> PCC: 0005BD322FB94C92
+# OSMacrosExecutor v 3.3
+> PCC: 0005BD302462E1BE
 
 
 Operation system macros creator and executor, the tool for automation of user activities
