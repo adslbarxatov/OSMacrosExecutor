@@ -152,11 +152,6 @@
 
 Запустить макрос?</value>
   </data>
-  <data name="CannotCreateFile" xml:space="preserve">
-    <value>Не удалось создать файл «{0:S}».
-
-Убедитесь, что его расположение доступно для записи, и повторите попытку</value>
-  </data>
   <data name="CommandsListLabelText" xml:space="preserve">
     <value>Список команд:</value>
   </data>
@@ -180,11 +175,6 @@
   </data>
   <data name="FDialogTitle" xml:space="preserve">
     <value>Выберите файл для выполнения</value>
-  </data>
-  <data name="FileIsUnavailable" xml:space="preserve">
-    <value>Не удалось открыть файл «{0:S}».
-
-Убедитесь, что файл доступен, и повторите попытку</value>
   </data>
   <data name="HelpText" xml:space="preserve">
     <value>Приложение может быть использовано для имитации действий пользователя, когда:

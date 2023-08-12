@@ -152,11 +152,6 @@
 
 Begin macro?</value>
   </data>
-  <data name="CannotCreateFile" xml:space="preserve">
-    <value>Cannot create file “{0:S}”.
-
-Make sure that its placement is available and try again</value>
-  </data>
   <data name="CommandsListLabelText" xml:space="preserve">
     <value>Commands list:</value>
   </data>
@@ -180,11 +175,6 @@ Make sure that its placement is available and try again</value>
   </data>
   <data name="FDialogTitle" xml:space="preserve">
     <value>Select file for execution</value>
-  </data>
-  <data name="FileIsUnavailable" xml:space="preserve">
-    <value>Cannot open file “{0:S}”.
-
-Make sure that file is available and try again</value>
   </data>
   <data name="HelpText" xml:space="preserve">
     <value>Application may be used for imitation of user activities when:

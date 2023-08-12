@@ -144,6 +144,7 @@ namespace RD_AAOW
 				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center,
 				"QuitApplication", LzDefaultTextValues.Button_Yes,
 				LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonTwo);
+
 			RDGenerics.SaveWindowDimensions (this);
 			}
 
@@ -169,8 +170,11 @@ namespace RD_AAOW
 				}
 			catch
 				{
+				/*RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
+					string.Format (Localization.GetText ("FileIsUnavailable"), OFDialog.FileName));*/
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					string.Format (Localization.GetText ("FileIsUnavailable"), OFDialog.FileName));
+					Localization.GetFileProcessingMessage (OFDialog.FileName,
+					LzFileProcessingMessageTypes.Load_Failure));
 				return;
 				}
 
@@ -210,8 +214,11 @@ namespace RD_AAOW
 				}
 			catch
 				{
+				/*RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
+					string.Format (Localization.GetText ("CannotCreateFile"), SFDialog.FileName));*/
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					string.Format (Localization.GetText ("CannotCreateFile"), SFDialog.FileName));
+					Localization.GetFileProcessingMessage (SFDialog.FileName,
+					LzFileProcessingMessageTypes.Save_Failure));
 				return;
 				}
 			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
@@ -292,7 +299,8 @@ namespace RD_AAOW
 
 		private void FDialog_FileOk (object sender, CancelEventArgs e)
 			{
-			CommandPath.Text = FDialog.FileName.Substring (0, ((FDialog.FileName.Length > 200) ? 200 : FDialog.FileName.Length));
+			CommandPath.Text = FDialog.FileName.Substring (0, ((FDialog.FileName.Length > 200) ? 200 :
+				FDialog.FileName.Length));
 			}
 
 		// Обновление списка команд
@@ -301,9 +309,7 @@ namespace RD_AAOW
 			// Обновление списка
 			CommandsListBox.Items.Clear ();
 			for (int i = 0; i < commands.Count; i++)
-				{
 				CommandsListBox.Items.Add (commands[i].CommandPresentation);
-				}
 
 			if (CommandsListBox.Items.Count > 0)
 				CommandsListBox.SelectedIndex = CommandsListBox.Items.Count - 1;
