@@ -207,9 +207,6 @@
   <data name="MousePointerGroupText" xml:space="preserve">
     <value>Указатель мыши</value>
   </data>
-  <data name="MQuitText" xml:space="preserve">
-    <value>В&amp;ыход</value>
-  </data>
   <data name="MRegisterText" xml:space="preserve">
     <value>За&amp;регистрировать сопоставление файлов</value>
   </data>

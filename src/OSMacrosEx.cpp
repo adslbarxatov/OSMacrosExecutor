@@ -32,6 +32,10 @@ int main (int argc, char* argv[])
 	// Заголовок
 	printf ("\n %s\n by %s\n\n", OSME_PRODUCT, OSME_COMPANY);
 
+	// ESHQ: XPUN-контроль
+	if (!CheckXPUNClass ())
+		_EXITONERROR (-170);
+
 	// Проверка корректности вызова программы
 	if (argc < 2)
 		{

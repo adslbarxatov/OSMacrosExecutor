@@ -1,5 +1,9 @@
 OS macros executor: changes log
 
+Version 3.3.8:
+• Added the obvious URLs for videoguide and for text guide;
+• App about window has been moved to the main menu
+
 Version 3.3.5:
 • Fixed some issues with the Policy loader where it would sometimes ask for multiple confirmations;
 • Implemented the access rights checker: it will test the availability of the Windows registry

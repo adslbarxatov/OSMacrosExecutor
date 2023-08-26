@@ -7,14 +7,15 @@
 #include <windows.h>				// Команды управления
 #include <process.h>				// Библиотека запуска процессов
 #include "..\Generics\CSTypes.h"	// Описание подстановочных типов данных
+#include "..\Generics\xpun.h"	// Описание подстановочных типов данных
 
 // Константы
 #define DEFAULTSIZE		501
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Ресурсы: данные о создаваемом приложении
-#define OSME_VERSION				3,2,0,0
-#define OSME_VERSION_S				"3.2.0.0"
+#define OSME_VERSION				3,3,8,0
+#define OSME_VERSION_S				"3.3.8.0"
 #define OSME_PRODUCT				"Operating system macros executor"
 #define OSME_COMPANY				FDL_COMPANY
 //#define	ASSEMBLYUPDATE	"30.07.2017; 21:14"

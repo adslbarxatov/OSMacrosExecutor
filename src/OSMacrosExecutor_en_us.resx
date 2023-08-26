@@ -207,9 +207,6 @@ Application can “use” mouse, keyboard, command line and interrupts as same a
   <data name="MousePointerGroupText" xml:space="preserve">
     <value>Mouse pointer</value>
   </data>
-  <data name="MQuitText" xml:space="preserve">
-    <value>&amp;Quit</value>
-  </data>
   <data name="MRegisterText" xml:space="preserve">
     <value>&amp;Register file association</value>
   </data>

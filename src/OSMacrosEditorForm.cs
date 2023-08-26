@@ -93,7 +93,8 @@ namespace RD_AAOW
 			MSave.Text = Localization.GetText ("MSaveText");
 			MExecute.Text = Localization.GetText ("MExecuteText");
 			MRegister.Text = Localization.GetText ("MRegisterText");
-			MQuit.Text = Localization.GetText ("MQuitText");
+			MHelp.Text = Localization.GetDefaultText (LzDefaultTextValues.Control_AppAbout);
+			MQuit.Text = ExitButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Exit);
 
 			MousePointerGroup.Text = Localization.GetText ("MousePointerGroupText");
 			SetMousePointer.Text = Localization.GetText ("SetMousePointerText");
@@ -119,7 +120,6 @@ namespace RD_AAOW
 			AddFileExecution.Text = Localization.GetText ("AddFileExecutionText");
 
 			CommandsListLabel.Text = Localization.GetText ("CommandsListLabelText");
-			ExitButton.Text = Localization.GetText ("MQuitText");
 
 			BeginCycle.Text = Localization.GetText ("BeginCycleText");
 			EndCycle.Text = Localization.GetText ("EndCycleText");
@@ -170,8 +170,6 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				/*RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					string.Format (Localization.GetText ("FileIsUnavailable"), OFDialog.FileName));*/
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 					Localization.GetFileProcessingMessage (OFDialog.FileName,
 					LzFileProcessingMessageTypes.Load_Failure));
@@ -214,8 +212,6 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				/*RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					string.Format (Localization.GetText ("CannotCreateFile"), SFDialog.FileName));*/
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 					Localization.GetFileProcessingMessage (SFDialog.FileName,
 					LzFileProcessingMessageTypes.Save_Failure));
@@ -412,12 +408,19 @@ namespace RD_AAOW
 			}
 
 		// Отображение краткой справочной информации
+		/*
 		private void MainForm_HelpButtonClicked (object sender, CancelEventArgs e)
 			{
 			// Отмена обработки события вызова справки
 			e.Cancel = true;
 
 			// О программе
+			RDGenerics.ShowAbout (false);
+			}
+		*/
+
+		private void MHelp_Click (object sender, EventArgs e)
+			{
 			RDGenerics.ShowAbout (false);
 			}
 
