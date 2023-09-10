@@ -189,8 +189,8 @@ Application can “use” mouse, keyboard, command line and interrupts as same a
   <data name="KeyReceiverText" xml:space="preserve">
     <value>Stay here and press combination</value>
   </data>
-  <data name="macrofile" xml:space="preserve">
-    <value>Operating system macro file</value>
+  <data name="MExecuteCurrentText" xml:space="preserve">
+    <value>Execute &amp;current macro; repeats:</value>
   </data>
   <data name="MExecuteText" xml:space="preserve">
     <value>&amp;Execute macro; repeats:</value>
@@ -217,7 +217,7 @@ Application can “use” mouse, keyboard, command line and interrupts as same a
     <value>(no modifiers)</value>
   </data>
   <data name="OFDialogFilter" xml:space="preserve">
-    <value>OS macro file (*.{0:S})|*.{0:S}</value>
+    <value>OS macro files (*.{0:S}, *.{1:S})|*.{0:S};*.{1:S}</value>
   </data>
   <data name="OFDialogTitle" xml:space="preserve">
     <value>Select macro for editing</value>
@@ -226,6 +226,9 @@ Application can “use” mouse, keyboard, command line and interrupts as same a
     <value>Do you want to open existing file?
 
 All unsaved data will be lost!</value>
+  </data>
+  <data name="osmfile" xml:space="preserve">
+    <value>Operating system macro file</value>
   </data>
   <data name="PauseGroupText" xml:space="preserve">
     <value>Pause</value>
@@ -237,6 +240,9 @@ All unsaved data will be lost!</value>
   </data>
   <data name="SetMousePointerText" xml:space="preserve">
     <value>Select...</value>
+  </data>
+  <data name="SFDialogFilter" xml:space="preserve">
+    <value>OS macro files (*.{0:S})|*.{0:S}</value>
   </data>
   <data name="SFDialogTitle" xml:space="preserve">
     <value>Select new macro’s placement</value>

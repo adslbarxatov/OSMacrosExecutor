@@ -1,5 +1,7 @@
-_Changes for v 3.3.8_:
+_Changes for v 3.4_:
+- Added the option for the direct execution of the currently edited macro;
+- Improved the execution algorithm;
+- New identity has been applied;
+- `.macro` file extension has been replaced with `.osm`;
 - Added the obvious URLs for videoguide and for text guide;
-- App about window has been moved to the main menu;
-- Fixed some issues with the Policy loader where it would sometimes ask for multiple confirmations;
-- Implemented the access rights checker: it will test the availability of the Windows registry and the application placement for writing and notify user about possible problems
+- App about window has been moved to the main menu

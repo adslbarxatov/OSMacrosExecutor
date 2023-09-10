@@ -64,8 +64,10 @@ namespace RD_AAOW
 			SFDialog.Title = Localization.GetText ("SFDialogTitle");
 			ExDialog.Title = Localization.GetText ("ExDialogTitle");
 			FDialog.Title = Localization.GetText ("FDialogTitle");
-			OFDialog.Filter = SFDialog.Filter = ExDialog.Filter =
-				string.Format (Localization.GetText ("OFDialogFilter"), ProgramDescription.AppExtension);
+			OFDialog.Filter = string.Format (Localization.GetText ("OFDialogFilter"), ProgramDescription.NewAppExtension,
+				ProgramDescription.OldAppExtension);
+			SFDialog.Filter = ExDialog.Filter =
+				string.Format (Localization.GetText ("SFDialogFilter"), ProgramDescription.NewAppExtension);
 			FDialog.Filter = Localization.GetText ("FDialogFilter");
 
 			if (KeyModifiers.Items.Count == 0)
@@ -92,6 +94,7 @@ namespace RD_AAOW
 			MOpen.Text = Localization.GetText ("MOpenText");
 			MSave.Text = Localization.GetText ("MSaveText");
 			MExecute.Text = Localization.GetText ("MExecuteText");
+			MExecuteCurrent.Text = Localization.GetText ("MExecuteCurrentText");
 			MRegister.Text = Localization.GetText ("MRegisterText");
 			MHelp.Text = Localization.GetDefaultText (LzDefaultTextValues.Control_AppAbout);
 			MQuit.Text = ExitButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Exit);
@@ -234,6 +237,15 @@ namespace RD_AAOW
 			ExDialog.ShowDialog ();
 			}
 
+		private void MExecuteCurrent_Click (object sender, EventArgs e)
+			{
+			if (SFDialog.ShowDialog () != DialogResult.OK)
+				return;
+
+			ExDialog.FileName = SFDialog.FileName;
+			ExDialog_FileOk (null, null);
+			}
+
 		private void ExDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "BeginMacro",
@@ -264,16 +276,21 @@ namespace RD_AAOW
 				}
 
 			// Запуск
-			this.WindowState = FormWindowState.Minimized;
-			Process.Start (RDGenerics.AppStartupPath + ProgramDescription.AssemblyExecutionModule,
+			this.SendToBack ();
+
+			Process p = Process.Start (RDGenerics.AppStartupPath + ProgramDescription.AssemblyExecutionModule,
 				"\"" + ExDialog.FileName + "\" " + repeats.ToString ());
-			this.WindowState = FormWindowState.Normal;
+			p.WaitForExit ();
+
+			this.BringToFront ();
 			}
 
 		// Выбор позиции указателя мыши
 		private void SetMousePointer_Click (object sender, EventArgs e)
 			{
+			this.SendToBack ();
 			MousePointerSelector mps = new MousePointerSelector ();
+			this.BringToFront ();
 
 			MouseX.Value = mps.MouseX;
 			MouseY.Value = mps.MouseY;
@@ -408,17 +425,6 @@ namespace RD_AAOW
 			}
 
 		// Отображение краткой справочной информации
-		/*
-		private void MainForm_HelpButtonClicked (object sender, CancelEventArgs e)
-			{
-			// Отмена обработки события вызова справки
-			e.Cancel = true;
-
-			// О программе
-			RDGenerics.ShowAbout (false);
-			}
-		*/
-
 		private void MHelp_Click (object sender, EventArgs e)
 			{
 			RDGenerics.ShowAbout (false);
