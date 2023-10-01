@@ -1,5 +1,8 @@
 OS macros executor: changes log
 
+Version 3.4.2:
+• Updates and fixes have been applied to the update polling mechanism, as well as to other auxiliary functions
+
 Version 3.4:
 • Added the option for the direct execution of the currently edited macro;
 • Improved the execution algorithm;
