@@ -1,18 +1,10 @@
-# OSMacrosExecutor v 3.4.2
-> PCC: 0005F441BED1AF11
+# OSMacrosExecutor
 
+## Description
 
+The tool for automation of user activities.
 
-Operation system macros creator and executor, the tool for automation of user activities
-
-Утилита создания и исполнения макросов операционной системы, инструмент автоматизации действий пользователя
-
-
-#
-
-## About
-
-Application may be used for imitation of user activities when:
+This tool allows you to create and execute your operating system macros. Application may be used for imitation of user activities when:
 
 - you need to perform many similar operations with files and / or programs;
 - you cannot automate these activities using standard tools;
@@ -20,7 +12,7 @@ Application may be used for imitation of user activities when:
 
 Application can “use” mouse, keyboard, command line and interrupts as same as user with the same potentialities.
 
-Just create macro using OSMacrosEditor tool and run them using OSMacrosEx tool. If something wents wrong, you can use example file
+Just create macro using `OSMacrosEditor` tool and run them using `OSMacrosEx` tool. If something wents wrong, you can use the example file
 
 &nbsp;
 
@@ -28,7 +20,10 @@ Just create macro using OSMacrosEditor tool and run them using OSMacrosEx tool. 
 
 ## Описание
 
-Утилиту следует использовать для имитации действий пользователя в случаях, когда:
+Инструмент автоматизации действий пользователя.
+
+Инструмент позволяет создавать и исполнять собственные макросы для операционной системы.
+Приложение следует использовать для имитации действий пользователя в случаях, когда:
 
 - требуется выполнить множество одинаковых операций над файлами и / или с программами;
 - вы не можете автоматизировать эти действия привычными инструментами;
@@ -36,7 +31,7 @@ Just create macro using OSMacrosEditor tool and run them using OSMacrosEx tool. 
 
 Программа может «использовать» мышь, клавиатуру, командную строку и паузы выполнения так же, как пользователь с тем же успехом.
 
-Создайте макрос в OSMacrosEditor и выполняйте его в OSMacrosEx. Ознакомьтесь с образцом макроса для лучшего понимания работы программы
+Создайте макрос в `OSMacrosEditor` и выполняйте его в `OSMacrosEx`. Ознакомьтесь с образцом макроса для лучшего понимания работы программы
 
 &nbsp;
 
