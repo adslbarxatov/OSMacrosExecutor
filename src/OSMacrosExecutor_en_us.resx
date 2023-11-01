@@ -176,13 +176,6 @@ Begin macro?</value>
   <data name="FDialogTitle" xml:space="preserve">
     <value>Select file for execution</value>
   </data>
-  <data name="HelpText" xml:space="preserve">
-    <value>Application may be used for imitation of user activities when:
-• you need to perform many similar operations with files and/or programs;
-• you cannot automate these activities using standard tools;
-• some activities must be performed without your direct participation.
-Application can “use” mouse, keyboard, command line and interrupts as same as user with the same potentialities</value>
-  </data>
   <data name="KeyboardGroupText" xml:space="preserve">
     <value>Keyboard</value>
   </data>
