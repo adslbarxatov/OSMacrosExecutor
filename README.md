@@ -3,16 +3,7 @@
 ## Description
 
 The tool for automation of user activities.
-
-This tool allows you to create and execute your operating system macros. Application may be used for imitation of user activities when:
-
-- you need to perform many similar operations with files and / or programs;
-- you cannot automate these activities using standard tools;
-- some activities must be performed without your direct participation.
-
-Application can “use” mouse, keyboard, command line and interrupts as same as user with the same potentialities.
-
-Just create macro using `OSMacrosEditor` tool and run them using `OSMacrosEx` tool. If something wents wrong, you can use the example file
+A detailed description of the app is available on [its own page](https://adslbarxatov.github.io/OSMacrosExecutor)
 
 &nbsp;
 
@@ -21,17 +12,7 @@ Just create macro using `OSMacrosEditor` tool and run them using `OSMacrosEx` to
 ## Описание
 
 Инструмент автоматизации действий пользователя.
-
-Инструмент позволяет создавать и исполнять собственные макросы для операционной системы.
-Приложение следует использовать для имитации действий пользователя в случаях, когда:
-
-- требуется выполнить множество одинаковых операций над файлами и / или с программами;
-- вы не можете автоматизировать эти действия привычными инструментами;
-- эти действия могут быть выполнены без вашего участия.
-
-Программа может «использовать» мышь, клавиатуру, командную строку и паузы выполнения так же, как пользователь с тем же успехом.
-
-Создайте макрос в `OSMacrosEditor` и выполняйте его в `OSMacrosEx`. Ознакомьтесь с образцом макроса для лучшего понимания работы программы
+Подробное описание приложения доступно на [отдельной странице](https://adslbarxatov.github.io/OSMacrosExecutor/ru)
 
 &nbsp;
 
