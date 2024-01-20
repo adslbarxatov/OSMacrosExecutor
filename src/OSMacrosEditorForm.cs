@@ -24,10 +24,10 @@ namespace RD_AAOW
 			// Инициализация
 			InitializeComponent ();
 
-			LanguageCombo.Items.AddRange (Localization.LanguagesNames);
+			LanguageCombo.Items.AddRange (RDLocale.LanguagesNames);
 			try
 				{
-				LanguageCombo.SelectedIndex = (int)Localization.CurrentLanguage;
+				LanguageCombo.SelectedIndex = (int)RDLocale.CurrentLanguage;
 				}
 			catch
 				{
@@ -57,22 +57,22 @@ namespace RD_AAOW
 		private void LanguageCombo_SelectedIndexChanged (object sender, EventArgs e)
 			{
 			// Сохранение
-			Localization.CurrentLanguage = (SupportedLanguages)LanguageCombo.SelectedIndex;
+			RDLocale.CurrentLanguage = (RDLanguages)LanguageCombo.SelectedIndex;
 
 			// Локализация
-			OFDialog.Title = Localization.GetText ("OFDialogTitle");
-			SFDialog.Title = Localization.GetText ("SFDialogTitle");
-			ExDialog.Title = Localization.GetText ("ExDialogTitle");
-			FDialog.Title = Localization.GetText ("FDialogTitle");
-			OFDialog.Filter = string.Format (Localization.GetText ("OFDialogFilter"), ProgramDescription.NewAppExtension,
-				ProgramDescription.OldAppExtension);
+			OFDialog.Title = RDLocale.GetText ("OFDialogTitle");
+			SFDialog.Title = RDLocale.GetText ("SFDialogTitle");
+			ExDialog.Title = RDLocale.GetText ("ExDialogTitle");
+			FDialog.Title = RDLocale.GetText ("FDialogTitle");
+			OFDialog.Filter = string.Format (RDLocale.GetText ("OFDialogFilter"),
+				ProgramDescription.NewAppExtension, ".macro");
 			SFDialog.Filter = ExDialog.Filter =
-				string.Format (Localization.GetText ("SFDialogFilter"), ProgramDescription.NewAppExtension);
-			FDialog.Filter = Localization.GetText ("FDialogFilter");
+				string.Format (RDLocale.GetText ("SFDialogFilter"), ProgramDescription.NewAppExtension);
+			FDialog.Filter = RDLocale.GetText ("FDialogFilter");
 
 			if (KeyModifiers.Items.Count == 0)
 				{
-				KeyModifiers.Items.Add (Localization.GetText ("NoModifiers"));
+				KeyModifiers.Items.Add (RDLocale.GetText ("NoModifiers"));
 				KeyModifiers.Items.Add ("Shift");
 				KeyModifiers.Items.Add ("Ctrl");
 				KeyModifiers.Items.Add ("Ctrl + Shift");
@@ -80,53 +80,54 @@ namespace RD_AAOW
 				KeyModifiers.Items.Add ("Alt + Shift");
 				KeyModifiers.Items.Add ("Ctrl + Alt");
 				KeyModifiers.Items.Add ("Ctrl + Alt + Shift");
-				KeyModifiers.Items.Add (Localization.GetText ("WinKey"));
+				KeyModifiers.Items.Add (RDLocale.GetText ("WinKey"));
 
 				KeyModifiers.SelectedIndex = 0;
 				}
 			else
 				{
-				KeyModifiers.Items[0] = Localization.GetText ("NoModifiers");
-				KeyModifiers.Items[8] = Localization.GetText ("WinKey");
+				KeyModifiers.Items[0] = RDLocale.GetText ("NoModifiers");
+				KeyModifiers.Items[8] = RDLocale.GetText ("WinKey");
 				}
 
-			MFile.Text = Localization.GetText ("MFileText");
-			MOpen.Text = Localization.GetText ("MOpenText");
-			MSave.Text = Localization.GetText ("MSaveText");
-			MExecute.Text = Localization.GetText ("MExecuteText");
-			MExecuteCurrent.Text = Localization.GetText ("MExecuteCurrentText");
-			MRegister.Text = Localization.GetText ("MRegisterText");
-			MHelp.Text = Localization.GetDefaultText (LzDefaultTextValues.Control_AppAbout);
-			MQuit.Text = ExitButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Exit);
+			MFile.Text = RDLocale.GetText ("MFileText");
+			MOpen.Text = RDLocale.GetText ("MOpenText");
+			MSave.Text = RDLocale.GetText ("MSaveText");
+			MExecute.Text = RDLocale.GetText ("MExecuteText");
+			MExecuteCurrent.Text = RDLocale.GetText ("MExecuteCurrentText");
+			/*MRegister.Text = RDLocale.GetText ("MRegisterText");
+			*/
+			MHelp.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout);
+			MQuit.Text = ExitButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
 
-			MousePointerGroup.Text = Localization.GetText ("MousePointerGroupText");
-			SetMousePointer.Text = Localization.GetText ("SetMousePointerText");
-			AddMousePointer.Text = Localization.GetText ("AddMousePointerText");
-			AddWaitForColor.Text = Localization.GetText ("AddWaitForColorText");
+			MousePointerGroup.Text = RDLocale.GetText ("MousePointerGroupText");
+			SetMousePointer.Text = RDLocale.GetText ("SetMousePointerText");
+			AddMousePointer.Text = RDLocale.GetText ("AddMousePointerText");
+			AddWaitForColor.Text = RDLocale.GetText ("AddWaitForColorText");
 
-			PauseGroup.Text = Localization.GetText ("PauseGroupText");
-			MilliLabel.Text = Localization.GetText ("MilliLabelText");
-			AddPause.Text = Localization.GetText ("AddPauseText");
+			PauseGroup.Text = RDLocale.GetText ("PauseGroupText");
+			MilliLabel.Text = RDLocale.GetText ("MilliLabelText");
+			AddPause.Text = RDLocale.GetText ("AddPauseText");
 
-			AddLeftClick.Text = Localization.GetText ("AddLeftClickText");
-			AddRightClick.Text = Localization.GetText ("AddRightClickText");
-			AddDragBeginning.Text = Localization.GetText ("AddDragBeginningText");
-			AddDragEnding.Text = Localization.GetText ("AddDragEndingText");
+			AddLeftClick.Text = RDLocale.GetText ("AddLeftClickText");
+			AddRightClick.Text = RDLocale.GetText ("AddRightClickText");
+			AddDragBeginning.Text = RDLocale.GetText ("AddDragBeginningText");
+			AddDragEnding.Text = RDLocale.GetText ("AddDragEndingText");
 
-			KeyboardGroup.Text = Localization.GetText ("KeyboardGroupText");
-			KeyReceiver.Text = Localization.GetText ("KeyReceiverText");
-			AddKeyPress.Text = Localization.GetText ("AddKeyPressText");
+			KeyboardGroup.Text = RDLocale.GetText ("KeyboardGroupText");
+			KeyReceiver.Text = RDLocale.GetText ("KeyReceiverText");
+			AddKeyPress.Text = RDLocale.GetText ("AddKeyPressText");
 
-			ExecutionGroup.Text = Localization.GetText ("ExecutionGroupText");
-			SelectFile.Text = Localization.GetText ("SetMousePointerText");
-			WaitForFinish.Text = Localization.GetText ("WaitForFinishText");
-			AddFileExecution.Text = Localization.GetText ("AddFileExecutionText");
+			ExecutionGroup.Text = RDLocale.GetText ("ExecutionGroupText");
+			SelectFile.Text = RDLocale.GetText ("SetMousePointerText");
+			WaitForFinish.Text = RDLocale.GetText ("WaitForFinishText");
+			AddFileExecution.Text = RDLocale.GetText ("AddFileExecutionText");
 
-			CommandsListLabel.Text = Localization.GetText ("CommandsListLabelText");
+			CommandsListLabel.Text = RDLocale.GetText ("CommandsListLabelText");
 
-			BeginCycle.Text = Localization.GetText ("BeginCycleText");
-			EndCycle.Text = Localization.GetText ("EndCycleText");
-			CycleLabel.Text = Localization.GetText ("CycleLabelText");
+			BeginCycle.Text = RDLocale.GetText ("BeginCycleText");
+			EndCycle.Text = RDLocale.GetText ("EndCycleText");
+			CycleLabel.Text = RDLocale.GetText ("CycleLabelText");
 			}
 
 		// Выход из программы
@@ -145,8 +146,8 @@ namespace RD_AAOW
 			{
 			e.Cancel = (CommandsListBox.Items.Count != 0) &&
 				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center,
-				"QuitApplication", LzDefaultTextValues.Button_Yes,
-				LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonTwo);
+				"QuitApplication", RDLDefaultTexts.Button_Yes,
+				RDLDefaultTexts.Button_No) == RDMessageButtons.ButtonTwo);
 
 			RDGenerics.SaveWindowDimensions (this);
 			}
@@ -156,8 +157,8 @@ namespace RD_AAOW
 			{
 			if ((CommandsListBox.Items.Count == 0) ||
 				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center,
-				"OpenExistingFile", LzDefaultTextValues.Button_Yes,
-				LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonOne))
+				"OpenExistingFile", RDLDefaultTexts.Button_Yes,
+				RDLDefaultTexts.Button_No) == RDMessageButtons.ButtonOne))
 				{
 				OFDialog.ShowDialog ();
 				}
@@ -174,12 +175,14 @@ namespace RD_AAOW
 			catch
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					Localization.GetFileProcessingMessage (OFDialog.FileName,
-					LzFileProcessingMessageTypes.Load_Failure));
+					/*Localization.GetFileProcessingMessage (OFDialog.FileName,
+					LzFileProcessingMessageTypes.Load_Failure)*/
+					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt),
+					OFDialog.FileName));
 				return;
 				}
 
-			StreamReader SR = new StreamReader (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+			StreamReader SR = new StreamReader (FS, RDGenerics.GetEncoding (RDEncodings.CP1251));
 
 			// Чтение
 			commands.Clear ();
@@ -216,11 +219,13 @@ namespace RD_AAOW
 			catch
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					Localization.GetFileProcessingMessage (SFDialog.FileName,
-					LzFileProcessingMessageTypes.Save_Failure));
+					/*Localization.GetFileProcessingMessage (SFDialog.FileName,
+					LzFileProcessingMessageTypes.Save_Failure)*/
+					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
+					SFDialog.FileName));
 				return;
 				}
-			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (RDEncodings.CP1251));
 
 			// Запись
 			for (int i = 0; i < commands.Count; i++)
@@ -249,17 +254,20 @@ namespace RD_AAOW
 		private void ExDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "BeginMacro",
-				LzDefaultTextValues.Button_Yes, LzDefaultTextValues.Button_No) !=
+				RDLDefaultTexts.Button_Yes, RDLDefaultTexts.Button_No) !=
 				RDMessageButtons.ButtonOne)
 				return;
 
 			// Проверка существования файла
-			if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.AssemblyExecutionModule))
-				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					ProgramDescription.AssemblyExecutionModule + Localization.GetText ("ExecutionIsUnavailable"));
+			/*if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.AssemblyExecutionModule))
+				*/
+			if (!RDGenerics.CheckLibraries (ProgramDescription.AssemblyExecutionModule, true))
 				return;
-				}
+			/*{
+			RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
+				ProgramDescription.AssemblyExecutionModule + RDLocale.GetText ("ExecutionIsUnavailable"));
+			return;
+			}*/
 
 			// Обработка количества выполнений
 			uint repeats = 0;
@@ -459,11 +467,12 @@ namespace RD_AAOW
 			UpdateCommandsList ();
 			}
 
-		// Метод регистрирует сопоставление для файлов
+		/* Метод регистрирует сопоставление для файлов
 		private void MRegister_Click (object sender, EventArgs e)
 			{
 			ProgramDescription.RegisterAppExtensions ();
 			}
+		*/
 
 		// Добавление команды ожидания изменения пикселя
 		private void AddWaitForColor_Click (object sender, EventArgs e)

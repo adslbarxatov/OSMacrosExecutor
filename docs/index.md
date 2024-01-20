@@ -1,5 +1,5 @@
 # OS macros executor: user guide
-> **ƒ** &nbsp;RD AAOW FDL; 30.11.2023; 2:36
+> **ƒ** &nbsp;RD AAOW FDL; 21.01.2024; 4:45
 
 ---
 
@@ -22,3 +22,14 @@ user with the same potentialities.
 
 Just create macro using `OSMacrosEditor` tool and run them using `OSMacrosEx` tool.
 If something went wrong, you can use the example file
+
+
+
+***Controls***:
+
+- `F1` – displaying of this quick manual;
+- `Ctrl` + `Q` – exiting application;
+- `F4` – run the existing macro;
+- `F5` – run the current macro;
+- `Ctrl` + `O` – open the macro;
+- `Ctrl` + `S` – save the current macro

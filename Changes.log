@@ -1,5 +1,10 @@
 OS macros executor: changes log
 
+Version 3.5:
+• Fixed the invalid behavior of the first command in the file;
+• Added hotkeys for the main menu;
+• Core updates have been applied
+
 Version 3.4.4:
 • Added a new version of offline help
 

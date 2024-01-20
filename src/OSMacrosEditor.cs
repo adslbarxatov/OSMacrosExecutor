@@ -19,7 +19,7 @@ namespace RD_AAOW
 			Application.SetCompatibleTextRenderingDefault (false);
 
 			// Язык интерфейса и контроль XPUN
-			if (!Localization.IsXPUNClassAcceptable)
+			if (!RDLocale.IsXPUNClassAcceptable)
 				return;
 
 			// Проверка запуска единственной копии
@@ -29,7 +29,8 @@ namespace RD_AAOW
 			// Отображение справки и запроса на принятие Политики
 			if (!RDGenerics.AcceptEULA ())
 				return;
-			RDGenerics.ShowAbout (true);
+			if (!RDGenerics.ShowAbout (true))
+				ProgramDescription.RegisterAppExtensions ();
 
 			// Запуск
 			string macroFile = "";

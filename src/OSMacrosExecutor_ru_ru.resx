@@ -167,9 +167,6 @@
   <data name="ExecutionGroupText" xml:space="preserve">
     <value>Выполнить файл / команду</value>
   </data>
-  <data name="ExecutionIsUnavailable" xml:space="preserve">
-    <value> (модуль-исполнитель) отсутствует. Выполнение недоступно</value>
-  </data>
   <data name="FDialogFilter" xml:space="preserve">
     <value>Все файлы|*.*</value>
   </data>
