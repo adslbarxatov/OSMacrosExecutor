@@ -95,8 +95,7 @@ namespace RD_AAOW
 			MSave.Text = RDLocale.GetText ("MSaveText");
 			MExecute.Text = RDLocale.GetText ("MExecuteText");
 			MExecuteCurrent.Text = RDLocale.GetText ("MExecuteCurrentText");
-			/*MRegister.Text = RDLocale.GetText ("MRegisterText");
-			*/
+
 			MHelp.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout);
 			MQuit.Text = ExitButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
 
@@ -175,8 +174,6 @@ namespace RD_AAOW
 			catch
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					/*Localization.GetFileProcessingMessage (OFDialog.FileName,
-					LzFileProcessingMessageTypes.Load_Failure)*/
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt),
 					OFDialog.FileName));
 				return;
@@ -219,8 +216,6 @@ namespace RD_AAOW
 			catch
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					/*Localization.GetFileProcessingMessage (SFDialog.FileName,
-					LzFileProcessingMessageTypes.Save_Failure)*/
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
 					SFDialog.FileName));
 				return;
@@ -259,15 +254,8 @@ namespace RD_AAOW
 				return;
 
 			// Проверка существования файла
-			/*if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.AssemblyExecutionModule))
-				*/
 			if (!RDGenerics.CheckLibraries (ProgramDescription.AssemblyExecutionModule, true))
 				return;
-			/*{
-			RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-				ProgramDescription.AssemblyExecutionModule + RDLocale.GetText ("ExecutionIsUnavailable"));
-			return;
-			}*/
 
 			// Обработка количества выполнений
 			uint repeats = 0;
@@ -466,13 +454,6 @@ namespace RD_AAOW
 			commands.Add (new MacroCommand (false, 0));
 			UpdateCommandsList ();
 			}
-
-		/* Метод регистрирует сопоставление для файлов
-		private void MRegister_Click (object sender, EventArgs e)
-			{
-			ProgramDescription.RegisterAppExtensions ();
-			}
-		*/
 
 		// Добавление команды ожидания изменения пикселя
 		private void AddWaitForColor_Click (object sender, EventArgs e)
