@@ -1,5 +1,10 @@
 OS macros executor: changes log
 
+Version 3.5.5:
+• Updated HypeHelp and Updates checker mechanics: this should fix apps freezing immediately
+  after launch (on some PCs);
+• Updated the HypeHelp links list
+
 Version 3.5.3:
 • Update for XPUN has been applied
 
