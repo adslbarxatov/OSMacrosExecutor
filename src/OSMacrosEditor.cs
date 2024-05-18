@@ -32,6 +32,10 @@ namespace RD_AAOW
 			if (!RDGenerics.ShowAbout (true))
 				ProgramDescription.RegisterAppExtensions ();
 
+			// Контроль прав
+			if (!RDGenerics.AppHasAccessRights (true, false))
+				return;
+
 			// Запуск
 			string macroFile = "";
 			if (args.Length > 0)
