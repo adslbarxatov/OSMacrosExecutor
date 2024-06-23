@@ -1,5 +1,8 @@
 OS macros executor: changes log
 
+Version 3.6.2:
+• XPUN update has been applied
+
 Version 3.6:
 • The application has been retargeted to .NET Framework 4.8.1;
 • Access checking method has been completely rewritten: now it will properly detect problems

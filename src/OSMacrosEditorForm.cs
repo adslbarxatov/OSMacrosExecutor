@@ -461,5 +461,13 @@ namespace RD_AAOW
 			commands.Add (new MacroCommand ((uint)MouseX.Value, (uint)MouseY.Value, SetPixelColor.BackColor));
 			UpdateCommandsList ();
 			}
+
+		// Ручное изменение цвета пикселя
+		private void SetPixelColor_Click (object sender, EventArgs e)
+			{
+			CDialog.Color = SetPixelColor.BackColor;
+			if (CDialog.ShowDialog () == DialogResult.OK)
+				SetPixelColor.BackColor = CDialog.Color;
+			}
 		}
 	}
