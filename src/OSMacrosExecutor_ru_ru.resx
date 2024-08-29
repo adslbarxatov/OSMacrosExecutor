@@ -237,9 +237,6 @@
   <data name="SFDialogTitle" xml:space="preserve">
     <value>Укажите расположение нового макроса</value>
   </data>
-  <data name="ShowVideo" xml:space="preserve">
-    <value>Показать видеоруководство пользователя на нашем YouTube-канале?</value>
-  </data>
   <data name="WaitForFinishText" xml:space="preserve">
     <value>Ждать завершения</value>
   </data>

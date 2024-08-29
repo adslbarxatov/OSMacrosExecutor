@@ -237,9 +237,6 @@ All unsaved data will be lost!</value>
   <data name="SFDialogTitle" xml:space="preserve">
     <value>Select new macro’s placement</value>
   </data>
-  <data name="ShowVideo" xml:space="preserve">
-    <value>Do you want to view user videoguide on our YouTube channel?</value>
-  </data>
   <data name="WaitForFinishText" xml:space="preserve">
     <value>Wait for completion</value>
   </data>

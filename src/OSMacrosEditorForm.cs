@@ -65,7 +65,7 @@ namespace RD_AAOW
 			ExDialog.Title = RDLocale.GetText ("ExDialogTitle");
 			FDialog.Title = RDLocale.GetText ("FDialogTitle");
 			OFDialog.Filter = string.Format (RDLocale.GetText ("OFDialogFilter"),
-				ProgramDescription.NewAppExtension, ".macro");
+				ProgramDescription.NewAppExtension, "macro");
 			SFDialog.Filter = ExDialog.Filter =
 				string.Format (RDLocale.GetText ("SFDialogFilter"), ProgramDescription.NewAppExtension);
 			FDialog.Filter = RDLocale.GetText ("FDialogFilter");
