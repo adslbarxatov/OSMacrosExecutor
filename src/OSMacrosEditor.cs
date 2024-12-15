@@ -31,7 +31,6 @@ namespace RD_AAOW
 				return;
 			if (!RDGenerics.ShowAbout (true))
 				RDGenerics.RegisterFileAssociations (true);
-			/*ProgramDescription.RegisterAppExtensions ();*/
 
 			// Контроль прав
 			if (!RDGenerics.AppHasAccessRights (true, false))
