@@ -1,10 +1,10 @@
 # OS macros executor: user guide
-> **ƒ** &nbsp;RD AAOW FDL; 10.02.2024; 1:18
+> **ƒ** &nbsp;RD AAOW FDL; 19.01.2025; 22:03
 
 ---
 
 - [General information](#general-information)
-- [Video guide](https://youtu.be/UPfBmVmQvZA)
+- [Video guide](https://youtu.be/AXcqDsLjYN4)
 - [Download links](https://adslbarxatov.github.io/DPArray#os-macros-executor)
 - [Версия на русском языке](https://adslbarxatov.github.io/OSMacrosExecutor/ru)
 

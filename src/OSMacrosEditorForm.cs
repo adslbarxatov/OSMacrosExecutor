@@ -144,7 +144,7 @@ namespace RD_AAOW
 		private void MainForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
 			e.Cancel = (CommandsListBox.Items.Count != 0) &&
-				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center,
+				(RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center,
 				"QuitApplication", RDLDefaultTexts.Button_Yes,
 				RDLDefaultTexts.Button_No) == RDMessageButtons.ButtonTwo);
 
@@ -155,7 +155,7 @@ namespace RD_AAOW
 		private void MOpen_Click (object sender, EventArgs e)
 			{
 			if ((CommandsListBox.Items.Count == 0) ||
-				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center,
+				(RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center,
 				"OpenExistingFile", RDLDefaultTexts.Button_Yes,
 				RDLDefaultTexts.Button_No) == RDMessageButtons.ButtonOne))
 				{
@@ -173,7 +173,7 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
+				RDInterface.MessageBox (RDMessageTypes.Warning_Center,
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt),
 					OFDialog.FileName));
 				return;
@@ -215,7 +215,7 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
+				RDInterface.MessageBox (RDMessageTypes.Warning_Center,
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
 					SFDialog.FileName));
 				return;
@@ -248,7 +248,7 @@ namespace RD_AAOW
 
 		private void ExDialog_FileOk (object sender, CancelEventArgs e)
 			{
-			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "BeginMacro",
+			if (RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "BeginMacro",
 				RDLDefaultTexts.Button_Yes, RDLDefaultTexts.Button_No) !=
 				RDMessageButtons.ButtonOne)
 				return;
@@ -423,7 +423,7 @@ namespace RD_AAOW
 		// Отображение краткой справочной информации
 		private void MHelp_Click (object sender, EventArgs e)
 			{
-			RDGenerics.ShowAbout (false);
+			RDInterface.ShowAbout (false);
 			}
 
 		// Установка количества запусков макроса
