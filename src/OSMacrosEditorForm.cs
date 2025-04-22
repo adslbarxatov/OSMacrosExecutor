@@ -13,7 +13,7 @@ namespace RD_AAOW
 	public partial class OSMacrosEditorForm: Form
 		{
 		// Переменные
-		private List<MacroCommand> commands = new List<MacroCommand> ();
+		private List<MacroCommand> commands = [];
 
 		/// <summary>
 		/// Конструктор главной формы программы
@@ -166,7 +166,8 @@ namespace RD_AAOW
 		private void OFDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Загрузка
-			FileStream FS = null;
+			/*FileStream FS = null;*/
+			FileStream FS;
 			try
 				{
 				FS = new FileStream (OFDialog.FileName, FileMode.Open);
@@ -208,7 +209,8 @@ namespace RD_AAOW
 		private void SFDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Инициализация
-			FileStream FS = null;
+			/*FileStream FS = null;*/
+			FileStream FS;
 			try
 				{
 				FS = new FileStream (SFDialog.FileName, FileMode.Create);

@@ -153,7 +153,7 @@ namespace RD_AAOW
 	public class MacroCommand
 		{
 		// Переменные
-		private static char[] splitters = new char[] { ' ', '\t' };
+		private static char[] splitters = [' ', '\t'];
 
 		/// <summary>
 		/// Тип макрокоманды
@@ -501,11 +501,11 @@ namespace RD_AAOW
 						{
 						string path = "";
 						for (int i = 1; i < values.Length; i++)
-							{
 							path += (values[i] + " ");
-							}
+
 						return new MacroCommand (path, (command == CommandTypes.ExecuteCommandAndWait));
 						}
+
 					return null;
 
 				case CommandTypes.ExecutionPause:
@@ -514,14 +514,11 @@ namespace RD_AAOW
 						{
 						pause = uint.Parse (values[1]); // Вызовет исключение и при отсутствии параметра
 						}
-					catch
-						{
-						}
+					catch { }
 
 					if (pause != 0) // Заведомо считанное значение, не равное нулю
-						{
 						return new MacroCommand (pause);
-						}
+
 					return null;    // Все ошибки
 
 				case CommandTypes.FinishDragNDrop:
@@ -537,9 +534,7 @@ namespace RD_AAOW
 						m = uint.Parse (values[1]); // Вызовут исключение и при отсутствии параметра
 						k = uint.Parse (values[2]);
 						}
-					catch
-						{
-						}
+					catch { }
 
 					if ((m > 8) || (k > 255))
 						return null;
@@ -548,9 +543,8 @@ namespace RD_AAOW
 						{
 						return new MacroCommand ((KeyModifiers)m, (Keys)k);     // Может вызвать сбой на этапе преобразования кода клавиши
 						}
-					catch
-						{
-						}
+					catch { }
+
 					return null;
 
 				case CommandTypes.SetCursorPosition:
@@ -560,9 +554,7 @@ namespace RD_AAOW
 						x = uint.Parse (values[1]); // Вызовут исключение и при отсутствии параметра
 						y = uint.Parse (values[2]);
 						}
-					catch
-						{
-						}
+					catch { }
 
 					if ((x < 0x10000) && (y < 0x10000))
 						{
@@ -570,12 +562,14 @@ namespace RD_AAOW
 						y = (uint)(((double)y / (double)0xFFFF) * (double)(Screen.PrimaryScreen.Bounds.Height - 1));
 						return new MacroCommand (x, y);
 						}
+
 					return null;
 
 				case CommandTypes.WaitForPixelChange:
-					x = 0;
+					/*x = 0;
 					y = 0;
-					Color c = Color.FromArgb (0, 0, 0);
+					Color c = Color.FromArgb (0, 0, 0);*/
+					Color c;
 					try
 						{
 						x = uint.Parse (values[1]); // Вызовут исключение и при отсутствии параметра
@@ -584,9 +578,7 @@ namespace RD_AAOW
 
 						return new MacroCommand (x, y, c);
 						}
-					catch
-						{
-						}
+					catch { }
 
 					return null;
 
@@ -596,14 +588,11 @@ namespace RD_AAOW
 						{
 						cycleRounds = uint.Parse (values[1]);
 						}
-					catch
-						{
-						}
+					catch { }
 
 					if (cycleRounds > 1)
-						{
 						return new MacroCommand (true, cycleRounds);
-						}
+
 					return null;    // Все ошибки
 
 				case CommandTypes.EndCycle:
