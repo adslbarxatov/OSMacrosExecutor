@@ -166,7 +166,6 @@ namespace RD_AAOW
 		private void OFDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Загрузка
-			/*FileStream FS = null;*/
 			FileStream FS;
 			try
 				{
@@ -209,7 +208,6 @@ namespace RD_AAOW
 		private void SFDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Инициализация
-			/*FileStream FS = null;*/
 			FileStream FS;
 			try
 				{
@@ -255,9 +253,9 @@ namespace RD_AAOW
 				RDMessageButtons.ButtonOne)
 				return;
 
-			// Проверка существования файла
+			/*// Проверка существования файла
 			if (!RDGenerics.CheckLibraries (ProgramDescription.AssemblyExecutionModule, true))
-				return;
+				return;*/
 
 			// Обработка количества выполнений
 			uint repeats = 0;

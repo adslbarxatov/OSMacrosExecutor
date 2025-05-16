@@ -4,7 +4,6 @@
 ---
 
 - [General information](#general-information)
-- [Video guide](https://youtu.be/AXcqDsLjYN4)
 - [Download links](https://adslbarxatov.github.io/DPArray#os-macros-executor)
 - [Версия на русском языке](https://adslbarxatov.github.io/OSMacrosExecutor/ru)
 

@@ -531,7 +531,8 @@ namespace RD_AAOW
 					uint m = 0, k = 256;
 					try
 						{
-						m = uint.Parse (values[1]); // Вызовут исключение и при отсутствии параметра
+						// Вызовут исключение и при отсутствии параметра
+						m = uint.Parse (values[1]);
 						k = uint.Parse (values[2]);
 						}
 					catch { }
@@ -541,7 +542,8 @@ namespace RD_AAOW
 
 					try
 						{
-						return new MacroCommand ((KeyModifiers)m, (Keys)k);     // Может вызвать сбой на этапе преобразования кода клавиши
+						// Может вызвать сбой на этапе преобразования кода клавиши
+						return new MacroCommand ((KeyModifiers)m, (Keys)k);
 						}
 					catch { }
 
@@ -551,7 +553,8 @@ namespace RD_AAOW
 					uint x = 0, y = 0x10000;
 					try
 						{
-						x = uint.Parse (values[1]); // Вызовут исключение и при отсутствии параметра
+						// Вызовут исключение и при отсутствии параметра
+						x = uint.Parse (values[1]);
 						y = uint.Parse (values[2]);
 						}
 					catch { }
@@ -566,13 +569,11 @@ namespace RD_AAOW
 					return null;
 
 				case CommandTypes.WaitForPixelChange:
-					/*x = 0;
-					y = 0;
-					Color c = Color.FromArgb (0, 0, 0);*/
 					Color c;
 					try
 						{
-						x = uint.Parse (values[1]); // Вызовут исключение и при отсутствии параметра
+						// Вызовут исключение и при отсутствии параметра
+						x = uint.Parse (values[1]);
 						y = uint.Parse (values[2]);
 						c = Color.FromArgb (int.Parse (values[3]), int.Parse (values[4]), int.Parse (values[5]));
 
@@ -593,7 +594,8 @@ namespace RD_AAOW
 					if (cycleRounds > 1)
 						return new MacroCommand (true, cycleRounds);
 
-					return null;    // Все ошибки
+					// Все ошибки
+					return null;
 
 				case CommandTypes.EndCycle:
 					return new MacroCommand (false, 0);

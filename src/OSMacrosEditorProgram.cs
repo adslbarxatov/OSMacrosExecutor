@@ -37,6 +37,14 @@ namespace RD_AAOW
 			if (!RDGenerics.AppHasAccessRights (true, false))
 				return;
 
+			// Проверка наличия обязательных компонентов
+			if (!RDGenerics.CheckLibrariesExistence (ProgramDescription.AssemblyLibraries, true))
+				return;
+
+			// Проверка корреткности версии
+			if (!RDGenerics.CheckLibrariesVersions (ProgramDescription.AssemblyLibraries, true))
+				return;
+
 			// Запуск
 			string macroFile = "";
 			if (args.Length > 0)
