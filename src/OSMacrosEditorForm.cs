@@ -253,10 +253,6 @@ namespace RD_AAOW
 				RDMessageButtons.ButtonOne)
 				return;
 
-			/*// Проверка существования файла
-			if (!RDGenerics.CheckLibraries (ProgramDescription.AssemblyExecutionModule, true))
-				return;*/
-
 			// Обработка количества выполнений
 			uint repeats = 0;
 			try
