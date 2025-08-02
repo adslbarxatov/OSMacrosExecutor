@@ -144,7 +144,7 @@ namespace RD_AAOW
 		private void MainForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
 			e.Cancel = (CommandsListBox.Items.Count != 0) &&
-				(RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center,
+				(RDInterface.LocalizedMessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 				"QuitApplication", RDLDefaultTexts.Button_Yes,
 				RDLDefaultTexts.Button_No) == RDMessageButtons.ButtonTwo);
 
@@ -155,7 +155,7 @@ namespace RD_AAOW
 		private void MOpen_Click (object sender, EventArgs e)
 			{
 			if ((CommandsListBox.Items.Count == 0) ||
-				(RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center,
+				(RDInterface.LocalizedMessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 				"OpenExistingFile", RDLDefaultTexts.Button_Yes,
 				RDLDefaultTexts.Button_No) == RDMessageButtons.ButtonOne))
 				{
@@ -173,7 +173,7 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				RDInterface.MessageBox (RDMessageTypes.Warning_Center,
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt),
 					OFDialog.FileName));
 				return;
@@ -215,7 +215,7 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				RDInterface.MessageBox (RDMessageTypes.Warning_Center,
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
 					SFDialog.FileName));
 				return;
@@ -248,8 +248,8 @@ namespace RD_AAOW
 
 		private void ExDialog_FileOk (object sender, CancelEventArgs e)
 			{
-			if (RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "BeginMacro",
-				RDLDefaultTexts.Button_Yes, RDLDefaultTexts.Button_No) !=
+			if (RDInterface.LocalizedMessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
+				"BeginMacro", RDLDefaultTexts.Button_Yes, RDLDefaultTexts.Button_No) !=
 				RDMessageButtons.ButtonOne)
 				return;
 

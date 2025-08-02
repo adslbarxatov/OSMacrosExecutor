@@ -1,5 +1,3 @@
-_Changes for v 3.7.2_:
+_Changes for v 3.7.3_:
 - Internal assemblies have been updated;
-- Added version control for macros executor;
-- Added support for new offline help provider;
-- The application has been migrated to `.NET 9.0` from `.NET Framework 4.8.1`
+- Added version control for macros executor
