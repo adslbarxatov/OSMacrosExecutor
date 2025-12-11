@@ -34,13 +34,15 @@ int main (int argc, char* argv[])
 
 	// ESHQ: XPUN-контроль
 	if (!CheckXPUNClass ())
-		_EXITONERROR (-170);
+		/*_EXITONERROR (-170);*/
+		return -170;
 
 	// Проверка корректности вызова программы
 	if (argc < 2)
 		{
 		printf (" \x13 Usage: OSMacrosEx <FullPathToMacroFile> [CountOfRepeats]\n\n");
-		_EXITONERROR (-1)
+		/*_EXITONERROR (-1)*/
+		return -1;
 		}
 	sprintf (FileName, argv[1]);
 
@@ -55,7 +57,8 @@ int main (int argc, char* argv[])
 	if ((F1 = fopen (FileName, "r")) == NULL)
 		{
 		printf (" \x13 Specified file cannot be opened\n\n");
-		_EXITONERROR (-2);
+		/*_EXITONERROR (-2);*/
+		return -2;
 		}
 
 	// Запуск на выполнение
