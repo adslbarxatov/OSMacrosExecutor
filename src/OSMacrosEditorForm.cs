@@ -35,7 +35,8 @@ namespace RD_AAOW
 				}
 
 			// Настройка контролов
-			this.Text = ProgramDescription.AssemblyTitle;
+			/*this.Text = ProgramDescription.AssemblyTitle;*/
+			this.Text = RDGenerics.DefaultAssemblyVisibleName;
 			RDGenerics.LoadWindowDimensions (this);
 
 			MouseX.Maximum = Screen.PrimaryScreen.Bounds.Width - 1;
@@ -254,7 +255,7 @@ namespace RD_AAOW
 				return;
 
 			// Обработка количества выполнений
-			uint repeats = 0;
+			/*uint repeats = 0;
 			try
 				{
 				repeats = uint.Parse (ExecutionRepeats.Text);
@@ -265,13 +266,27 @@ namespace RD_AAOW
 				{
 				ExecutionRepeats.Text = "1";
 				repeats = 1;
+				}*/
+			string repeats = RDInterface.LocalizedMessageBox ("RepeatsMessage", true, 3, "1");
+			if (string.IsNullOrWhiteSpace (repeats))
+				return;
+
+			uint r;
+			try
+				{
+				r = uint.Parse (repeats);
+				}
+			catch
+				{
+				r = 1;
 				}
 
 			// Запуск
 			this.SendToBack ();
 
 			Process p = Process.Start (RDGenerics.AppStartupPath + ProgramDescription.AssemblyExecutionModule,
-				"\"" + ExDialog.FileName + "\" " + repeats.ToString ());
+				/*"\"" + ExDialog.FileName + "\" " + repeats.ToString ());*/
+				"\"" + ExDialog.FileName + "\" " + r.ToString ());
 			p.WaitForExit ();
 
 			this.BringToFront ();
@@ -422,7 +437,7 @@ namespace RD_AAOW
 			RDInterface.ShowAbout (false);
 			}
 
-		// Установка количества запусков макроса
+		/*// Установка количества запусков макроса
 		private void ExecutionRepeats_TextChanged (object sender, EventArgs e)
 			{
 			if (ExecutionRepeats.Text != "")
@@ -436,7 +451,7 @@ namespace RD_AAOW
 					ExecutionRepeats.Text = "1";
 					}
 				}
-			}
+			}*/
 
 		// Управление циклами
 		private void BeginCycle_Click (object sender, EventArgs e)

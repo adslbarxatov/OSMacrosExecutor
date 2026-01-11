@@ -14,8 +14,8 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Ресурсы: данные о создаваемом приложении
-#define OSME_VERSION				3,8,0,0
-#define OSME_VERSION_S				"3.8.0.0"
+#define OSME_VERSION				3,8,2,0
+#define OSME_VERSION_S				"3.8.2.0"
 #define OSME_PRODUCT				"Operating system macros executor"
 #define OSME_COMPANY				FDL_COMPANY
 // Активен с 30.07.2017; 21:14
@@ -24,9 +24,22 @@
 // Макросы
 // Управление
 #define _PAUSE(p)		Sleep (p);
-/*define _EXITONERROR(c)	return c;*/
 schar ExecutionCommand[DEFAULTSIZE];
 #define _EXEC			system (ExecutionCommand);
+
+// Псевдонимы команд
+#define CMD_RUN_APP_NO_WAIT		'0'
+#define CMD_SET_POSITION		'1'
+#define CMD_CLICK_L				'2'
+#define CMD_CLICK_R				'3'
+#define CMD_KEY_DOWN			'4'
+#define CMD_PAUSE				'5'
+#define CMD_DRAG_START			'6'
+#define CMD_DRAG_END			'7'
+#define CMD_RUN_APP_WAIT		'8'
+#define CMD_EXP_PIX_COLOR		'C'
+#define CMD_CYCLE_START			'+'
+#define CMD_CYCLE_END			'-'
 
 // Мышь
 #define _MOVETO(x,y)	mouse_event (MOUSEEVENTF_MOVE | MOUSEEVENTF_ABSOLUTE, x, y, 0, 0);

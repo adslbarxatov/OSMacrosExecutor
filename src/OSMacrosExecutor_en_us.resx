@@ -180,10 +180,10 @@ Begin macro?</value>
     <value>Stay here and press combination</value>
   </data>
   <data name="MExecuteCurrentText" xml:space="preserve">
-    <value>Execute &amp;current macro; repeats:</value>
+    <value>Execute &amp;current macro</value>
   </data>
   <data name="MExecuteText" xml:space="preserve">
-    <value>&amp;Execute macro; repeats:</value>
+    <value>&amp;Execute macro...</value>
   </data>
   <data name="MFileText" xml:space="preserve">
     <value>&amp;File</value>
@@ -227,6 +227,9 @@ All unsaved data will be lost!</value>
     <value>Do you want to quit application?
 
 All unsaved data will be lost!</value>
+  </data>
+  <data name="RepeatsMessage" xml:space="preserve">
+    <value>Enter the number of repetitions</value>
   </data>
   <data name="SetMousePointerText" xml:space="preserve">
     <value>Select...</value>

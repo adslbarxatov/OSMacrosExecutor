@@ -180,10 +180,10 @@
     <value>Кликните и нажмите комбинацию</value>
   </data>
   <data name="MExecuteCurrentText" xml:space="preserve">
-    <value>Выполнить &amp;текущий макрос; повторов:</value>
+    <value>Выполнить &amp;текущий макрос</value>
   </data>
   <data name="MExecuteText" xml:space="preserve">
-    <value>&amp;Выполнить макрос; повторов:</value>
+    <value>&amp;Выполнить макрос...</value>
   </data>
   <data name="MFileText" xml:space="preserve">
     <value>&amp;Файл</value>
@@ -227,6 +227,9 @@
     <value>Завершить работу с приложением?
 
 Все несохранённые данные будут утеряны!</value>
+  </data>
+  <data name="RepeatsMessage" xml:space="preserve">
+    <value>Введите число повторов</value>
   </data>
   <data name="SetMousePointerText" xml:space="preserve">
     <value>Задать...</value>

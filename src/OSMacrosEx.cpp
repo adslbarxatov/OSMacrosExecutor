@@ -4,7 +4,6 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Переменные
-FILE *F1;
 schar commands[DEFAULTSIZE][DEFAULTSIZE];
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -29,19 +28,20 @@ int main (int argc, char* argv[])
 	HBITMAP memBitmap;
 	COLORREF color;
 
-	// Заголовок
-	printf ("\n %s\n by %s\n\n", OSME_PRODUCT, OSME_COMPANY);
+	FILE *F1;
 
-	// ESHQ: XPUN-контроль
+	// Заголовок
+	/*printf ("\n %s\n by %s\n\n", OSME_PRODUCT, OSME_COMPANY);*/
+	printf ("\n \x0F " OSME_PRODUCT " \x0F \n   by  " OSME_COMPANY "\n\n");
+
+	// XPUN-контроль
 	if (!CheckXPUNClass ())
-		/*_EXITONERROR (-170);*/
 		return -170;
 
 	// Проверка корректности вызова программы
 	if (argc < 2)
 		{
 		printf (" \x13 Usage: OSMacrosEx <FullPathToMacroFile> [CountOfRepeats]\n\n");
-		/*_EXITONERROR (-1)*/
 		return -1;
 		}
 	sprintf (FileName, argv[1]);
@@ -57,7 +57,6 @@ int main (int argc, char* argv[])
 	if ((F1 = fopen (FileName, "r")) == NULL)
 		{
 		printf (" \x13 Specified file cannot be opened\n\n");
-		/*_EXITONERROR (-2);*/
 		return -2;
 		}
 
@@ -65,6 +64,7 @@ int main (int argc, char* argv[])
 	for (i = 0; i < repeats; i++)
 		{
 		cycleFinisher = 0;
+		printf (" \x10 Repetition #%u started\n", i + 1);
 
 		// Второе условие вместе с инкрементом сработает только в конце файла
 		while (fgets (str, DEFAULTSIZE, F1) || !cycleFinisher++)
@@ -79,29 +79,29 @@ cycle:
 			switch (str[0])
 				{
 				// Запуск программы / файла без ожидания завершения
-				case '0':
+				case CMD_RUN_APP_NO_WAIT:
 					sprintf (ExecutionCommand, "start \"\" %s", str + 2);
 					_EXEC;
 					break;
 
 				// Установка курсора в позицию экрана
-				case '1':
+				case CMD_SET_POSITION:
 					sscanf (str + 2, "%u %u", &x, &y);
 					_MOVETO (x, y);
 					break;
 
 				// Одинарные щелчки мыши
-				case '2':
+				case CMD_CLICK_L:
 					_LDOWN;
 					_LUP;
 					break;
 
-				case '3':
+				case CMD_CLICK_R:
 					_RCLICK;
 					break;
 
 				// Нажатие клавиш клавиатуры
-				case '4':
+				case CMD_KEY_DOWN:
 					sscanf (str + 2, "%u %u", &x, &y);
 					switch (x)
 						{
@@ -136,29 +136,29 @@ cycle:
 					break;
 
 				// Пауза
-				case '5':
+				case CMD_PAUSE:
 					sscanf (str + 2, "%u", &x);
 					_PAUSE (x);
 					break;
 
 				// Begin dragging
-				case '6':
+				case CMD_DRAG_START:
 					_LDOWN;
 					break;
 
 				// End dragging
-				case '7':
+				case CMD_DRAG_END:
 					_LUP;
 					break;
 
 				// Выполнение команды с ожиданием завершения
-				case '8':
+				case CMD_RUN_APP_WAIT:
 					sprintf (ExecutionCommand, "%s", str + 2);
 					_EXEC;
 					break;
 
 				// Выполнение команды ожидания изменения цвета пикселя
-				case 'C':
+				case CMD_EXP_PIX_COLOR:
 					sscanf (str + 2, "%u %u %u %u %u %u %u", &x, &y, &r, &g, &b, &x2, &y2);
 					if ((x2 * y2 == 0) || (x >= x2) || (y >= y2) ||
 						(r > 0xFF) || (g > 0xFF) || (b > 0xFF))
@@ -181,7 +181,7 @@ cycle:
 						break;
 
 				// Запуск и остановка цикла
-				case '+':
+				case CMD_CYCLE_START:
 					// Защита от вложенности
 					if (cyclePhase == 1)
 						continue;
@@ -193,10 +193,10 @@ cycle:
 
 					// Начало наполнения цикла
 					cyclePhase = 1;
-					printf (" \x10 Cycle started\n");
+					printf (" \x10  Cycle started\n");
 					continue;
 
-				case '-':
+				case CMD_CYCLE_END:
 					// Защита от неправильного порядка
 					if (cyclePhase == 0)
 						continue;
@@ -206,12 +206,12 @@ cycle:
 					currentCycle = 1;	// Одна итерация уже выполнена
 					cyclePhase = 2;
 
-					printf (" \x10 Round %u\n", currentCycle + 1);
+					printf (" \x10  Round %u\n", currentCycle + 1);
 					break;
 
 				// Неизвестная команда
 				default:
-					printf (" \x13 Command [%s] ignored (unknown command code)\n", str);
+					printf (" \x13   Command [%s] ignored - unknown command code\n", str);
 					continue;
 				}
 
@@ -224,6 +224,10 @@ cycle:
 				sprintf (commands[cycleLines], "%s", str);
 				cycleLines++;
 				}
+
+			// Отображение ответа
+			if (str[0] != CMD_CYCLE_END)
+				printf (" \x10   Command [%s] executed\n", str);
 
 			// Выполнение цикла
 			if (cyclePhase == 2)
@@ -239,12 +243,12 @@ cycle:
 						{
 						cyclePhase = 0;
 						cycleLines = currentCycle = cycles = 0;
-						printf (" \x10 Cycle finished\n");
+						printf (" \x10  Cycle finished\n");
 						continue;
 						}
 					else
 						{
-						printf (" \x10 Round %u\n", currentCycle + 1);
+						printf (" \x10  Round %u\n", currentCycle + 1);
 						}
 					}
 
@@ -252,9 +256,6 @@ cycle:
 				sprintf (str, "%s", commands[currentCycleLine++]);
 				goto cycle;
 				}
-
-			// Отображение ответа
-			printf (" \x10 Command [%s] executed\n", str);
 			}
 
 		// Возврат в начало файла
@@ -263,6 +264,8 @@ cycle:
 
 	// Завершение
 	printf (" \x0F Execution completed\n\n");
+	fclose (F1);
+
 	if (screenDC)
 		{
 		DeleteObject (memBitmap);
