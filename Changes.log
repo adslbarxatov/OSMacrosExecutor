@@ -1,5 +1,8 @@
 OS macros executor: changes log
 
+Version 3.8.3:
+• Offline help has been replaced with the PDF format
+
 Version 3.8.2:
 • Added the stand-alone window for entering the number of repetitions;
 • Fixed missing console messages for commands executed inside cycles
