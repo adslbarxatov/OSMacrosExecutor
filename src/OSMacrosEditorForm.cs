@@ -35,7 +35,6 @@ namespace RD_AAOW
 				}
 
 			// Настройка контролов
-			/*this.Text = ProgramDescription.AssemblyTitle;*/
 			this.Text = RDGenerics.DefaultAssemblyVisibleName;
 			RDGenerics.LoadWindowDimensions (this);
 
@@ -255,18 +254,6 @@ namespace RD_AAOW
 				return;
 
 			// Обработка количества выполнений
-			/*uint repeats = 0;
-			try
-				{
-				repeats = uint.Parse (ExecutionRepeats.Text);
-				}
-			catch { }
-
-			if (repeats < 1)
-				{
-				ExecutionRepeats.Text = "1";
-				repeats = 1;
-				}*/
 			string repeats = RDInterface.LocalizedMessageBox ("RepeatsMessage", true, 3, "1");
 			if (string.IsNullOrWhiteSpace (repeats))
 				return;
@@ -285,7 +272,6 @@ namespace RD_AAOW
 			this.SendToBack ();
 
 			Process p = Process.Start (RDGenerics.AppStartupPath + ProgramDescription.AssemblyExecutionModule,
-				/*"\"" + ExDialog.FileName + "\" " + repeats.ToString ());*/
 				"\"" + ExDialog.FileName + "\" " + r.ToString ());
 			p.WaitForExit ();
 
@@ -436,22 +422,6 @@ namespace RD_AAOW
 			{
 			RDInterface.ShowAbout (false);
 			}
-
-		/*// Установка количества запусков макроса
-		private void ExecutionRepeats_TextChanged (object sender, EventArgs e)
-			{
-			if (ExecutionRepeats.Text != "")
-				{
-				try
-					{
-					uint i = uint.Parse (ExecutionRepeats.Text);
-					}
-				catch
-					{
-					ExecutionRepeats.Text = "1";
-					}
-				}
-			}*/
 
 		// Управление циклами
 		private void BeginCycle_Click (object sender, EventArgs e)
