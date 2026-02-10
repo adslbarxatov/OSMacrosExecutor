@@ -51,6 +51,7 @@ If something went wrong, you can use this example file (`Test.osm`):
 | `1 9507 19909` | Set mouse position (relative to screen: x = 0.145, y = 0.304) |
 | `7` | End dragging |
 
+&nbsp;
 
 
 
