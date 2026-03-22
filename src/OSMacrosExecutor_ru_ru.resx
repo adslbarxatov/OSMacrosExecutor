@@ -144,8 +144,11 @@
   <data name="AddWaitForColorText" xml:space="preserve">
     <value>&amp;Ждать изменения цвета пикселя</value>
   </data>
+  <data name="AlwaysRequestMacroPathRadio" xml:space="preserve">
+    <value>Всегда запрашивать путь сохранения макросов</value>
+  </data>
   <data name="BeginCycleText" xml:space="preserve">
-    <value>&amp;Цикл</value>
+    <value>Начать &amp;цикл</value>
   </data>
   <data name="BeginMacro" xml:space="preserve">
     <value>Во время выполнения использование клавиатуры и мыши не рекомендуется.
@@ -155,8 +158,14 @@
   <data name="CommandsListLabelText" xml:space="preserve">
     <value>Список команд:</value>
   </data>
+  <data name="CycleGroupText" xml:space="preserve">
+    <value>Цикл</value>
+  </data>
   <data name="CycleLabelText" xml:space="preserve">
     <value>раз</value>
+  </data>
+  <data name="DefaultMacroPathTitle" xml:space="preserve">
+    <value>Выберите директорию, в которой будут сохраняться файлы макросов</value>
   </data>
   <data name="EndCycleText" xml:space="preserve">
     <value>Завер&amp;шить цикл</value>
@@ -179,6 +188,9 @@
   <data name="KeyReceiverText" xml:space="preserve">
     <value>Кликните и нажмите комбинацию</value>
   </data>
+  <data name="LinePauseLabel" xml:space="preserve">
+    <value>Пауза между отдельными командами, мс:</value>
+  </data>
   <data name="MExecuteCurrentText" xml:space="preserve">
     <value>Выполнить &amp;текущий макрос</value>
   </data>
@@ -186,7 +198,7 @@
     <value>&amp;Выполнить макрос...</value>
   </data>
   <data name="MFileText" xml:space="preserve">
-    <value>&amp;Файл</value>
+    <value>&amp;Действия</value>
   </data>
   <data name="MilliLabelText" xml:space="preserve">
     <value>миллисекунд</value>
@@ -197,11 +209,11 @@
   <data name="MousePointerGroupText" xml:space="preserve">
     <value>Указатель мыши</value>
   </data>
-  <data name="MRegisterText" xml:space="preserve">
-    <value>За&amp;регистрировать сопоставление файлов</value>
-  </data>
   <data name="MSaveText" xml:space="preserve">
     <value>&amp;Сохранить макрос...</value>
+  </data>
+  <data name="MSettingsText" xml:space="preserve">
+    <value>Настро&amp;йки</value>
   </data>
   <data name="NoModifiers" xml:space="preserve">
     <value>(без модификаторов)</value>
@@ -229,7 +241,7 @@
 Все несохранённые данные будут утеряны!</value>
   </data>
   <data name="RepeatsMessage" xml:space="preserve">
-    <value>Введите число повторов</value>
+    <value>Введите число повторов (от {0:D} до {1:D})</value>
   </data>
   <data name="SetMousePointerText" xml:space="preserve">
     <value>Задать...</value>
@@ -239,6 +251,9 @@
   </data>
   <data name="SFDialogTitle" xml:space="preserve">
     <value>Укажите расположение нового макроса</value>
+  </data>
+  <data name="UseMacroPathRadio" xml:space="preserve">
+    <value>Сохранять макросы в:</value>
   </data>
   <data name="WaitForFinishText" xml:space="preserve">
     <value>Ждать завершения</value>

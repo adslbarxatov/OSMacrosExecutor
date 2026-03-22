@@ -14,8 +14,8 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Ресурсы: данные о создаваемом приложении
-#define OSME_VERSION				3,8,3,0
-#define OSME_VERSION_S				"3.8.3.0"
+#define OSME_VERSION				3,9,0,0
+#define OSME_VERSION_S				"3.9.0.0"
 #define OSME_PRODUCT				"Operating system macros executor"
 #define OSME_COMPANY				FDL_COMPANY
 // Активен с 30.07.2017; 21:14
@@ -26,6 +26,14 @@
 #define _PAUSE(p)		Sleep (p);
 schar ExecutionCommand[DEFAULTSIZE];
 #define _EXEC			system (ExecutionCommand);
+
+#define REPETITIONS_MIN			1
+#define REPETITIONS_MAX			100
+#define REPETITIONS_DEFAULT		1
+
+#define LINE_PAUSE_MIN			50
+#define LINE_PAUSE_MAX			5000
+#define LINE_PAUSE_DEFAULT		100
 
 // Псевдонимы команд
 #define CMD_RUN_APP_NO_WAIT		'0'

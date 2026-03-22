@@ -14,6 +14,7 @@ namespace RD_AAOW
 		{
 		// Переменные
 		private List<MacroCommand> commands = [];
+		private bool warningShown = false;
 
 		/// <summary>
 		/// Конструктор главной формы программы
@@ -24,7 +25,7 @@ namespace RD_AAOW
 			// Инициализация
 			InitializeComponent ();
 
-			LanguageCombo.Items.AddRange (RDLocale.LanguagesNames);
+			/*LanguageCombo.Items.AddRange (RDLocale.LanguagesNames);
 			try
 				{
 				LanguageCombo.SelectedIndex = (int)RDLocale.CurrentLanguage;
@@ -32,11 +33,12 @@ namespace RD_AAOW
 			catch
 				{
 				LanguageCombo.SelectedIndex = 0;
-				}
+				}*/
 
 			// Настройка контролов
 			this.Text = RDGenerics.DefaultAssemblyVisibleName;
 			RDGenerics.LoadWindowDimensions (this);
+			LocalizeForm ();
 
 			MouseX.Maximum = Screen.PrimaryScreen.Bounds.Width - 1;
 			MouseY.Maximum = Screen.PrimaryScreen.Bounds.Height - 1;
@@ -46,7 +48,8 @@ namespace RD_AAOW
 			KeyCode.SelectedIndex = 0;
 
 			// Загрузка файла, если требуется
-			if (MacroFile != "")
+			/*if (MacroFile != "")*/
+			if (!string.IsNullOrWhiteSpace (MacroFile))
 				{
 				OFDialog.FileName = MacroFile;
 				OFDialog_FileOk (null, null);
@@ -54,19 +57,20 @@ namespace RD_AAOW
 			}
 
 		// Локализация формы
-		private void LanguageCombo_SelectedIndexChanged (object sender, EventArgs e)
+		/*private void LanguageCombo_SelectedIndexChanged (object sender, EventArgs e)*/
+		private void LocalizeForm ()
 			{
-			// Сохранение
-			RDLocale.CurrentLanguage = (RDLanguages)LanguageCombo.SelectedIndex;
+			/*// Сохранение
+			RDLocale.CurrentLanguage = (RDLanguages)LanguageCombo.SelectedIndex;*/
 
 			// Локализация
 			OFDialog.Title = RDLocale.GetText ("OFDialogTitle");
 			SFDialog.Title = RDLocale.GetText ("SFDialogTitle");
-			ExDialog.Title = RDLocale.GetText ("ExDialogTitle");
+			/*ExDialog.Title = RDLocale.GetText ("ExDialogTitle");*/
 			FDialog.Title = RDLocale.GetText ("FDialogTitle");
 			OFDialog.Filter = string.Format (RDLocale.GetText ("OFDialogFilter"),
 				ProgramDescription.NewAppExtension, "macro");
-			SFDialog.Filter = ExDialog.Filter =
+			SFDialog.Filter = /*ExDialog.Filter =*/
 				string.Format (RDLocale.GetText ("SFDialogFilter"), ProgramDescription.NewAppExtension);
 			FDialog.Filter = RDLocale.GetText ("FDialogFilter");
 
@@ -93,11 +97,13 @@ namespace RD_AAOW
 			MFile.Text = RDLocale.GetText ("MFileText");
 			MOpen.Text = RDLocale.GetText ("MOpenText");
 			MSave.Text = RDLocale.GetText ("MSaveText");
-			MExecute.Text = RDLocale.GetText ("MExecuteText");
+			/*MExecute.Text = RDLocale.GetText ("MExecuteText");*/
 			MExecuteCurrent.Text = RDLocale.GetText ("MExecuteCurrentText");
+			MSettings.Text = RDLocale.GetText ("MSettingsText");
+			MLanguage.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceLanguageNC);
 
 			MHelp.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout);
-			MQuit.Text = ExitButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
+			MQuit.Text = /*ExitButton.Text =*/ RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
 
 			MousePointerGroup.Text = RDLocale.GetText ("MousePointerGroupText");
 			SetMousePointer.Text = RDLocale.GetText ("SetMousePointerText");
@@ -124,6 +130,7 @@ namespace RD_AAOW
 
 			CommandsListLabel.Text = RDLocale.GetText ("CommandsListLabelText");
 
+			CycleGroup.Text = RDLocale.GetText ("CycleGroupText");
 			BeginCycle.Text = RDLocale.GetText ("BeginCycleText");
 			EndCycle.Text = RDLocale.GetText ("EndCycleText");
 			CycleLabel.Text = RDLocale.GetText ("CycleLabelText");
@@ -196,7 +203,7 @@ namespace RD_AAOW
 			SR.Close ();
 			FS.Close ();
 
-			UpdateCommandsList ();
+			UpdateCommandsList (false);
 			}
 
 		// Сохранение макроса
@@ -232,29 +239,45 @@ namespace RD_AAOW
 			}
 
 		// Выполнение макроса
-		private void MExecute_Click (object sender, EventArgs e)
+		/*private void MExecute_Click (object sender, EventArgs e)
 			{
 			ExDialog.ShowDialog ();
-			}
+			}*/
 
 		private void MExecuteCurrent_Click (object sender, EventArgs e)
 			{
-			if (SFDialog.ShowDialog () != DialogResult.OK)
-				return;
+			// Выбор варианта хранения файла для запуска
+			if (string.IsNullOrWhiteSpace (OSMacrosSettings.DefaultMacroPath))
+				{
+				if (SFDialog.ShowDialog () != DialogResult.OK)
+					return;
+				}
+			else
+				{
+				SFDialog.FileName = OSMacrosSettings.DefaultMacroPath + DateTime.Now.ToString ("dd-MM-yyyy HH-mm") +
+					"." + ProgramDescription.NewAppExtension;
+				SFDialog_FileOk (null, null);
+				}
 
-			ExDialog.FileName = SFDialog.FileName;
+			/*ExDialog.FileName = SFDialog.FileName;
 			ExDialog_FileOk (null, null);
 			}
 
+		// Запуск
 		private void ExDialog_FileOk (object sender, CancelEventArgs e)
-			{
-			if (RDInterface.LocalizedMessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
+			{*/
+
+			// Контроль
+			if (!warningShown && RDInterface.LocalizedMessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 				"BeginMacro", RDLDefaultTexts.Button_Yes, RDLDefaultTexts.Button_No) !=
 				RDMessageButtons.ButtonOne)
 				return;
+			warningShown = true;
 
 			// Обработка количества выполнений
-			string repeats = RDInterface.LocalizedMessageBox ("RepeatsMessage", true, 3, "1");
+			string repeats = RDInterface.MessageBox (string.Format (RDLocale.GetText ("RepeatsMessage"),
+				OSMacrosSettings.RepetitionsMinimum, OSMacrosSettings.RepetitionsMaximum),
+				true, (uint)OSMacrosSettings.RepetitionsMaximum.ToString ().Length, OSMacrosSettings.RepetitionsDefault.ToString ());
 			if (string.IsNullOrWhiteSpace (repeats))
 				return;
 
@@ -262,17 +285,22 @@ namespace RD_AAOW
 			try
 				{
 				r = uint.Parse (repeats);
+
+				if (r < OSMacrosSettings.RepetitionsMinimum)
+					r = OSMacrosSettings.RepetitionsMinimum;
+				else if (r > OSMacrosSettings.RepetitionsMaximum)
+					r = OSMacrosSettings.RepetitionsMaximum;
 				}
 			catch
 				{
-				r = 1;
+				r = OSMacrosSettings.RepetitionsDefault;
 				}
 
 			// Запуск
 			this.SendToBack ();
 
 			Process p = Process.Start (RDGenerics.AppStartupPath + ProgramDescription.AssemblyExecutionModule,
-				"\"" + ExDialog.FileName + "\" " + r.ToString ());
+				"\"" + SFDialog.FileName + "\" " + r.ToString () + " " + OSMacrosSettings.LinePause.ToString ());
 			p.WaitForExit ();
 
 			this.BringToFront ();
@@ -310,15 +338,35 @@ namespace RD_AAOW
 			}
 
 		// Обновление списка команд
-		private void UpdateCommandsList ()
+		private void UpdateCommandsList (bool AddNew)
 			{
+			int idx = CommandsListBox.SelectedIndex;
+			if (idx < 0)
+				idx = 0;
+
 			// Обновление списка
 			CommandsListBox.Items.Clear ();
 			for (int i = 0; i < commands.Count; i++)
 				CommandsListBox.Items.Add (commands[i].CommandPresentation);
 
 			if (CommandsListBox.Items.Count > 0)
-				CommandsListBox.SelectedIndex = CommandsListBox.Items.Count - 1;
+				{
+				if (AddNew)
+					{
+					CommandsListBox.SelectedIndex = CommandsListBox.Items.Count - 1;
+					}
+				else
+					{
+					try
+						{
+						CommandsListBox.SelectedIndex = idx;
+						}
+					catch
+						{
+						CommandsListBox.SelectedIndex = CommandsListBox.Items.Count - 1;
+						}
+					}
+				}
 
 			// Обновление кнопок
 			MoveUp.Enabled = MoveDown.Enabled = (CommandsListBox.Items.Count > 1);
@@ -326,22 +374,36 @@ namespace RD_AAOW
 			}
 
 		// Добавление команд
+		private void AddCommand (MacroCommand MC)
+			{
+			// Число команд больше одной, выбранный индекс неотрицателен, и выбранная позиция не последняя
+			int lineIndex = CommandsListBox.SelectedIndex;
+			bool canInsert = (commands.Count > 1) && (lineIndex >= 0) && (lineIndex < commands.Count - 1);
+
+			if (canInsert)
+				commands.Insert (lineIndex + 1, MC);
+			else
+				commands.Add (MC);
+
+			UpdateCommandsList (!canInsert);
+			}
+
 		private void AddMousePointer_Click (object sender, EventArgs e)
 			{
-			commands.Add (new MacroCommand ((uint)MouseX.Value, (uint)MouseY.Value));
-			UpdateCommandsList ();
+			AddCommand (new MacroCommand ((uint)MouseX.Value, (uint)MouseY.Value));
+			/*UpdateCommandsList ();*/
 			}
 
 		private void AddKeyPress_Click (object sender, EventArgs e)
 			{
-			commands.Add (new MacroCommand ((KeyModifiers)KeyModifiers.SelectedIndex, (Keys)KeyCode.SelectedIndex));
-			UpdateCommandsList ();
+			AddCommand (new MacroCommand ((KeyModifiers)KeyModifiers.SelectedIndex, (Keys)KeyCode.SelectedIndex));
+			/*UpdateCommandsList ();*/
 			}
 
 		private void AddPause_Click (object sender, EventArgs e)
 			{
-			commands.Add (new MacroCommand ((uint)PauseLength.Value));
-			UpdateCommandsList ();
+			AddCommand (new MacroCommand ((uint)PauseLength.Value));
+			/*UpdateCommandsList ();*/
 			}
 
 		private void AddFileExecution_Click (object sender, EventArgs e)
@@ -349,72 +411,93 @@ namespace RD_AAOW
 			if (CommandPath.Text == "")
 				CommandPath.Text = "-";
 
-			commands.Add (new MacroCommand (CommandPath.Text, WaitForFinish.Checked));
-			UpdateCommandsList ();
+			AddCommand (new MacroCommand (CommandPath.Text, WaitForFinish.Checked));
+			/*UpdateCommandsList ();*/
 			}
 
 		private void AddLeftClick_Click (object sender, EventArgs e)
 			{
-			commands.Add (new MacroCommand (MouseCommands.LeftMouseClick));
-			UpdateCommandsList ();
+			AddCommand (new MacroCommand (MouseCommands.LeftMouseClick));
+			/*UpdateCommandsList ();*/
 			}
 
 		private void AddRightClick_Click (object sender, EventArgs e)
 			{
-			commands.Add (new MacroCommand (MouseCommands.RightMouseClick));
-			UpdateCommandsList ();
+			AddCommand (new MacroCommand (MouseCommands.RightMouseClick));
+			/*UpdateCommandsList ();*/
 			}
 
 		private void AddDragBeginning_Click (object sender, EventArgs e)
 			{
-			commands.Add (new MacroCommand (MouseCommands.StartDragNDrop));
-			UpdateCommandsList ();
+			AddCommand (new MacroCommand (MouseCommands.StartDragNDrop));
+			/*UpdateCommandsList ();*/
 			}
 
 		private void AddDragEnding_Click (object sender, EventArgs e)
 			{
-			commands.Add (new MacroCommand (MouseCommands.FinishDragNDrop));
-			UpdateCommandsList ();
+			AddCommand (new MacroCommand (MouseCommands.FinishDragNDrop));
+			/*UpdateCommandsList ();*/
+			}
+
+		private void BeginCycle_Click (object sender, EventArgs e)
+			{
+			AddCommand (new MacroCommand (true, (uint)CycleRounds.Value));
+			}
+
+		private void EndCycle_Click (object sender, EventArgs e)
+			{
+			AddCommand (new MacroCommand (false, 0));
+			}
+
+		private void AddWaitForColor_Click (object sender, EventArgs e)
+			{
+			AddCommand (new MacroCommand ((uint)MouseX.Value, (uint)MouseY.Value, SetPixelColor.BackColor));
 			}
 
 		// Изменение списка
 		private void DeleteItem_Click (object sender, EventArgs e)
 			{
-			if (CommandsListBox.SelectedIndex >= 0)
-				{
-				commands.RemoveAt (CommandsListBox.SelectedIndex);
-				UpdateCommandsList ();
-				}
+			/*if (CommandsListBox.SelectedIndex >= 0)
+				{*/
+			if (CommandsListBox.SelectedIndex < 0)
+				return;
+
+			commands.RemoveAt (CommandsListBox.SelectedIndex);
+			UpdateCommandsList (false);
+			/*}*/
 			}
 
 		private void MoveUp_Click (object sender, EventArgs e)
 			{
-			if (CommandsListBox.SelectedIndex <= 0)
+			// Выбрана не верхняя позиция
+			int i = CommandsListBox.SelectedIndex;
+			if (i <= 0)
 				return;
 
-			// Выбрана не верхняя позиция
-			string command = commands[CommandsListBox.SelectedIndex].MacroFileCommandPresentation;
-			int i = CommandsListBox.SelectedIndex;
+			string command = commands[i].MacroFileCommandPresentation;
 
 			commands.RemoveAt (i);
 			commands.Insert (i - 1, MacroCommand.BuildMacroCommand (command));
-			UpdateCommandsList ();
+			UpdateCommandsList (false);
 			CommandsListBox.SelectedIndex = i - 1;
 			}
 
 		private void MoveDown_Click (object sender, EventArgs e)
 			{
 			// Выбрана не нижняя позиция
-			if ((CommandsListBox.SelectedIndex >= 0) && (CommandsListBox.SelectedIndex < CommandsListBox.Items.Count - 1))
-				{
-				string command = commands[CommandsListBox.SelectedIndex].MacroFileCommandPresentation;
-				int i = CommandsListBox.SelectedIndex;
+			int i = CommandsListBox.SelectedIndex;
+			if ((i < 0) || (i >= CommandsListBox.Items.Count - 1))
+				return;
+			/*if ((CommandsListBox.SelectedIndex >= 0) && (CommandsListBox.SelectedIndex < CommandsListBox.Items.Count - 1))
+				{*/
 
-				commands.RemoveAt (i);
-				commands.Insert (i + 1, MacroCommand.BuildMacroCommand (command));
-				UpdateCommandsList ();
-				CommandsListBox.SelectedIndex = i + 1;
-				}
+			string command = commands[i].MacroFileCommandPresentation;
+
+			commands.RemoveAt (i);
+			commands.Insert (i + 1, MacroCommand.BuildMacroCommand (command));
+			UpdateCommandsList (false);
+			CommandsListBox.SelectedIndex = i + 1;
+			/*}*/
 			}
 
 		// Отображение краткой справочной информации
@@ -423,25 +506,25 @@ namespace RD_AAOW
 			RDInterface.ShowAbout (false);
 			}
 
-		// Управление циклами
+		/*// Управление циклами
 		private void BeginCycle_Click (object sender, EventArgs e)
 			{
-			commands.Add (new MacroCommand (true, (uint)CycleRounds.Value));
+			commands. Add (new MacroCommand (true, (uint)CycleRounds.Value));
 			UpdateCommandsList ();
 			}
 
 		private void EndCycle_Click (object sender, EventArgs e)
 			{
-			commands.Add (new MacroCommand (false, 0));
+			commands. Add (new MacroCommand (false, 0));
 			UpdateCommandsList ();
-			}
+			}*/
 
-		// Добавление команды ожидания изменения пикселя
+		/*// Добавление команды ожидания изменения пикселя
 		private void AddWaitForColor_Click (object sender, EventArgs e)
 			{
-			commands.Add (new MacroCommand ((uint)MouseX.Value, (uint)MouseY.Value, SetPixelColor.BackColor));
+			commands. Add (new MacroCommand ((uint)MouseX.Value, (uint)MouseY.Value, SetPixelColor.BackColor));
 			UpdateCommandsList ();
-			}
+			}*/
 
 		// Ручное изменение цвета пикселя
 		private void SetPixelColor_Click (object sender, EventArgs e)
@@ -449,6 +532,19 @@ namespace RD_AAOW
 			CDialog.Color = SetPixelColor.BackColor;
 			if (CDialog.ShowDialog () == DialogResult.OK)
 				SetPixelColor.BackColor = CDialog.Color;
+			}
+
+		// Вызов окна настроек
+		private void MSettings_Click (object sender, EventArgs e)
+			{
+			_ = new OSMacrosSettings ();
+			}
+
+		// Выбор языка интерфейса
+		private void MLanguage_Click (object sender, EventArgs e)
+			{
+			if (RDInterface.MessageBox ())
+				LocalizeForm ();
 			}
 		}
 	}

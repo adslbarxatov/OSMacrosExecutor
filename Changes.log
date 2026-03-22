@@ -1,7 +1,16 @@
 OS macros executor: changes log
 
+Version 3.9:
+• Added support for adjustable pause between commands;
+• Actions menu in the editor interface has been rebuilt;
+• The main window has been rearranged;
+• Behavior of sorting operations in the commands list have been improved (correct deletion and insertion);
+• Added support for the default path where the current macro can be saved before
+  execution (to remove extraneous requests from user);
+• Some code refactoring has been applied
+
 Version 3.8.5:
-• Upgraded the update checking method
+• Upgraded the updates checking method
 
 Version 3.8.4:
 • Package format has been updated

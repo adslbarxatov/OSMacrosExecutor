@@ -144,8 +144,11 @@
   <data name="AddWaitForColorText" xml:space="preserve">
     <value>&amp;Wait for pixel's color change</value>
   </data>
+  <data name="AlwaysRequestMacroPathRadio" xml:space="preserve">
+    <value>Always request path for new macros</value>
+  </data>
   <data name="BeginCycleText" xml:space="preserve">
-    <value>&amp;Cycle</value>
+    <value>Begin &amp;cycle</value>
   </data>
   <data name="BeginMacro" xml:space="preserve">
     <value>During execution using of keyboard or mouse is not recommended.
@@ -155,8 +158,14 @@ Begin macro?</value>
   <data name="CommandsListLabelText" xml:space="preserve">
     <value>Commands list:</value>
   </data>
+  <data name="CycleGroupText" xml:space="preserve">
+    <value>Cycle</value>
+  </data>
   <data name="CycleLabelText" xml:space="preserve">
     <value>times</value>
+  </data>
+  <data name="DefaultMacroPathTitle" xml:space="preserve">
+    <value>Select the directory where the macro files will be saved</value>
   </data>
   <data name="EndCycleText" xml:space="preserve">
     <value>E&amp;nd cycle</value>
@@ -179,6 +188,9 @@ Begin macro?</value>
   <data name="KeyReceiverText" xml:space="preserve">
     <value>Stay here and press combination</value>
   </data>
+  <data name="LinePauseLabel" xml:space="preserve">
+    <value>Pause between separate commands, ms:</value>
+  </data>
   <data name="MExecuteCurrentText" xml:space="preserve">
     <value>Execute &amp;current macro</value>
   </data>
@@ -186,7 +198,7 @@ Begin macro?</value>
     <value>&amp;Execute macro...</value>
   </data>
   <data name="MFileText" xml:space="preserve">
-    <value>&amp;File</value>
+    <value>&amp;Actions</value>
   </data>
   <data name="MilliLabelText" xml:space="preserve">
     <value>milliseconds</value>
@@ -197,11 +209,11 @@ Begin macro?</value>
   <data name="MousePointerGroupText" xml:space="preserve">
     <value>Mouse pointer</value>
   </data>
-  <data name="MRegisterText" xml:space="preserve">
-    <value>&amp;Register file association</value>
-  </data>
   <data name="MSaveText" xml:space="preserve">
     <value>&amp;Save macro...</value>
+  </data>
+  <data name="MSettingsText" xml:space="preserve">
+    <value>Settin&amp;gs</value>
   </data>
   <data name="NoModifiers" xml:space="preserve">
     <value>(no modifiers)</value>
@@ -229,7 +241,7 @@ All unsaved data will be lost!</value>
 All unsaved data will be lost!</value>
   </data>
   <data name="RepeatsMessage" xml:space="preserve">
-    <value>Enter the number of repetitions</value>
+    <value>Enter the number of repetitions (from {0:D} to {1:D})</value>
   </data>
   <data name="SetMousePointerText" xml:space="preserve">
     <value>Select...</value>
@@ -239,6 +251,9 @@ All unsaved data will be lost!</value>
   </data>
   <data name="SFDialogTitle" xml:space="preserve">
     <value>Select new macro’s placement</value>
+  </data>
+  <data name="UseMacroPathRadio" xml:space="preserve">
+    <value>Save macros to:</value>
   </data>
   <data name="WaitForFinishText" xml:space="preserve">
     <value>Wait for completion</value>

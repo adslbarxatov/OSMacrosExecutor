@@ -1,19 +1,21 @@
 _en_us_
 
-- Improved the updates checking method;
-- Package format has been updated;
-- Offline help has been replaced with the `PDF` format;
-- Added the stand-alone window for entering the number of repetitions;
-- Fixed missing console messages for commands executed inside cycles
+- Added support for adjustable pauses between commands;
+- Redesigned the action menu in the editor interface;
+- Rebuilt the main window;
+- Improved sorting behavior in the command list (correct deletion and insertion);
+- Added support for a default path where the current macro will be saved before execution (to avoid unnecessary prompts to the user);
+- Some code refactoring was performed
 
 ⁂
 
 _ru_ru_
 
-- Улучшен метод проверки обновлений;
-- Обновлён формат пакета;
-- Автономная справка заменена на формат `PDF`;
-- Добавлено отдельное окно для ввода количества повторений;
-- Исправлены отсутствующие сообщения в консоли для команд, выполняемых внутри циклов
+- Добавлена поддержка регулируемой паузы между командами;
+- Переработано меню действий в интерфейсе редактора;
+- Перестроено главное окно;
+- Улучшено поведение операций сортировки в списке команд (корректное удаление и вставка);
+- Добавлена поддержка пути по умолчанию, куда будет сохранён текущий макрос перед выполнением (для исключения лишних запросов к пользователю);
+- Проведён рефакторинг кода
 
 ⁂
