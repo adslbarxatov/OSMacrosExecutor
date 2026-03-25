@@ -1,5 +1,8 @@
 OS macros executor: changes log
 
+ToDo:
+- display progress (save commands counter as fake command code?)
+
 Version 3.9:
 • Added support for adjustable pause between commands;
 • Actions menu in the editor interface has been rebuilt;
