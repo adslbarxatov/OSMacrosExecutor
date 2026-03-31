@@ -1,7 +1,8 @@
 OS macros executor: changes log
 
-ToDo:
-- display progress (save commands counter as fake command code?)
+Version 3.10:
+• Commands list has been properly localized;
+• The macros executor can now indicate current progress in the taskbar
 
 Version 3.9:
 • Added support for adjustable pause between commands;

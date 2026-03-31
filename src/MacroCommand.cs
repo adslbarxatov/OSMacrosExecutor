@@ -67,7 +67,12 @@ namespace RD_AAOW
 		/// <summary>
 		/// Ждать, пока пиксель не изменит цвет
 		/// </summary>
-		WaitForPixelChange = 12
+		WaitForPixelChange = 12,
+
+		/// <summary>
+		/// Псевдокоманда: используется для передачи общего числа команд в файле макроса
+		/// </summary>
+		_CommandsQuantity_ = 13,
 		}
 
 	/// <summary>
@@ -344,6 +349,21 @@ namespace RD_AAOW
 			pixelColor = Color.FromArgb (255, TrueColor);
 			}
 
+		/*/// <summary>
+		/// Конструктор. Создаёт псевдокоманду, передающую число строк в файле макроса
+		/// </summary>
+		/// <param name="Counter">Число строк в файле</param>
+		public MacroCommand (Size Counter)
+			{
+			commandType = CommandTypes2._CommandsCounter_;
+			pauseLength = (uint)Counter.Height;
+			}*/
+
+		/// <summary>
+		/// Возвращает псевдоним псевдокоманды CommandsQuantity
+		/// </summary>
+		public const string CommandsQuantityAlias = "#";
+
 		/// <summary>
 		/// Возвращает представление команды, используемое для записи в файл
 		/// </summary>
@@ -361,6 +381,10 @@ namespace RD_AAOW
 					case CommandTypes.EndCycle:
 						res = "-";
 						break;
+
+					// Не используется
+					case CommandTypes._CommandsQuantity_:
+						return "";
 
 					default:
 						res = ((int)commandType).ToString () + " ";
@@ -400,6 +424,9 @@ namespace RD_AAOW
 					case CommandTypes.BeginCycle:
 						return (res + cycleRounds.ToString ());
 
+					/*case CommandTypes2._CommandsCounter_:
+						return (res + pauseLength.ToString ());*/
+
 					default:
 						throw new Exception ("Parameters exchange failure at point 1. Debug needed");
 					}
@@ -413,46 +440,61 @@ namespace RD_AAOW
 			{
 			get
 				{
+				string cmd = RDLocale.GetText ("Command_" + commandType.ToString ());
+
 				switch (commandType)
 					{
 					case CommandTypes.ExecuteCommand:
-						return "Execution: " + commandPath;
+					/*return "Execution: " + commandPath;*/
 
 					case CommandTypes.ExecuteCommandAndWait:
-						return "Execution and waiting: " + commandPath;
+						/*return "Execution and awaiting: " + commandPath;*/
+						return string.Format (cmd, commandPath);
 
 					case CommandTypes.ExecutionPause:
-						return "Execution pause (" + pauseLength.ToString () + " ms)";
+						/*return "Execution pause (" + pauseLength.ToString () + " ms)";*/
+						return string.Format (cmd, pauseLength);
 
 					case CommandTypes.FinishDragNDrop:
-						return "End dragging";
+					/*return "End dragging";*/
 
 					case CommandTypes.LeftMouseClick:
-						return "Left mouse button click";
-
-					case CommandTypes.PressKeys:
-						return "Key press (" + pressedKeyModifier.ToString () + ", " + pressedKey.ToString () + ")";
+					/*return "Left mouse button click";*/
 
 					case CommandTypes.RightMouseClick:
-						return "Right mouse button click";
+					case CommandTypes.StartDragNDrop:
+					case CommandTypes.EndCycle:
+						return cmd;
+
+					case CommandTypes.PressKeys:
+						/*return "Key press (" + pressedKeyModifier.ToString () + ", " + pressedKey.ToString () + ")";*/
+						return string.Format (cmd, pressedKeyModifier.ToString (), pressedKey.ToString ());
+
+					/*case CommandTypes.RightMouseClick:
+						return "Right mouse button click";*/
 
 					case CommandTypes.SetCursorPosition:
-						return "Set mouse pointer position to (" + mouseX.ToString () + "; " + mouseY.ToString () + ")";
+						/*return "Set mouse pointer position to (" + mouseX.ToString () + "; " + mouseY.ToString () + ")";*/
+						return string.Format (cmd, mouseX, mouseY);
 
-					case CommandTypes.StartDragNDrop:
-						return "Begin dragging";
+					/*case CommandTypes.StartDragNDrop:
+						return "Begin dragging";*/
 
 					case CommandTypes.BeginCycle:
-						return " BEGIN CYCLE (" + cycleRounds.ToString () + " t.)";
+						/*return " BEGIN CYCLE (" + cycleRounds.ToString () + " t.)";*/
+						return string.Format (cmd, cycleRounds);
 
-					case CommandTypes.EndCycle:
-						return " END CYCLE";
+					/*case CommandTypes.EndCycle:
+						return " END CYCLE";*/
 
 					case CommandTypes.WaitForPixelChange:
-						return "Wait while Pos (" + mouseX.ToString () + "; " + mouseY.ToString () + ") != RGB (" +
+						/*return "Wait while Pos (" + mouseX.ToString () + "; " + mouseY.ToString () + ") != RGB (" +
 							pixelColor.R.ToString () + "; " + pixelColor.G.ToString () + "; " +
-							pixelColor.B.ToString () + ")";
+							pixelColor.B.ToString () + ")";*/
+						return string.Format (cmd, mouseX, mouseY, pixelColor.R, pixelColor.G, pixelColor.B);
 
+					// Не должно происходить
+					case CommandTypes._CommandsQuantity_:
 					default:
 						throw new Exception ("Parameters exchange failure at point 2. Debug needed");
 					}
@@ -467,7 +509,8 @@ namespace RD_AAOW
 		public static MacroCommand BuildMacroCommand (string CommandPresentation)
 			{
 			// Разбор команды
-			if (CommandPresentation == null)
+			/*if (CommandPresentation == null)*/
+			if (string.IsNullOrWhiteSpace (CommandPresentation))
 				return null;
 
 			string[] values = CommandPresentation.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
@@ -484,6 +527,10 @@ namespace RD_AAOW
 					command = CommandTypes.EndCycle;
 				else if (values[0] == "C")
 					command = CommandTypes.WaitForPixelChange;
+
+				// Команда # – CommandsCounter должна быть пропущена
+				else if (values[0] == CommandsQuantityAlias)
+					return null;
 				else
 					command = (CommandTypes)uint.Parse (values[0]);
 				}
@@ -600,7 +647,8 @@ namespace RD_AAOW
 				case CommandTypes.EndCycle:
 					return new MacroCommand (false, 0);
 
-				// Команда неопознана
+				// Команда неопознана или не должна обрабатываться
+				case CommandTypes._CommandsQuantity_:
 				default:
 					return null;
 				}

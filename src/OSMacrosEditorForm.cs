@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -57,16 +58,11 @@ namespace RD_AAOW
 			}
 
 		// Локализация формы
-		/*private void LanguageCombo_SelectedIndexChanged (object sender, EventArgs e)*/
 		private void LocalizeForm ()
 			{
-			/*// Сохранение
-			RDLocale.CurrentLanguage = (RDLanguages)LanguageCombo.SelectedIndex;*/
-
 			// Локализация
 			OFDialog.Title = RDLocale.GetText ("OFDialogTitle");
 			SFDialog.Title = RDLocale.GetText ("SFDialogTitle");
-			/*ExDialog.Title = RDLocale.GetText ("ExDialogTitle");*/
 			FDialog.Title = RDLocale.GetText ("FDialogTitle");
 			OFDialog.Filter = string.Format (RDLocale.GetText ("OFDialogFilter"),
 				ProgramDescription.NewAppExtension, "macro");
@@ -97,13 +93,12 @@ namespace RD_AAOW
 			MFile.Text = RDLocale.GetText ("MFileText");
 			MOpen.Text = RDLocale.GetText ("MOpenText");
 			MSave.Text = RDLocale.GetText ("MSaveText");
-			/*MExecute.Text = RDLocale.GetText ("MExecuteText");*/
 			MExecuteCurrent.Text = RDLocale.GetText ("MExecuteCurrentText");
 			MSettings.Text = RDLocale.GetText ("MSettingsText");
 			MLanguage.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceLanguageNC);
 
 			MHelp.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout);
-			MQuit.Text = /*ExitButton.Text =*/ RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
+			MQuit.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
 
 			MousePointerGroup.Text = RDLocale.GetText ("MousePointerGroupText");
 			SetMousePointer.Text = RDLocale.GetText ("SetMousePointerText");
@@ -134,6 +129,8 @@ namespace RD_AAOW
 			BeginCycle.Text = RDLocale.GetText ("BeginCycleText");
 			EndCycle.Text = RDLocale.GetText ("EndCycleText");
 			CycleLabel.Text = RDLocale.GetText ("CycleLabelText");
+
+			UpdateCommandsList (false);
 			}
 
 		// Выход из программы
@@ -230,6 +227,8 @@ namespace RD_AAOW
 			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (RDEncodings.CP1251));
 
 			// Запись
+			SW.WriteLine (MacroCommand.CommandsQuantityAlias + " " + commands.Count.ToString ());
+
 			for (int i = 0; i < commands.Count; i++)
 				SW.WriteLine (commands[i].MacroFileCommandPresentation);
 
@@ -239,11 +238,6 @@ namespace RD_AAOW
 			}
 
 		// Выполнение макроса
-		/*private void MExecute_Click (object sender, EventArgs e)
-			{
-			ExDialog.ShowDialog ();
-			}*/
-
 		private void MExecuteCurrent_Click (object sender, EventArgs e)
 			{
 			// Выбор варианта хранения файла для запуска
@@ -488,8 +482,6 @@ namespace RD_AAOW
 			int i = CommandsListBox.SelectedIndex;
 			if ((i < 0) || (i >= CommandsListBox.Items.Count - 1))
 				return;
-			/*if ((CommandsListBox.SelectedIndex >= 0) && (CommandsListBox.SelectedIndex < CommandsListBox.Items.Count - 1))
-				{*/
 
 			string command = commands[i].MacroFileCommandPresentation;
 
@@ -505,26 +497,6 @@ namespace RD_AAOW
 			{
 			RDInterface.ShowAbout (false);
 			}
-
-		/*// Управление циклами
-		private void BeginCycle_Click (object sender, EventArgs e)
-			{
-			commands. Add (new MacroCommand (true, (uint)CycleRounds.Value));
-			UpdateCommandsList ();
-			}
-
-		private void EndCycle_Click (object sender, EventArgs e)
-			{
-			commands. Add (new MacroCommand (false, 0));
-			UpdateCommandsList ();
-			}*/
-
-		/*// Добавление команды ожидания изменения пикселя
-		private void AddWaitForColor_Click (object sender, EventArgs e)
-			{
-			commands. Add (new MacroCommand ((uint)MouseX.Value, (uint)MouseY.Value, SetPixelColor.BackColor));
-			UpdateCommandsList ();
-			}*/
 
 		// Ручное изменение цвета пикселя
 		private void SetPixelColor_Click (object sender, EventArgs e)

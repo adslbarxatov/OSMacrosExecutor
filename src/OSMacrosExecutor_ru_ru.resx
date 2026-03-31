@@ -158,6 +158,42 @@
   <data name="CommandsListLabelText" xml:space="preserve">
     <value>Список команд:</value>
   </data>
+  <data name="Command_BeginCycle" xml:space="preserve">
+    <value>НАЧАЛО ЦИКЛА ({0:D} р.)</value>
+  </data>
+  <data name="Command_EndCycle" xml:space="preserve">
+    <value>КОНЕЦ ЦИКЛА</value>
+  </data>
+  <data name="Command_ExecuteCommand" xml:space="preserve">
+    <value>Выполнение: {0:S}</value>
+  </data>
+  <data name="Command_ExecuteCommandAndWait" xml:space="preserve">
+    <value>Выполнение с ожиданием: {0:S}</value>
+  </data>
+  <data name="Command_ExecutionPause" xml:space="preserve">
+    <value>Пауза выполнения: {0:D} мс</value>
+  </data>
+  <data name="Command_FinishDragNDrop" xml:space="preserve">
+    <value>Конец перетаскивания</value>
+  </data>
+  <data name="Command_LeftMouseClick" xml:space="preserve">
+    <value>Клик левой кнопкой мыши</value>
+  </data>
+  <data name="Command_PressKeys" xml:space="preserve">
+    <value>Нажатие клавиш: {0:S}, {1:S}</value>
+  </data>
+  <data name="Command_RightMouseClick" xml:space="preserve">
+    <value>Клик правой кнопкой мыши</value>
+  </data>
+  <data name="Command_SetCursorPosition" xml:space="preserve">
+    <value>Установка указателя мыши в точку ({0:D}; {1:D})</value>
+  </data>
+  <data name="Command_StartDragNDrop" xml:space="preserve">
+    <value>Начало перетаскивания</value>
+  </data>
+  <data name="Command_WaitForPixelChange" xml:space="preserve">
+    <value>Ожидание, пока точка ({0:D}; {1:D}) не равна RGB ({2:D}; {3:D}; {4:D})</value>
+  </data>
   <data name="CycleGroupText" xml:space="preserve">
     <value>Цикл</value>
   </data>

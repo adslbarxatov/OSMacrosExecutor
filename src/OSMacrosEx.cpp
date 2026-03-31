@@ -22,15 +22,22 @@ int main (int argc, char* argv[])
 	uint currentCycleLine = 0,		// Текущая строка блока цикла
 		cycleLines = 0;				// Количество строк блока цикла
 	uchar cyclePhase = 0;			// Фаза выполнения цикла
-	ulong i, x, y, x2, y2;			// Буферные переменные
 
+	ulong i, x, y, x2, y2;			// Буферные переменные
 	ulong r, g, b;					// Дескрипторы для запроса цветов пикселей экрана
-	HDC screenDC = NULL;
+
+	HDC screenDC = NULL;			// Дескрипторы скриншотов
 	HDC memDC = NULL;
 	HBITMAP memBitmap;
 	COLORREF color;
 
-	FILE *F1;
+	FILE *F1;						// Файл макроса
+	uint commandsQuantity = 0;		// Число команд (если есть в файле)
+
+	HRESULT hr;						// Дескрипторы индикатора прогресса
+	ITaskbarList3 *pTaskbarList = NULL;
+	HWND hwnd = NULL;
+	uint currentCommand;
 
 	// Заголовок
 	printf ("\n \x0F " OSME_PRODUCT " \x0F \n   by  " OSME_COMPANY "\n\n");
@@ -81,6 +88,22 @@ int main (int argc, char* argv[])
 	else if (linePause > LINE_PAUSE_MAX)
 		linePause = LINE_PAUSE_MAX;
 
+	// Инициализация прогресс-индикации
+	hr = CoInitialize (NULL);
+	if (hr >= 0)
+		{
+		hr = CoCreateInstance (CLSID_TaskbarList, NULL, CLSCTX_INPROC_SERVER,
+			IID_ITaskbarList3, (void **)&pTaskbarList);
+
+		if (hr >= 0)
+			{
+			pTaskbarList->HrInit ();
+
+			// Признак успешной инициализации, используемый далее
+			hwnd = GetConsoleWindow ();
+			}
+		}
+
 	// Открытие файла
 	if ((F1 = fopen (FileName, "r")) == NULL)
 		{
@@ -96,6 +119,7 @@ int main (int argc, char* argv[])
 	for (i = 0; i < repetitions; i++)
 		{
 		cycleFinisher = 0;
+		currentCommand = 0;
 		printf (" \x10 Repetition #%u started\n", i + 1);
 
 		// Второе условие вместе с инкрементом сработает только в конце файла
@@ -241,6 +265,11 @@ cycle:
 					printf (" \x10  Round %u\n", currentCycle + 1);
 					break;
 
+				// Служебные строки
+				case PCMD_COMMANDS_QNT:
+					sscanf (str + 2, "%u", &commandsQuantity);
+					continue;
+
 				// Неизвестная команда
 				default:
 					printf (" \x13   Command [%s] ignored - unknown command code\n", str);
@@ -249,6 +278,14 @@ cycle:
 
 			// Обязательная пауза между командами
 			_PAUSE (linePause);
+
+			// Отображение прогресса
+			currentCommand++;
+			if (hwnd && (commandsQuantity > 0))
+				{
+				pTaskbarList->SetProgressValue (hwnd, currentCommand, commandsQuantity);
+				pTaskbarList->SetProgressState (hwnd, TBPF_NORMAL);
+				}
 
 			// Наполнение цикла
 			if (cyclePhase == 1)
@@ -303,5 +340,13 @@ cycle:
 		DeleteObject (memBitmap);
 		DeleteDC (memDC);
 		ReleaseDC (0, screenDC);
+		}
+
+	if (hwnd)
+		{
+		pTaskbarList->SetProgressState (hwnd, TBPF_NOPROGRESS);
+		pTaskbarList->Release ();
+
+		CoUninitialize ();
 		}
 	}

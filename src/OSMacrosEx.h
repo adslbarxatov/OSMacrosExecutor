@@ -5,6 +5,7 @@
 // Подключение заголовочных файлов
 #include <stdio.h>					// Базовая библиотека ввода / вывода
 #include <windows.h>				// Команды управления
+#include <shobjidl.h>				// Поддержка цветовой индикации прогресса
 #include <process.h>				// Библиотека запуска процессов
 #include "..\Generics\CSTypes.h"	// Описание подстановочных типов данных
 #include "..\Generics\xpun.h"
@@ -14,8 +15,8 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Ресурсы: данные о создаваемом приложении
-#define OSME_VERSION				3,9,0,0
-#define OSME_VERSION_S				"3.9.0.0"
+#define OSME_VERSION				3,10,0,0
+#define OSME_VERSION_S				"3.10.0.0"
 #define OSME_PRODUCT				"Operating system macros executor"
 #define OSME_COMPANY				FDL_COMPANY
 // Активен с 30.07.2017; 21:14
@@ -48,6 +49,7 @@ schar ExecutionCommand[DEFAULTSIZE];
 #define CMD_EXP_PIX_COLOR		'C'
 #define CMD_CYCLE_START			'+'
 #define CMD_CYCLE_END			'-'
+#define PCMD_COMMANDS_QNT		'#'
 
 // Мышь
 #define _MOVETO(x,y)	mouse_event (MOUSEEVENTF_MOVE | MOUSEEVENTF_ABSOLUTE, x, y, 0, 0);

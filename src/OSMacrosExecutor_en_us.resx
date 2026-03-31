@@ -158,6 +158,42 @@ Begin macro?</value>
   <data name="CommandsListLabelText" xml:space="preserve">
     <value>Commands list:</value>
   </data>
+  <data name="Command_BeginCycle" xml:space="preserve">
+    <value>BEGIN CYCLE ({0:D} t.)</value>
+  </data>
+  <data name="Command_EndCycle" xml:space="preserve">
+    <value>END CYCLE</value>
+  </data>
+  <data name="Command_ExecuteCommand" xml:space="preserve">
+    <value>Execution: {0:S}</value>
+  </data>
+  <data name="Command_ExecuteCommandAndWait" xml:space="preserve">
+    <value>Execution with waiting: {0:S}</value>
+  </data>
+  <data name="Command_ExecutionPause" xml:space="preserve">
+    <value>Execution pause: {0:D} ms</value>
+  </data>
+  <data name="Command_FinishDragNDrop" xml:space="preserve">
+    <value>End dragging</value>
+  </data>
+  <data name="Command_LeftMouseClick" xml:space="preserve">
+    <value>Left mouse button click</value>
+  </data>
+  <data name="Command_PressKeys" xml:space="preserve">
+    <value>Key press: {0:S}, {1:S}</value>
+  </data>
+  <data name="Command_RightMouseClick" xml:space="preserve">
+    <value>Right mouse button click</value>
+  </data>
+  <data name="Command_SetCursorPosition" xml:space="preserve">
+    <value>Set mouse pointer position to ({0:D}; {1:D})</value>
+  </data>
+  <data name="Command_StartDragNDrop" xml:space="preserve">
+    <value>Begin dragging</value>
+  </data>
+  <data name="Command_WaitForPixelChange" xml:space="preserve">
+    <value>Wait while point ({0:D}; {1:D}) isn’t equal to RGB ({2:D}; {3:D}; {4:D})</value>
+  </data>
   <data name="CycleGroupText" xml:space="preserve">
     <value>Cycle</value>
   </data>
