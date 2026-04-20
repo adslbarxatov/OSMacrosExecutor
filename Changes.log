@@ -1,5 +1,8 @@
 OS macros executor: changes log
 
+Version 3.10.1:
+• Internal assemblies have been updated
+
 Version 3.10:
 • Commands list has been properly localized;
 • The macros executor can now indicate current progress in the taskbar

@@ -349,16 +349,6 @@ namespace RD_AAOW
 			pixelColor = Color.FromArgb (255, TrueColor);
 			}
 
-		/*/// <summary>
-		/// Конструктор. Создаёт псевдокоманду, передающую число строк в файле макроса
-		/// </summary>
-		/// <param name="Counter">Число строк в файле</param>
-		public MacroCommand (Size Counter)
-			{
-			commandType = CommandTypes2._CommandsCounter_;
-			pauseLength = (uint)Counter.Height;
-			}*/
-
 		/// <summary>
 		/// Возвращает псевдоним псевдокоманды CommandsQuantity
 		/// </summary>
@@ -424,9 +414,6 @@ namespace RD_AAOW
 					case CommandTypes.BeginCycle:
 						return (res + cycleRounds.ToString ());
 
-					/*case CommandTypes2._CommandsCounter_:
-						return (res + pauseLength.ToString ());*/
-
 					default:
 						throw new Exception ("Parameters exchange failure at point 1. Debug needed");
 					}
@@ -445,52 +432,30 @@ namespace RD_AAOW
 				switch (commandType)
 					{
 					case CommandTypes.ExecuteCommand:
-					/*return "Execution: " + commandPath;*/
 
 					case CommandTypes.ExecuteCommandAndWait:
-						/*return "Execution and awaiting: " + commandPath;*/
 						return string.Format (cmd, commandPath);
 
 					case CommandTypes.ExecutionPause:
-						/*return "Execution pause (" + pauseLength.ToString () + " ms)";*/
 						return string.Format (cmd, pauseLength);
 
 					case CommandTypes.FinishDragNDrop:
-					/*return "End dragging";*/
-
 					case CommandTypes.LeftMouseClick:
-					/*return "Left mouse button click";*/
-
 					case CommandTypes.RightMouseClick:
 					case CommandTypes.StartDragNDrop:
 					case CommandTypes.EndCycle:
 						return cmd;
 
 					case CommandTypes.PressKeys:
-						/*return "Key press (" + pressedKeyModifier.ToString () + ", " + pressedKey.ToString () + ")";*/
 						return string.Format (cmd, pressedKeyModifier.ToString (), pressedKey.ToString ());
 
-					/*case CommandTypes.RightMouseClick:
-						return "Right mouse button click";*/
-
 					case CommandTypes.SetCursorPosition:
-						/*return "Set mouse pointer position to (" + mouseX.ToString () + "; " + mouseY.ToString () + ")";*/
 						return string.Format (cmd, mouseX, mouseY);
 
-					/*case CommandTypes.StartDragNDrop:
-						return "Begin dragging";*/
-
 					case CommandTypes.BeginCycle:
-						/*return " BEGIN CYCLE (" + cycleRounds.ToString () + " t.)";*/
 						return string.Format (cmd, cycleRounds);
 
-					/*case CommandTypes.EndCycle:
-						return " END CYCLE";*/
-
 					case CommandTypes.WaitForPixelChange:
-						/*return "Wait while Pos (" + mouseX.ToString () + "; " + mouseY.ToString () + ") != RGB (" +
-							pixelColor.R.ToString () + "; " + pixelColor.G.ToString () + "; " +
-							pixelColor.B.ToString () + ")";*/
 						return string.Format (cmd, mouseX, mouseY, pixelColor.R, pixelColor.G, pixelColor.B);
 
 					// Не должно происходить
@@ -509,7 +474,6 @@ namespace RD_AAOW
 		public static MacroCommand BuildMacroCommand (string CommandPresentation)
 			{
 			// Разбор команды
-			/*if (CommandPresentation == null)*/
 			if (string.IsNullOrWhiteSpace (CommandPresentation))
 				return null;
 
