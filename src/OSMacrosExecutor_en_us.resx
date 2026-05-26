@@ -117,37 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddDragBeginningText" xml:space="preserve">
+  <data name="AddDragBeginning" xml:space="preserve">
     <value>&amp;Begin dragging</value>
   </data>
-  <data name="AddDragEndingText" xml:space="preserve">
+  <data name="AddDragEnding" xml:space="preserve">
     <value>&amp;End dragging</value>
   </data>
-  <data name="AddFileExecutionText" xml:space="preserve">
+  <data name="AddFileExecution" xml:space="preserve">
     <value>E&amp;xecute</value>
   </data>
-  <data name="AddKeyPressText" xml:space="preserve">
+  <data name="AddKeyPress" xml:space="preserve">
     <value>Press &amp;keys combination</value>
   </data>
-  <data name="AddLeftClickText" xml:space="preserve">
+  <data name="AddLeftClick" xml:space="preserve">
     <value>&amp;Left mouse click</value>
   </data>
-  <data name="AddMousePointerText" xml:space="preserve">
+  <data name="AddMousePointer" xml:space="preserve">
     <value>Set mouse pointer &amp;position</value>
   </data>
-  <data name="AddPauseText" xml:space="preserve">
+  <data name="AddPause" xml:space="preserve">
     <value>Pa&amp;use execution</value>
   </data>
-  <data name="AddRightClickText" xml:space="preserve">
+  <data name="AddRightClick" xml:space="preserve">
     <value>&amp;Right mouse click</value>
   </data>
-  <data name="AddWaitForColorText" xml:space="preserve">
+  <data name="AddWaitForColor" xml:space="preserve">
     <value>&amp;Wait for pixel's color change</value>
   </data>
   <data name="AlwaysRequestMacroPathRadio" xml:space="preserve">
     <value>Always request path for new macros</value>
   </data>
-  <data name="BeginCycleText" xml:space="preserve">
+  <data name="BeginCycle" xml:space="preserve">
     <value>Begin &amp;cycle</value>
   </data>
   <data name="BeginMacro" xml:space="preserve">
@@ -155,7 +155,7 @@
 
 Begin macro?</value>
   </data>
-  <data name="CommandsListLabelText" xml:space="preserve">
+  <data name="CommandsListLabel" xml:space="preserve">
     <value>Commands list:</value>
   </data>
   <data name="Command_BeginCycle" xml:space="preserve">
@@ -194,22 +194,22 @@ Begin macro?</value>
   <data name="Command_WaitForPixelChange" xml:space="preserve">
     <value>Wait while point ({0:D}; {1:D}) isn’t equal to RGB ({2:D}; {3:D}; {4:D})</value>
   </data>
-  <data name="CycleGroupText" xml:space="preserve">
+  <data name="CycleGroup" xml:space="preserve">
     <value>Cycle</value>
   </data>
-  <data name="CycleLabelText" xml:space="preserve">
+  <data name="CycleLabel" xml:space="preserve">
     <value>times</value>
   </data>
   <data name="DefaultMacroPathTitle" xml:space="preserve">
     <value>Select the directory where the macro files will be saved</value>
   </data>
-  <data name="EndCycleText" xml:space="preserve">
+  <data name="EndCycle" xml:space="preserve">
     <value>E&amp;nd cycle</value>
   </data>
   <data name="ExDialogTitle" xml:space="preserve">
     <value>Select macro for execution</value>
   </data>
-  <data name="ExecutionGroupText" xml:space="preserve">
+  <data name="ExecutionGroup" xml:space="preserve">
     <value>Execute file / command</value>
   </data>
   <data name="FDialogFilter" xml:space="preserve">
@@ -218,44 +218,41 @@ Begin macro?</value>
   <data name="FDialogTitle" xml:space="preserve">
     <value>Select file for execution</value>
   </data>
-  <data name="KeyboardGroupText" xml:space="preserve">
+  <data name="KeyboardGroup" xml:space="preserve">
     <value>Keyboard</value>
   </data>
-  <data name="KeyReceiverText" xml:space="preserve">
+  <data name="KeyReceiver" xml:space="preserve">
     <value>Stay here and press combination</value>
   </data>
   <data name="LinePauseLabel" xml:space="preserve">
     <value>Pause between separate commands, ms:</value>
   </data>
-  <data name="MExecuteCurrentText" xml:space="preserve">
+  <data name="MExecuteCurrent" xml:space="preserve">
     <value>Execute &amp;current macro</value>
   </data>
-  <data name="MExecuteText" xml:space="preserve">
-    <value>&amp;Execute macro...</value>
-  </data>
-  <data name="MFileText" xml:space="preserve">
+  <data name="MFile" xml:space="preserve">
     <value>&amp;Actions</value>
   </data>
-  <data name="MilliLabelText" xml:space="preserve">
+  <data name="MilliLabel" xml:space="preserve">
     <value>milliseconds</value>
   </data>
-  <data name="MOpenText" xml:space="preserve">
+  <data name="MOpen" xml:space="preserve">
     <value>&amp;Open macro...</value>
   </data>
-  <data name="MousePointerGroupText" xml:space="preserve">
+  <data name="MousePointerGroup" xml:space="preserve">
     <value>Mouse pointer</value>
   </data>
-  <data name="MSaveText" xml:space="preserve">
+  <data name="MSave" xml:space="preserve">
     <value>&amp;Save macro...</value>
   </data>
-  <data name="MSettingsText" xml:space="preserve">
+  <data name="MSettings" xml:space="preserve">
     <value>Settin&amp;gs</value>
   </data>
   <data name="NoModifiers" xml:space="preserve">
     <value>(no modifiers)</value>
   </data>
   <data name="OFDialogFilter" xml:space="preserve">
-    <value>OS macro files (*.{0:S}, *.{1:S})|*.{0:S};*.{1:S}</value>
+    <value>OS macro files (*.{0:S})|*.{0:S}</value>
   </data>
   <data name="OFDialogTitle" xml:space="preserve">
     <value>Select macro for editing</value>
@@ -268,7 +265,7 @@ All unsaved data will be lost!</value>
   <data name="osmfile" xml:space="preserve">
     <value>Operating system macro file</value>
   </data>
-  <data name="PauseGroupText" xml:space="preserve">
+  <data name="PauseGroup" xml:space="preserve">
     <value>Pause</value>
   </data>
   <data name="QuitApplication" xml:space="preserve">
@@ -279,7 +276,7 @@ All unsaved data will be lost!</value>
   <data name="RepeatsMessage" xml:space="preserve">
     <value>Enter the number of repetitions (from {0:D} to {1:D})</value>
   </data>
-  <data name="SetMousePointerText" xml:space="preserve">
+  <data name="SetMousePointer" xml:space="preserve">
     <value>Select...</value>
   </data>
   <data name="SFDialogFilter" xml:space="preserve">
@@ -291,7 +288,7 @@ All unsaved data will be lost!</value>
   <data name="UseMacroPathRadio" xml:space="preserve">
     <value>Save macros to:</value>
   </data>
-  <data name="WaitForFinishText" xml:space="preserve">
+  <data name="WaitForFinish" xml:space="preserve">
     <value>Wait for completion</value>
   </data>
   <data name="WinKey" xml:space="preserve">

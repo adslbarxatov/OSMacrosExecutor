@@ -54,7 +54,7 @@ namespace RD_AAOW
 			SFDialog.Title = RDLocale.GetText ("SFDialogTitle");
 			FDialog.Title = RDLocale.GetText ("FDialogTitle");
 			OFDialog.Filter = string.Format (RDLocale.GetText ("OFDialogFilter"),
-				ProgramDescription.NewAppExtension, "macro");
+				ProgramDescription.NewAppExtension /*, "macro"*/);
 			SFDialog.Filter = string.Format (RDLocale.GetText ("SFDialogFilter"), ProgramDescription.NewAppExtension);
 			FDialog.Filter = RDLocale.GetText ("FDialogFilter");
 
@@ -78,45 +78,77 @@ namespace RD_AAOW
 				KeyModifiers.Items[8] = RDLocale.GetText ("WinKey");
 				}
 
-			MFile.Text = RDLocale.GetText ("MFileText");
-			MOpen.Text = RDLocale.GetText ("MOpenText");
-			MSave.Text = RDLocale.GetText ("MSaveText");
-			MExecuteCurrent.Text = RDLocale.GetText ("MExecuteCurrentText");
-			MSettings.Text = RDLocale.GetText ("MSettingsText");
-			MLanguage.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceLanguage);
+			/*MFile. Text = RDLocale.GetText ("MFileText");
+			MOpen. Text = RDLocale.GetText ("MOpenText");
+			MSave. Text = RDLocale.GetText ("MSaveText");
+			MExecuteCurrent. Text = RDLocale.GetText ("MExecuteCurrentText");
+			MSettings. Text = RDLocale.GetText ("MSettingsText");*/
+			RDLocale.SetControlText (MFile);
+			RDLocale.SetControlText (MOpen);
+			RDLocale.SetControlText (MSave);
+			RDLocale.SetControlText (MExecuteCurrent);
+			RDLocale.SetControlText (MSettings);
 
-			MHelp.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout);
-			MQuit.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
+			/*MLanguage. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceLanguage);
 
-			MousePointerGroup.Text = RDLocale.GetText ("MousePointerGroupText");
-			SetMousePointer.Text = RDLocale.GetText ("SetMousePointerText");
-			AddMousePointer.Text = RDLocale.GetText ("AddMousePointerText");
-			AddWaitForColor.Text = RDLocale.GetText ("AddWaitForColorText");
+			MHelp. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout);
+			MQuit. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);*/
+			RDLocale.SetDefaultControlText (MLanguage, RDLDefaultTexts.Control_InterfaceLanguage);
+			RDLocale.SetDefaultControlText (MHelp, RDLDefaultTexts.Control_AppAbout);
+			RDLocale.SetDefaultControlText (MQuit, RDLDefaultTexts.Button_Exit);
 
-			PauseGroup.Text = RDLocale.GetText ("PauseGroupText");
-			MilliLabel.Text = RDLocale.GetText ("MilliLabelText");
-			AddPause.Text = RDLocale.GetText ("AddPauseText");
+			/*MousePointerGroup. Text = RDLocale.GetText ("MousePointerGroupText");
+			SetMousePointer. Text = RDLocale.GetText ("SetMousePointerText");
+			AddMousePointer. Text = RDLocale.GetText ("AddMousePointerText");
+			AddWaitForColor. Text = RDLocale.GetText ("AddWaitForColorText");*/
+			RDLocale.SetControlText (MousePointerGroup);
+			RDLocale.SetControlText (SetMousePointer);
+			RDLocale.SetControlText (AddMousePointer);
+			RDLocale.SetControlText (AddWaitForColor);
 
-			AddLeftClick.Text = RDLocale.GetText ("AddLeftClickText");
-			AddRightClick.Text = RDLocale.GetText ("AddRightClickText");
-			AddDragBeginning.Text = RDLocale.GetText ("AddDragBeginningText");
-			AddDragEnding.Text = RDLocale.GetText ("AddDragEndingText");
+			/*PauseGroup. Text = RDLocale.GetText ("PauseGroupText");
+			MilliLabel. Text = RDLocale.GetText ("MilliLabelText");
+			AddPause. Text = RDLocale.GetText ("AddPauseText");*/
+			RDLocale.SetControlText (PauseGroup);
+			RDLocale.SetControlText (MilliLabel);
+			RDLocale.SetControlText (AddPause);
 
-			KeyboardGroup.Text = RDLocale.GetText ("KeyboardGroupText");
-			KeyReceiver.Text = RDLocale.GetText ("KeyReceiverText");
-			AddKeyPress.Text = RDLocale.GetText ("AddKeyPressText");
+			/*AddLeftClick. Text = RDLocale.GetText ("AddLeftClickText");
+			AddRightClick. Text = RDLocale.GetText ("AddRightClickText");
+			AddDragBeginning. Text = RDLocale.GetText ("AddDragBeginningText");
+			AddDragEnding. Text = RDLocale.GetText ("AddDragEndingText");*/
+			RDLocale.SetControlText (AddLeftClick);
+			RDLocale.SetControlText (AddRightClick);
+			RDLocale.SetControlText (AddDragBeginning);
+			RDLocale.SetControlText (AddDragEnding);
 
-			ExecutionGroup.Text = RDLocale.GetText ("ExecutionGroupText");
-			SelectFile.Text = RDLocale.GetText ("SetMousePointerText");
-			WaitForFinish.Text = RDLocale.GetText ("WaitForFinishText");
-			AddFileExecution.Text = RDLocale.GetText ("AddFileExecutionText");
+			/*KeyboardGroup. Text = RDLocale.GetText ("KeyboardGroupText");
+			KeyReceiver. Text = RDLocale.GetText ("KeyReceiverText");
+			AddKeyPress. Text = RDLocale.GetText ("AddKeyPressText");*/
+			RDLocale.SetControlText (KeyboardGroup);
+			RDLocale.SetControlText (KeyReceiver);
+			RDLocale.SetControlText (AddKeyPress);
 
-			CommandsListLabel.Text = RDLocale.GetText ("CommandsListLabelText");
+			/*ExecutionGroup. Text = RDLocale.GetText ("ExecutionGroupText");
+			SelectFile. Text = RDLocale.GetText ("SetMousePointerText");
+			WaitForFinish. Text = RDLocale.GetText ("WaitForFinishText");
+			AddFileExecution. Text = RDLocale.GetText ("AddFileExecutionText");*/
+			RDLocale.SetControlText (ExecutionGroup);
+			RDLocale.SetControlText (SelectFile, "SetMousePointer");
+			RDLocale.SetControlText (WaitForFinish);
+			RDLocale.SetControlText (AddFileExecution);
 
-			CycleGroup.Text = RDLocale.GetText ("CycleGroupText");
-			BeginCycle.Text = RDLocale.GetText ("BeginCycleText");
-			EndCycle.Text = RDLocale.GetText ("EndCycleText");
-			CycleLabel.Text = RDLocale.GetText ("CycleLabelText");
+			/*CommandsListLabel. Text = RDLocale.GetText ("CommandsListLabelText");*/
+			RDLocale.SetControlText (CommandsListLabel);
+
+			/*CycleGroup. Text = RDLocale.GetText ("CycleGroupText");
+			BeginCycle. Text = RDLocale.GetText ("BeginCycleText");
+			EndCycle. Text = RDLocale.GetText ("EndCycleText");
+			CycleLabel. Text = RDLocale.GetText ("CycleLabelText");*/
+			RDLocale.SetControlText (CycleGroup);
+			RDLocale.SetControlText (BeginCycle);
+			RDLocale.SetControlText (EndCycle);
+			RDLocale.SetControlText (CycleLabel);
 
 			UpdateCommandsList (false);
 			}

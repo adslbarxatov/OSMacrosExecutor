@@ -117,37 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddDragBeginningText" xml:space="preserve">
+  <data name="AddDragBeginning" xml:space="preserve">
     <value>&amp;Начать перетаскивание</value>
   </data>
-  <data name="AddDragEndingText" xml:space="preserve">
+  <data name="AddDragEnding" xml:space="preserve">
     <value>&amp;Завершить перетаскивание</value>
   </data>
-  <data name="AddFileExecutionText" xml:space="preserve">
+  <data name="AddFileExecution" xml:space="preserve">
     <value>&amp;Выполнить</value>
   </data>
-  <data name="AddKeyPressText" xml:space="preserve">
+  <data name="AddKeyPress" xml:space="preserve">
     <value>Нажать комибнацию &amp;клавиш</value>
   </data>
-  <data name="AddLeftClickText" xml:space="preserve">
+  <data name="AddLeftClick" xml:space="preserve">
     <value>&amp;Левый щелчок мыши</value>
   </data>
-  <data name="AddMousePointerText" xml:space="preserve">
+  <data name="AddMousePointer" xml:space="preserve">
     <value>Задать позицию &amp;указателя</value>
   </data>
-  <data name="AddPauseText" xml:space="preserve">
+  <data name="AddPause" xml:space="preserve">
     <value>При&amp;остановить выполнение</value>
   </data>
-  <data name="AddRightClickText" xml:space="preserve">
+  <data name="AddRightClick" xml:space="preserve">
     <value>&amp;Правый щелчок мыши</value>
   </data>
-  <data name="AddWaitForColorText" xml:space="preserve">
+  <data name="AddWaitForColor" xml:space="preserve">
     <value>&amp;Ждать изменения цвета пикселя</value>
   </data>
   <data name="AlwaysRequestMacroPathRadio" xml:space="preserve">
     <value>Всегда запрашивать путь сохранения макросов</value>
   </data>
-  <data name="BeginCycleText" xml:space="preserve">
+  <data name="BeginCycle" xml:space="preserve">
     <value>Начать &amp;цикл</value>
   </data>
   <data name="BeginMacro" xml:space="preserve">
@@ -155,7 +155,7 @@
 
 Запустить макрос?</value>
   </data>
-  <data name="CommandsListLabelText" xml:space="preserve">
+  <data name="CommandsListLabel" xml:space="preserve">
     <value>Список команд:</value>
   </data>
   <data name="Command_BeginCycle" xml:space="preserve">
@@ -194,22 +194,22 @@
   <data name="Command_WaitForPixelChange" xml:space="preserve">
     <value>Ожидание, пока точка ({0:D}; {1:D}) не равна RGB ({2:D}; {3:D}; {4:D})</value>
   </data>
-  <data name="CycleGroupText" xml:space="preserve">
+  <data name="CycleGroup" xml:space="preserve">
     <value>Цикл</value>
   </data>
-  <data name="CycleLabelText" xml:space="preserve">
+  <data name="CycleLabel" xml:space="preserve">
     <value>раз</value>
   </data>
   <data name="DefaultMacroPathTitle" xml:space="preserve">
     <value>Выберите директорию, в которой будут сохраняться файлы макросов</value>
   </data>
-  <data name="EndCycleText" xml:space="preserve">
+  <data name="EndCycle" xml:space="preserve">
     <value>Завер&amp;шить цикл</value>
   </data>
   <data name="ExDialogTitle" xml:space="preserve">
     <value>Выберите макрос для выполнения</value>
   </data>
-  <data name="ExecutionGroupText" xml:space="preserve">
+  <data name="ExecutionGroup" xml:space="preserve">
     <value>Выполнить файл / команду</value>
   </data>
   <data name="FDialogFilter" xml:space="preserve">
@@ -218,44 +218,41 @@
   <data name="FDialogTitle" xml:space="preserve">
     <value>Выберите файл для выполнения</value>
   </data>
-  <data name="KeyboardGroupText" xml:space="preserve">
+  <data name="KeyboardGroup" xml:space="preserve">
     <value>Клавиатура</value>
   </data>
-  <data name="KeyReceiverText" xml:space="preserve">
+  <data name="KeyReceiver" xml:space="preserve">
     <value>Кликните и нажмите комбинацию</value>
   </data>
   <data name="LinePauseLabel" xml:space="preserve">
     <value>Пауза между отдельными командами, мс:</value>
   </data>
-  <data name="MExecuteCurrentText" xml:space="preserve">
+  <data name="MExecuteCurrent" xml:space="preserve">
     <value>Выполнить &amp;текущий макрос</value>
   </data>
-  <data name="MExecuteText" xml:space="preserve">
-    <value>&amp;Выполнить макрос...</value>
-  </data>
-  <data name="MFileText" xml:space="preserve">
+  <data name="MFile" xml:space="preserve">
     <value>&amp;Действия</value>
   </data>
-  <data name="MilliLabelText" xml:space="preserve">
+  <data name="MilliLabel" xml:space="preserve">
     <value>миллисекунд</value>
   </data>
-  <data name="MOpenText" xml:space="preserve">
+  <data name="MOpen" xml:space="preserve">
     <value>&amp;Открыть макрос...</value>
   </data>
-  <data name="MousePointerGroupText" xml:space="preserve">
+  <data name="MousePointerGroup" xml:space="preserve">
     <value>Указатель мыши</value>
   </data>
-  <data name="MSaveText" xml:space="preserve">
+  <data name="MSave" xml:space="preserve">
     <value>&amp;Сохранить макрос...</value>
   </data>
-  <data name="MSettingsText" xml:space="preserve">
+  <data name="MSettings" xml:space="preserve">
     <value>Настро&amp;йки</value>
   </data>
   <data name="NoModifiers" xml:space="preserve">
     <value>(без модификаторов)</value>
   </data>
   <data name="OFDialogFilter" xml:space="preserve">
-    <value>Файлы макросов операционной системы (*.{0:S}, *.{1:S})|*.{0:S};*.{1:S}</value>
+    <value>Файлы макросов операционной системы (*.{0:S})|*.{0:S}</value>
   </data>
   <data name="OFDialogTitle" xml:space="preserve">
     <value>Выберите макрос для редактирования</value>
@@ -268,7 +265,7 @@
   <data name="osmfile" xml:space="preserve">
     <value>Файл макроса операционной системы</value>
   </data>
-  <data name="PauseGroupText" xml:space="preserve">
+  <data name="PauseGroup" xml:space="preserve">
     <value>Пауза</value>
   </data>
   <data name="QuitApplication" xml:space="preserve">
@@ -279,7 +276,7 @@
   <data name="RepeatsMessage" xml:space="preserve">
     <value>Введите число повторов (от {0:D} до {1:D})</value>
   </data>
-  <data name="SetMousePointerText" xml:space="preserve">
+  <data name="SetMousePointer" xml:space="preserve">
     <value>Задать...</value>
   </data>
   <data name="SFDialogFilter" xml:space="preserve">
@@ -291,7 +288,7 @@
   <data name="UseMacroPathRadio" xml:space="preserve">
     <value>Сохранять макросы в:</value>
   </data>
-  <data name="WaitForFinishText" xml:space="preserve">
+  <data name="WaitForFinish" xml:space="preserve">
     <value>Ждать завершения</value>
   </data>
   <data name="WinKey" xml:space="preserve">

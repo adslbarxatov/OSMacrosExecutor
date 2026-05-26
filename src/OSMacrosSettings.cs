@@ -19,13 +19,16 @@ namespace RD_AAOW
 			this.Text = RDLocale.GetText ("MSettingsText");
 
 			AcceptButton = BApply;
-			BApply.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Apply);
-
+			/*BApply. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Apply);*/
+			RDLocale.SetDefaultControlText (BApply, RDLDefaultTexts.Button_Apply);
 			CancelButton = BCancel;
-			BCancel.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel);
+			/*BCancel. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel);*/
+			RDLocale.SetDefaultControlText (BCancel, RDLDefaultTexts.Button_Cancel);
 
-			AlwaysRequestMacroPathRadio.Text = RDLocale.GetText ("AlwaysRequestMacroPathRadio");
-			UseMacroPathRadio.Text = RDLocale.GetText ("UseMacroPathRadio");
+			/*AlwaysRequestMacroPathRadio. Text = RDLocale.GetText ("AlwaysRequestMacroPathRadio");
+			UseMacroPathRadio. Text = RDLocale.GetText ("UseMacroPathRadio");*/
+			RDLocale.SetControlText (AlwaysRequestMacroPathRadio);
+			RDLocale.SetControlText (UseMacroPathRadio);
 			if (string.IsNullOrWhiteSpace (DefaultMacroPath))
 				{
 				AlwaysRequestMacroPathRadio.Checked = true;
@@ -36,7 +39,8 @@ namespace RD_AAOW
 				BackupsPathField.Text = DefaultMacroPath;
 				}
 
-			LinePauseLabel.Text = RDLocale.GetText ("LinePauseLabel");
+			/*LinePauseLabel. Text = RDLocale.GetText ("LinePauseLabel");*/
+			RDLocale.SetControlText (LinePauseLabel);
 			LinePauseField.Minimum = LinePauseMinimum;
 			LinePauseField.Maximum = LinePauseMaximum;
 			try
@@ -48,7 +52,7 @@ namespace RD_AAOW
 				LinePauseField.Value = LinePauseDefault;
 				}
 
-			FBDialog.Description = RDLocale.GetText ("DefaultMacroPathTitle");
+			/*FBDialog.Description = RDLocale.GetText ("DefaultMacroPathTitle");*/
 
 			// Запуск
 			this.ShowDialog ();
