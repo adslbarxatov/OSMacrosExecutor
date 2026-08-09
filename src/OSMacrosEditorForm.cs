@@ -50,12 +50,12 @@ namespace RD_AAOW
 		private void LocalizeForm ()
 			{
 			// Локализация
-			OFDialog.Title = RDLocale.GetText ("OFDialogTitle");
-			SFDialog.Title = RDLocale.GetText ("SFDialogTitle");
-			FDialog.Title = RDLocale.GetText ("FDialogTitle");
+			/*OFDialog. Title = RDLocale.GetText ("OFDialogTitle");
+			SFDialog. Title = RDLocale.GetText ("SFDialogTitle");
+			FDialog. Title = RDLocale.GetText ("FDialogTitle");*/
 			OFDialog.Filter = string.Format (RDLocale.GetText ("OFDialogFilter"),
-				ProgramDescription.NewAppExtension);
-			SFDialog.Filter = string.Format (RDLocale.GetText ("SFDialogFilter"), ProgramDescription.NewAppExtension);
+				ProgramDescription.MacroExtension);
+			SFDialog.Filter = string.Format (RDLocale.GetText ("SFDialogFilter"), ProgramDescription.MacroExtension);
 			FDialog.Filter = RDLocale.GetText ("FDialogFilter");
 
 			if (KeyModifiers.Items.Count == 0)
@@ -172,13 +172,40 @@ namespace RD_AAOW
 				}
 
 			StreamReader SR = new StreamReader (FS, RDGenerics.GetEncoding (RDEncodings.CP1251));
+			
+			// Контроль версии
+			RDFormatSignatures version;
+			string s = SR.ReadLine ();
+			try
+				{
+				version = (RDFormatSignatures)UInt16.Parse (s);
+				}
+			catch
+				{
+				version = RDFormatSignatures.OSMv2;
+				}
+
+			bool firstLineIsntVersion = false;
+			switch (version)
+				{
+				case RDFormatSignatures.OSMv3:
+					break;
+
+				case RDFormatSignatures.OSMv2:
+				default:
+					firstLineIsntVersion = true;
+					break;
+				}
 
 			// Чтение
 			commands.Clear ();
 
 			while (!SR.EndOfStream)
 				{
-				string s = SR.ReadLine ();
+				if (!firstLineIsntVersion)
+					s = SR.ReadLine ();
+				firstLineIsntVersion = false;
+
 				MacroCommand cmd = MacroCommand.BuildMacroCommand (s);
 				if (cmd != null)
 					commands.Add (cmd);
@@ -215,6 +242,7 @@ namespace RD_AAOW
 			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (RDEncodings.CP1251));
 
 			// Запись
+			SW.WriteLine ((UInt16)RDFormatSignatures.OSMActual);
 			SW.WriteLine (MacroCommand.CommandsQuantityAlias + " " + commands.Count.ToString ());
 
 			for (int i = 0; i < commands.Count; i++)
@@ -237,7 +265,7 @@ namespace RD_AAOW
 			else
 				{
 				SFDialog.FileName = OSMacrosSettings.DefaultMacroPath + DateTime.Now.ToString ("dd-MM-yyyy HH-mm") +
-					"." + ProgramDescription.NewAppExtension;
+					"." + ProgramDescription.MacroExtension;
 				SFDialog_FileOk (null, null);
 				}
 
@@ -273,7 +301,7 @@ namespace RD_AAOW
 			// Запуск
 			this.SendToBack ();
 
-			Process p = Process.Start (RDGenerics.AppStartupPath + ProgramDescription.AssemblyExecutionModule,
+			Process p = Process.Start (RDGenerics.StartupPath + ProgramDescription.AssemblyExecutionModule,
 				"\"" + SFDialog.FileName + "\" " + r.ToString () + " " + OSMacrosSettings.LinePause.ToString ());
 			p.WaitForExit ();
 

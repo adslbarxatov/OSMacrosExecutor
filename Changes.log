@@ -1,6 +1,9 @@
 OS macros executor: changes log
 
-Version 3.10.3:
+Version 4.0.2:
+• Proper versioning for macro files have been applied
+
+Version 4.0:
 • Applied the updated GitHub markup for version numbers
 
 Version 3.10.2:
