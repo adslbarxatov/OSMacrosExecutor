@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -159,6 +161,11 @@ namespace RD_AAOW
 		{
 		// Переменные
 		private static char[] splitters = [' ', '\t'];
+
+		/// <summary>
+		/// Основное расширение файлов, с которым работает приложение
+		/// </summary>
+		public const string MacroExtension = ".osm";
 
 		/// <summary>
 		/// Тип макрокоманды
@@ -349,10 +356,8 @@ namespace RD_AAOW
 			pixelColor = Color.FromArgb (255, TrueColor);
 			}
 
-		/// <summary>
-		/// Возвращает псевдоним псевдокоманды CommandsQuantity
-		/// </summary>
-		public const string CommandsQuantityAlias = "#";
+		// Псевдоним псевдокоманды CommandsQuantity
+		private const string CommandsQuantityAlias = "#";
 
 		/// <summary>
 		/// Возвращает представление команды, используемое для записи в файл
@@ -616,6 +621,103 @@ namespace RD_AAOW
 				default:
 					return null;
 				}
+			}
+
+		/// <summary>
+		/// Метод загружает файл макроса по указанному пути
+		/// </summary>
+		/// <param name="FilePath">Путь к файлу макроса</param>
+		/// <returns>Возвращает null в случае ошибки</returns>
+		public static MacroCommand[] LoadMacroFile (string FilePath)
+			{
+			// Загрузка
+			FileStream FS;
+			try
+				{
+				FS = new FileStream (FilePath, FileMode.Open);
+				}
+			catch
+				{
+				return null;
+				}
+
+			StreamReader SR = new StreamReader (FS, RDGenerics.GetEncoding (RDEncodings.CP1251));
+
+			// Контроль версии
+			RDFormatSignatures version;
+			string s = SR.ReadLine ();
+			try
+				{
+				version = (RDFormatSignatures)UInt16.Parse (s);
+				}
+			catch
+				{
+				version = RDFormatSignatures.OSMv2;
+				}
+
+			bool firstLineIsntVersion = false;
+			switch (version)
+				{
+				case RDFormatSignatures.OSMv3:
+					break;
+
+				case RDFormatSignatures.OSMv2:
+				default:
+					firstLineIsntVersion = true;
+					break;
+				}
+
+			// Чтение
+			List<MacroCommand> res = [];
+
+			while (!SR.EndOfStream)
+				{
+				if (!firstLineIsntVersion)
+					s = SR.ReadLine ();
+				firstLineIsntVersion = false;
+
+				MacroCommand cmd = BuildMacroCommand (s);
+				if (cmd != null)
+					res.Add (cmd);
+				}
+
+			// Завершено
+			SR.Close ();
+			FS.Close ();
+			return res.ToArray ();
+			}
+
+		/// <summary>
+		/// Метод сохраняет файл макроса по указанному пути с заданным списком команд
+		/// </summary>
+		/// <param name="FilePath">Путь к файлу макроса</param>
+		/// <param name="MacroCommands">Список команд для сохранения</param>
+		/// <returns>Возвращает true в случае успеха</returns>
+		public static bool SaveMacroFile (string FilePath, MacroCommand[] MacroCommands)
+			{
+			// Инициализация
+			FileStream FS;
+			try
+				{
+				FS = new FileStream (FilePath, FileMode.Create);
+				}
+			catch
+				{
+				return false;
+				}
+			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (RDEncodings.CP1251));
+
+			// Запись
+			SW.WriteLine ((UInt16)RDFormatSignatures.OSMActual);
+			SW.WriteLine (CommandsQuantityAlias + " " + MacroCommands.Length.ToString ());
+
+			for (int i = 0; i < MacroCommands.Length; i++)
+				SW.WriteLine (MacroCommands[i].MacroFileCommandPresentation);
+
+			// Завершение
+			SW.Close ();
+			FS.Close ();
+			return true;
 			}
 		}
 	}

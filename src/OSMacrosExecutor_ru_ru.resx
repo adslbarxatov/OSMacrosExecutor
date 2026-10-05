@@ -252,7 +252,7 @@
     <value>(без модификаторов)</value>
   </data>
   <data name="OFDialogFilter" xml:space="preserve">
-    <value>Файлы макросов операционной системы (*.{0:S})|*.{0:S}</value>
+    <value>Файлы макросов операционной системы (*{0:S})|*{0:S}</value>
   </data>
   <data name="OFDialogTitle" xml:space="preserve">
     <value>Выберите макрос для редактирования</value>
@@ -280,7 +280,7 @@
     <value>Задать...</value>
   </data>
   <data name="SFDialogFilter" xml:space="preserve">
-    <value>Файлы макросов операционной системы (*.{0:S})|*.{0:S}</value>
+    <value>Файлы макросов операционной системы (*{0:S})|*{0:S}</value>
   </data>
   <data name="SFDialogTitle" xml:space="preserve">
     <value>Укажите расположение нового макроса</value>

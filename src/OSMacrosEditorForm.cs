@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -54,8 +52,8 @@ namespace RD_AAOW
 			SFDialog. Title = RDLocale.GetText ("SFDialogTitle");
 			FDialog. Title = RDLocale.GetText ("FDialogTitle");*/
 			OFDialog.Filter = string.Format (RDLocale.GetText ("OFDialogFilter"),
-				ProgramDescription.MacroExtension);
-			SFDialog.Filter = string.Format (RDLocale.GetText ("SFDialogFilter"), ProgramDescription.MacroExtension);
+				MacroCommand.MacroExtension);
+			SFDialog.Filter = string.Format (RDLocale.GetText ("SFDialogFilter"), MacroCommand.MacroExtension);
 			FDialog.Filter = RDLocale.GetText ("FDialogFilter");
 
 			if (KeyModifiers.Items.Count == 0)
@@ -157,7 +155,15 @@ namespace RD_AAOW
 
 		private void OFDialog_FileOk (object sender, CancelEventArgs e)
 			{
-			// Загрузка
+			MacroCommand[] cmds = MacroCommand.LoadMacroFile (OFDialog.FileName);
+			if (cmds == null)
+				{
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
+					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt),
+					OFDialog.FileName));
+				return;
+				}
+			/*// Загрузка
 			FileStream FS;
 			try
 				{
@@ -214,7 +220,10 @@ namespace RD_AAOW
 			// Завершено
 			SR.Close ();
 			FS.Close ();
+			*/
 
+			commands.Clear ();
+			commands.AddRange (cmds);
 			UpdateCommandsList (false);
 			}
 
@@ -226,7 +235,7 @@ namespace RD_AAOW
 
 		private void SFDialog_FileOk (object sender, CancelEventArgs e)
 			{
-			// Инициализация
+			/*// Инициализация
 			FileStream FS;
 			try
 				{
@@ -250,7 +259,13 @@ namespace RD_AAOW
 
 			// Завершение
 			SW.Close ();
-			FS.Close ();
+			FS.Close ();*/
+			if (!MacroCommand.SaveMacroFile (SFDialog.FileName, commands.ToArray ()))
+				{
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
+					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
+					SFDialog.FileName));
+				}
 			}
 
 		// Выполнение макроса
@@ -265,7 +280,7 @@ namespace RD_AAOW
 			else
 				{
 				SFDialog.FileName = OSMacrosSettings.DefaultMacroPath + DateTime.Now.ToString ("dd-MM-yyyy HH-mm") +
-					"." + ProgramDescription.MacroExtension;
+					MacroCommand.MacroExtension;
 				SFDialog_FileOk (null, null);
 				}
 

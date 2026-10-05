@@ -1,15 +1,13 @@
 _en_us_
 
-- Proper versioning for macro files have been applied;
-- Applied the updated GitHub markup for version numbers;
-- Commands list has been properly localized
+- Internal assemblies have been updated;
+- Proper versioning for macro files have been applied
 
 ⁂
 
 _ru_ru_
 
-- Применено корректное версионирование файлов макросов;
-- Применена обновлённая разметка GitHub для номеров версий;
-- Выполнена корректная локализация списка команд
+- Обновлены внутренние сборки приложения;
+- Применено корректное версионирование файлов макросов
 
 ⁂

@@ -252,7 +252,7 @@ Begin macro?</value>
     <value>(no modifiers)</value>
   </data>
   <data name="OFDialogFilter" xml:space="preserve">
-    <value>OS macro files (*.{0:S})|*.{0:S}</value>
+    <value>OS macro files (*{0:S})|*{0:S}</value>
   </data>
   <data name="OFDialogTitle" xml:space="preserve">
     <value>Select macro for editing</value>
@@ -280,7 +280,7 @@ All unsaved data will be lost!</value>
     <value>Select...</value>
   </data>
   <data name="SFDialogFilter" xml:space="preserve">
-    <value>OS macro files (*.{0:S})|*.{0:S}</value>
+    <value>OS macro files (*{0:S})|*{0:S}</value>
   </data>
   <data name="SFDialogTitle" xml:space="preserve">
     <value>Select new macro’s placement</value>
